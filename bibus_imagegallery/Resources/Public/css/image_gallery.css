@@ -1,0 +1,11 @@
+.contentLeftInner .smallGallery { margin:-16px -10px 0 -12px; width: 211px; }
+.smallGallery .actionLinkBox { margin: 0;border: 1px solid #777374; border-width: 1px 0; background-color: #ffffff; width: 100%; text-align: right; float:left; }
+.smallGallery .actionLinks { width: auto; padding:0 7px; margin:4px 0; float:right; }
+.smallGallery .actionLinks img{ margin:0 0 0 0; padding:0; width:auto; float:left; }
+.smallGallery .actionLinks a{ margin:2px 0 0 0px; padding:0 4px; width:auto; float:left; }
+.smallGallery .actionLinks a img{ margin:0; padding:0; width:auto; float:left; }
+.smallGallery .actionLinks* { vertical-align: middle; }
+/*.smallGallery ul li { background: none !important;; padding: 0px !important; }*/
+.smallGallery ul li a { display:block; }
+.initGallery { display:none; }
+.image_section { text-align: center; width: 211px !important; padding: 0px !important; list-style:none;}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for backend module CSV Importer belonging to extension 'pfj_csv_importer'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+		<label index="mlang_tabs_tab">CSV Importer</label>
+			<label index="mlang_labels_tabdescr">Import CSV files to the data base</label>
+			<label index="mlang_labels_tablabel">Import CSV files to the data base</label>
+		</languageKey>
+	</data>
+</T3locallang>

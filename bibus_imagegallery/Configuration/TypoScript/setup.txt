@@ -1,0 +1,45 @@
+plugin.tx_bibusimagegallery {
+	view {
+		templateRootPath = {$plugin.tx_bibusimagegallery.view.templateRootPath}
+		partialRootPath = {$plugin.tx_bibusimagegallery.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_bibusimagegallery.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bibusimagegallery.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	settings{
+		thumbWidth = {$plugin.tx_bibusimagegallery.settings.thumbWidth}
+		thumbHeight = {$plugin.tx_bibusimagegallery.settings.thumbHeight}
+		lightboxWidth = {plugin.tx_bibusimagegallery.settings.lightboxWidth}
+		lightboxHeight = {$plugin.tx_bibusimagegallery.settings.lightboxHeight}
+	}	
+}
+
+plugin.tx_bibusimagegallery._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-bibus-imagegallery table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-bibus-imagegallery table th {
+		font-weight:bold;
+	}
+
+	.tx-bibus-imagegallery table td {
+		vertical-align:top;
+	}
+)

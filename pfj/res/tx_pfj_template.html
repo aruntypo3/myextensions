@@ -1,0 +1,342 @@
+<html>
+    <head>
+        <title>PFJ pi1 plugin template file</title>
+        <!-- ###HEADER_PARTS### begin -->
+        <link rel="stylesheet" type="text/css" href="###SITE_REL_PATH###res/pfj_pi1.css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="###SITE_REL_PATH###res/js/pfj_scripts.js" type="text/javascript"></script>
+        <script src="###SITE_REL_PATH###res/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="###SITE_REL_PATH###res/js/jquery.jgrowl.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="###SITE_REL_PATH###res/jquery.jgrowl.css" />
+        <!-- ###HEADER_PARTS### end -->
+    </head>
+    <body>
+
+        <h1>Single view</h1>
+        <!-- ###SINGLE_VIEW### begin -->
+        <div class="singleView">
+            <div class="single-container clearfix">
+                <div class="imgBorder">
+                    <div class="singleImg">
+                        ###SINGLE_IMAGE###
+                    </div>
+                    ###BACKLINK###
+                </div>
+                <div class="singleDetail">
+                    <div class="item-name">
+                        <h1>###FIELD_ITEM_NAME###</h1>
+                        <p>###FIELD_ITEM_NUMBER###</p>
+                    </div>
+                    <div class="item-desc">
+                        <h2>###STRING_DESCRIPTION###</h2>
+                        <p class="single_desc">###FIELD_DESCRIPTION###</p>
+                        <p class="single_stone"><span class="stone_label"><b>###STONE_LABEL###</b></span><span class="stone_name">###STONE_NAME###</span></p>
+                        <p class="single_metal"><span class="metal_label"><b>###METAL_LABEL###</b></span><span class="metal_name">###METAL_NAME###</span></p>
+                        <p class="single_brand"><span class="brand_label"><b>###BRAND_LABEL###</b></span><span class="brand_name">###BRAND_NAME###</span></p>
+                        <p class="single_brand"><span class="brand_label"><b>###STOCK_LABEL###</b></span><span class="brand_name">###STOCK_VALUE###</span></p>
+                    </div>
+                    ###PRICE_VAL###
+                    ###ADD_CART###
+                </div>
+            </div>
+        </div>
+        <!-- ###SINGLE_VIEW### end -->
+
+        <h1>List view</h1>
+        <!-- ###LIST_VIEW### begin -->
+
+        <!-- ###PAGER### begin -->
+        <div class="pageBrowser">
+            <table class="tx_gemeinde_list_pager">
+                <tr>
+                    <td class="p_prev">###FIRST_PAGE###</td>
+                    <td class="p_prev">###STEP_PREV###</td>
+                    <td class="p_prev">###LINK_PREV###</td>
+                    <td class="p_center">
+                        <!-- ###LESS_PAGES### begin -->
+                        <span class="pages">###LESS_PAGE###</span>
+                        <!-- ###LESS_PAGES### end -->
+                        ###CURRENT_PAGE###
+                        <!-- ###MORE_PAGES### begin -->
+                        <span class="pages">###MORE_PAGE###</span>
+                        <!-- ###MORE_PAGES### end -->
+                    </td>
+                    <td class="p_next">###LINK_NEXT###</td>
+                    <td class="p_next">###STEP_NEXT###</td>
+                    <td class="p_next">###LAST_PAGE###</td>
+                    ###SUM_RESULT###
+                </tr>
+            </table>
+        </div>
+        <!-- ###PAGER### end -->
+        <div class="clearfix">
+            <!-- ###LIST_DATA### begin -->
+            <div class="listView">
+                <div class="item-container">
+                    <div class="item-img">###ITEM_PIC###</div>
+                    <div class=item-meta>
+                        <div class="item-name">###ITEM_NAME###</div>
+                        <div class="item-price">###ITEM_PRICE###</div>
+                        <div class="item-number">###ITEM_NUMBER###</div>
+                        <div class="item-description">###ITEM_DESCRIPTION###</div>
+                    </div>
+                    <div class="morelink">###LINK_DETAIL###</div>
+                    <span class="addtocart">###ADD_CART###</span>
+                </div>
+            </div>
+            <!-- ###LIST_DATA### end -->
+        </div>
+        <!-- ###PAGER### begin -->
+
+        <!-- ###PAGER### end -->
+        <!-- ###LIST_VIEW### end -->
+
+        <h1>Category view</h1>
+        <!-- ###CAT_VIEW### begin -->
+        <div class="catView">
+            <ul>
+                ###CAT_TREE###
+            </ul>
+        </div>
+        <!-- ###CAT_VIEW### end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1>Single view when record is not found</h1>
+        <!-- ###SINGLE_VIEW_NO_RECORD### begin -->
+        ###STRING_RECORD_NOT_FOUND###
+        <!-- ###SINGLE_VIEW_NO_RECORD### end -->
+
+        <!-- ###LIST### begin -->
+        <div class="tx_feuserstat_list">
+            <form name="tx_feuserstat_list_search" id="tx_feuserstat_list_search" action="###ACTION###" method="get">
+                <label for="tx_feuserstat_pi1[search]">###TEXT_SEARCH###</label>
+                <input type="text" name="tx_feuserstat_pi1[search]" id="tx_feuserstat_pi1_search" autocomplete="off" value="###SEARCH_TERMS###" />
+                <div id="tx_feuserstat_pi1_autoc"></div>
+                <input type="submit" name="tx_feuserstat_pi1[submit]" value="###TEXT_SUBMITBTN###" />
+                <script type="text/javascript">tx_feuserstat_pi1_init('tx_feuserstat_pi1_search', 'tx_feuserstat_pi1_autoc', ###PID###)</script>
+            </form>
+            <table class="tx_feuserstat_list_users">
+                <tr><th>
+                        ###TEXT_NUMBER###
+                    </th><th>
+                        ###TEXT_USERNAME###
+                    </th><th>
+                        ###TEXT_NAME###
+                    </th><th>
+                        ###TEXT_CRDATE###
+                    </th><th>
+                        ###TEXT_TSTAMP###
+                    </th><th>
+                        ###TEXT_LASTLOGIN###
+                    </th></tr>
+                <!-- ###LIST_ITEM### begin -->
+                <tr><td>
+                        ###NUMBER###
+                    </td><td>
+                        ###FIELD_USERNAME###
+                    </td><td>
+                        ###FIELD_NAME###
+                    </td><td>
+                        ###FIELD_CRDATE###
+                    </td><td>
+                        ###FIELD_TSTAMP###
+                    </td><td>
+                        ###FIELD_LASTLOGIN###
+                    </td></tr>
+                <!-- ###LIST_ITEM### end -->
+            </table>
+            <!-- ###PAGER### begin -->
+            <table class="tx_feuserstat_list_pager">
+                <tr><td>
+                        ###LINK_PREV###
+                    </td><td>
+                        ###CURRENT_PAGE###
+                    </td><td>
+                        ###LINK_NEXT###
+                    </td></tr>
+            </table>
+            <!-- ###PAGER### end -->
+        </div>
+        <!-- ###LIST### end -->
+
+
+
+
+        <h1>Cart view</h1>
+        ###CARTVIEW_HEADER###
+
+        <!-- ###CART_TABLETITLE### begin -->
+    <tr>
+        <th colspan="5">###ITEM_NAME###</th><th colspan="2">###ITEM_NO###</th><th colspan="1">###ITEM_QTY###</th><th colspan="2">###ITEM_PRICE###</th><th colspan="1"></th>
+    </tr>
+    <!-- ###CART_TABLETITLE### end -->
+
+    <!-- ###CART_TABLEVIEW### begin -->
+
+    <tr id="###PRODUCT_ROWID###" class="carttable">
+        <td colspan="5">###PRODUCT_NAME###</td><td colspan="2">###PRODUCT_NO###</td><td colspan="1"><input type="textbox" value="###QTYVALUE###" size="2" class="quantity" id="quantity_###QTYID###" name = "quantity[###QTYID###]" /></td><td colspan="2"><span id="price_###PRICEID###" class="newPrice">###PRODUCT_PRICE###</span><input type="hidden" class="priceValue" value="###PRODUCT_PRICEHIDDEN###" id="priceVal_###PRICEID###" name = "priceArray[###PRICEID###]" /></td><td colspan="1">###REMOVE_ITEM###</td>
+    </tr>
+    <!-- ###CART_TABLEVIEW### end -->
+
+
+    <!-- ###CART_VIEW### begin -->
+    <form id="cartsubmitform" action="" method="post">
+        <table id="cart_table">
+            ###HEADER###
+            ###CONTENT###
+            ###TOTAL_PRICEROW###
+            ###NOCART_ITEMS###
+            <tr class="no_cartitems" style="display:none;"><td colspan="11">No Items in the Cart</td></tr>
+        </table>
+        ###BUTTONS###
+    </form>
+    <div id="ajax_loader" style="display:none;"><img src="typo3conf/ext/pfj/res/images/loader.gif" /></div>
+    <div id="cart_preview"></div>
+    <div id="commentbox" style="display: none;">
+        <b><span class="total_pricehead">Comments:</span><span style="float:right" class="total_pricehead">Max:500 Char</span> </b><br/>
+        <textarea cols="50" rows="4" style="width: 739px; height: 112px;" onkeyup="textLimit(this, 500);" id="comment"></textarea>
+        <b><span id="max_error" style="color:red;"></span></b><br/>
+        <input type='button' name='backtocart' class='backtocart' id='backto_cart' value='Back' />
+        <input type='button' name='orderItems' class='orderItems' id='orderItems' value='Place Order' />
+    </div>
+    <div id="order_placed" style="display:none;"></div>
+    <!-- ###CART_VIEW### end -->
+
+    <!-- ###TOTALPRICESUBPART### begin -->
+    <tr class="totalpricerow"><td colspan="5"><b><span class="total_pricehead">TOTAL PRICE</span></b></td><td colspan="2"></td><td colspan="1"></td><td colspan="2"><b><span class="total_price">###TOTAL_PRICE###</span></b></td><td colspan="1"></td></tr>
+    <!-- ###TOTALPRICESUBPART### end -->
+
+    <!-- ###NO_CART_ITEMS### begin -->
+    <tr class="no_cartitems"><td colspan="11">###NO_ITEMS###</td></tr>
+    <!-- ###NO_CART_ITEMS### end -->
+
+    <!-- ###SUBMIT_BUTTONS### begin -->
+    <div class="cart_buttons">
+        <!-- <input type="button" name="updatecart" class="button" id="update_btn" value="###UPDATE_CART###" /> -->
+        <input type="button" name="clearall" class="clearall_button" id="clearall" value="###CLEAR_ALL###" />
+        <input type="button" name="checkout" class="checkout_button" id="checkout" value="###CHECK_OUT###" />
+    </div>
+    <!-- ###SUBMIT_BUTTONS### end -->
+
+
+
+    <h1>Stockist view</h1>
+    <!-- ###STOCKIST_VIEW### begin -->
+    <p class="enter_pin">###STOCIKST_TITLE###</p>
+    <form method="post" action="###SEARCH_ACTION###" name="stockist_form" id="stockist_form">
+        <div class="search_block">
+            <span class="stockist_postcode_label"><strong>Postcode:</strong></span>
+            <span class="stockist_searchfield"><input type="text" value="###SEARCH_VAL###" size="8" id="postcode" class="inputfield" name="postcode" /></span>
+            <span class="stockist_searchbutton"><input type="submit" value="Search" id="search" /><br/></span>
+        </div>
+        <span class="stockist_includesuburb">###CHECKBOX### ###SUBURB_LABEL###</span>
+    </form>
+    <p class="no_record">###STOCKIST_RECORD_NOT_FOUND###</p>
+    <!-- ###PAGER### begin -->
+    <div class="pageBrowser">
+        <table class="tx_gemeinde_list_pager">
+            <tr>
+                <td class="p_prev">###FIRST_PAGE###</td>
+                <td class="p_prev">###STEP_PREV###</td>
+                <td class="p_prev">###LINK_PREV###</td>
+                <td class="p_center">
+                    <!-- ###LESS_PAGES### begin -->
+                    <span class="pages">###LESS_PAGE###</span>
+                    <!-- ###LESS_PAGES### end -->
+                    ###CURRENT_PAGE###
+                    <!-- ###MORE_PAGES### begin -->
+                    <span class="pages">###MORE_PAGE###</span>
+                    <!-- ###MORE_PAGES### end -->
+                </td>
+                <td class="p_next">###LINK_NEXT###</td>
+                <td class="p_next">###STEP_NEXT###</td>
+                <td class="p_next">###LAST_PAGE###</td>
+                ###SUM_RESULT###
+            </tr>
+        </table>
+    </div>
+    <!-- ###PAGER### end -->
+    <div class="clearfix">
+        <!-- ###STOCKIST_DATA### begin -->
+        <div class="stockistView">
+            <div class="item-container">
+                <div class=item-meta>
+                    <div class="stockist_company">###COMPANY_NAME###</div>
+                    <div class="stockist_address1">###ADDRESS1###</div>
+                    <!--<div class="stockist_address2">###ADDRESS2###</div>
+                    <div class="stockist_address3">###ADDRESS3###</div>-->
+                    <div class="stockist_cardid">###CARD_ID###</div>
+                    <div class="stockist_phone">###TELEPHONE###</div>
+                    <div class="stockist_zip">###ZIPCODE###</div>
+                    <div class="morelink">###LINK_DETAIL###</div>
+                </div>
+            </div>
+        </div>
+        <!-- ###STOCKIST_DATA### end -->
+    </div>
+    <!-- ###PAGER### begin -->
+
+    <!-- ###PAGER### end -->
+    <!-- ###STOCKIST_VIEW### end -->
+
+
+
+    <h1>Stockists Single view</h1>
+    <!-- ###STOCKISTS_SINGLE_VIEW### begin -->
+    <div class="singleView">
+        <div class="single-container clearfix">
+            <div class="stockistssingleDetail">
+                <div class="company_name"><h1>###FIELD_COMPANY_NAME###</h1></div>
+                <div id="address_block">
+                    <div id="stockist_address1">###ADDRESS1###</div>
+                    <div id="stockist_address2">###ADDRESS2###</div>
+                    <div id="stockist_address3">###ADDRESS3###</div>
+                    <div class="city_zipcode"><span id="stockist_city">###CITY###</span><span id="stockist_zip"> ###ZIPCODE###</span></div>
+                    <div class="state_country"><span id="stockist_state">###STATE###</span><span id="stockist_country"> ###COUNTRY###</span></div>
+                </div>
+
+                <div class="phone"><span class="single_phonelabel">###PHONE_LABEL###</span><span class="single_phone">###PHONE###</span></div>
+                <div class="fax"><span class="single_faxlabel">###FAX_LABEL###</span><span class="single_fax">###FAX###</span></div>
+                <div class="email"><span class="single_emaillabel">###EMAIL_LABEL###</span><span class="single_email">###EMAIL###</span></div>
+                <div class="web"><span class="single_weblabel">###WEB_LABEL###</span><span class="single_web">###WEB###</span></div>
+            </div>
+            ###GOOGLE_MAP###
+        </div>
+        ###BACKLINK###
+    </div>
+    <!-- ###STOCKISTS_SINGLE_VIEW### end -->
+    <h1>Stockists Order History</h1>
+    <!-- ###ORDER_VIEW_LIST### begin -->
+    <h1>Order History</h1>
+    <div id="order_history">
+        ###ORDER_DATE_LIST###
+    </div>
+    <!-- ###ORDER_VIEW_LIST### end -->
+
+</body>
+</html>

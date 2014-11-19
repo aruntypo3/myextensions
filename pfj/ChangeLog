@@ -1,0 +1,15 @@
+2011-10-03 Dieter Bunkerd  <dieter.bunkerd@typo3-asia.com>
+  * generated single and list view skeleton
+  * commented code
+  * added examples
+  * finished flexforms
+  * set version to 0.0.2        
+
+2011-10-03 Dieter Bunkerd  <dieter.bunkerd@typo3-asia.com>
+	* generated database initially
+	* edited tca.php and deleted ranges for int fields
+	* integrated Flexforms	
+	* set version to 0.0.1  	
+
+2011-10-03 Dieter Bunkerd  <dieter.bunkerd@typo3-asia.com>
+	* initial code generated with kickstarter

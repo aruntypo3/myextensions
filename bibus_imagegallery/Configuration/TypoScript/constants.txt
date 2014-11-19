@@ -1,0 +1,21 @@
+plugin.tx_bibusimagegallery {
+	view {
+		# cat=plugin.tx_bibusimagegallery/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bibus_imagegallery/Resources/Private/Templates/
+		# cat=plugin.tx_bibusimagegallery/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bibus_imagegallery/Resources/Private/Partials/
+		# cat=plugin.tx_bibusimagegallery/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bibus_imagegallery/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bibusimagegallery//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	
+	settings{
+		thumbWidth = 210
+		thumbHeight = 145
+		lightboxWidth = 1000
+		lightboxHeight = 700
+	}
+}

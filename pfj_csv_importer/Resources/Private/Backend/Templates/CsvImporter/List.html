@@ -1,0 +1,84 @@
+
+<f:layout name="Default" />
+
+<f:section name="content">
+    <link media="screen" href="{extensionPathCss}style.css" type="text/css" rel="stylesheet">
+    <table class="gradienttable">
+
+        <tr>
+            <th><f:form action="list" name="import" object="{customer}" enctype="multipart/form-data">
+            Upload File:<f:form.upload property="up_file" class="s_date"/>
+            <f:form.submit name="mySubmit" value="Import" class="Search"/>
+        </f:form></th>
+    </table>
+    <f:if condition="{csvImporters.data}">
+        <div class="controls">
+            <span class="paginate">
+                <f:link.action action="write" arguments="{backup: 1}">
+                    Download Backup
+                </f:link.action>
+                <f:link.action action="write">
+                    Write To Database
+                </f:link.action>
+
+                <br />
+            </span>
+        </div>
+        <div class="outer_div"></div><f:format.html parseFuncTSPath="">{csvImporters.pageNation}</f:format.html>
+        <table class="gradienttable">
+            <tr>
+                <th><p>Item Number(item_number)</p></th>
+            <th><p>Item Name(item_name)</p></th>
+            <th><p>Buy(buy)</p></th>
+            <th><p>Sell(sell)</p></th>
+            <th><p>Inventory(inventory)</p></th>
+            <th><p>Item Picture(item_pic)</p></th>
+            <th><p>Description(description)</p></th>
+            <th><p>Custom List 1(custlist_1)</p></th>
+            <th><p>Custom List 2(metal)</p></th>
+            <th><p>Custom List 3(brand)</p></th>
+            <th><p>Custom Field 1(stone_details)</p></th>
+            <th><p>Custom Field 2(show_onsite)</p></th>
+            <th><p>Selling Price(sellingprice)</p></th>
+            <th><p>Stock Quantity(quantity_break_1)</p></th>
+            </tr>
+            <f:for each="{csvImporters.data}" as="surveyData">
+                <tr>
+                    <td><p>{surveyData.item_number}</p></td>
+                    <td><p>{surveyData.item_name}</p></td>
+                    <td><p>{surveyData.buy}</p></td>
+                    <td><p>{surveyData.sell}</p></td>
+                    <td><p>{surveyData.inventory}</p></td>
+                <f:if condition="{surveyData.item_pic}">
+                    <f:then>
+                        <td><p><f:image src="uploads/tx_pfj/{surveyData.item_pic}" width="200" height="150" alt="{surveyData.item_pic}" /></p></td>
+                    </f:then>
+                    <f:else>
+                        <td><p>No Image To Display!</p></td>
+                    </f:else>
+                </f:if>
+                <td><p>{surveyData.description}</p></td>
+                <td><p>{surveyData.custlist_1}</p></td>
+                <td><p>{surveyData.metal}</p></td>
+                <td><p>{surveyData.brand}</p></td>
+                <td><p>{surveyData.stone_details}</p></td>
+                <td><p>{surveyData.show_onsite}</p></td>
+                <td><p>{surveyData.sellingprice}</p></td>
+                <td><p>{surveyData.quant_break_1}</p></td>
+
+                </tr>
+
+            </f:for>
+        </table>
+        <div class="outer_div"></div><f:format.html parseFuncTSPath="">{csvImporters.pageNation}</f:format.html>
+        <div class="controls"><span class="paginate">
+                <f:link.action action="write" arguments="{backup: 1}">
+                    Download Backup
+                </f:link.action>
+                <f:link.action action="write">Write To Database</f:link.action>
+
+                <br /></span></div>
+    </f:if>
+
+
+</f:section>

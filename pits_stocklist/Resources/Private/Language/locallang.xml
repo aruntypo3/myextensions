@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the BIBUS Stock List extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistgrade">BIBUSStockListGrade</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistgrade.title">title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistlocation">BIBUSStockListLocation</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistlocation.title">title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistproductshape">BIBUSStockListProductShape</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistproductshape.title">title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist">BIBUSStockList</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.title">Title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.grade_spec">Grade or Main Specification</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.grade">Grade</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.location">Location</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.shape">Form&amp;Shape</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.msg">Please select query conditions</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.search">Search</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.or_text">OR</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.specification">Main Specification</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.size">Size</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.qty">Stock Qty</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.quotation">Quotation</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.pages">Page %d of %d</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.confirmmsg">Are you sure, you want to delete this entry!</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.name">Name</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.company">Company</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.email">Email</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.phone">Phone</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.name_err">You must enter a Name!</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.company_err">You must enter a Company!</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.email_err">You must enter an email!</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.phone_err">You must enter a phone number!</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.inquire">Inquire</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.submit">Submit</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.query_result">Query Result</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.fromName">BIBUS METALS (Shenzhen) Ltd. (CN)</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.mailSubject">BIBUS METALS Inquiry %s</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.successmessage">Thanks. Your message was sent successfully.</label>
+			
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.sal_text">Dear</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.admin_saltext">BIBUS METALS Inquiry</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.stocklist_reqmsg">You sent an inquiry to BIBUS METALS with the following content</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_name">Name</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_company">Company</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_email">e-Mail</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_phone">Phone</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_products">Product</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_reqQty">Inquiry amount</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_reqQtyKg">kg</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_greetings">We will contact you with an offer soon.</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_grade">Grade</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_form_shape">Form&amp;Shape</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_spec">Main Specification</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_location">Location</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_size">Size</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_regards">Best Regards</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.siteName">BIBUS METALS (Shenzhen) Ltd. (CN)</label>
+			
+		</languageKey>
+		
+		<languageKey index="ch" type="array">
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistgrade">BIBUSStockListGrade</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistgrade.title">title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistlocation">BIBUSStockListLocation</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistlocation.title">title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistproductshape">BIBUSStockListProductShape</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistproductshape.title">title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist">BIBUSStockList</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.title">title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.grade_spec">输入产品牌号及技术规范</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.grade">产品牌号</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.location">库存位置</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.shape">产品形状</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.msg">请选择查询条件</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.search">搜索</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.or_text">或</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.specification">主要技术参数</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.size">大小</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.qty">库存数量</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.quotation">行情</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.pages">第%d页%d</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.confirmmsg">你确定，你要删除该条目！</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.name">名称</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.company">公司</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.email">电子邮件</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.phone">电话</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.name_err">您必须输入一个名字！</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.company_err">您必须输入一个公司！</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.email_err">您必须输入一个电子邮件！</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.orderform.phone_err">您必须输入一个电话号码！</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.inquire">查询</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.submit">提交</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.query_result">查询结果</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.fromName">BIBUS METALS (Shenzhen) Ltd. (CN)</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.mailSubject">百博金属咨询 %s</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.successmessage">谢谢，您的信息已成功发送。</label>
+			
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.sal_text">亲爱的</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.admin_saltext">毕晨金属咨询</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.stocklist_reqmsg">您发送了如下询价给百博金属</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_name">姓名</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_company">公司名称</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_email">电子邮件</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_phone">电话</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_products">产品</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_reqQty">询盘量</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_reqQtyKg">公斤</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_greetings">我们将尽快答复您的询价。</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_grade">牌号</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_form_shape">形状</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_spec">主要技术参数</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_location">地点</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_size">尺寸</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.email_regards">顺祝商祺！</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.siteName">百博金属材料（深圳）有限公司</label>
+		</languageKey>
+	</data>
+</T3locallang>

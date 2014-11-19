@@ -1,0 +1,183 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.sheet_generalsettings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<what_to_display>
+						<TCEforms>
+							<label>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.what_to_display</label>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.pleaseSelect</numIndex>
+										<numIndex index="1">nothingChosen</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.showListView</numIndex>
+										<numIndex index="1">listView</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.showSingleView</numIndex>
+										<numIndex index="1">singleView</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.showCatView</numIndex>
+										<numIndex index="1">catView</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.cartView</numIndex>
+										<numIndex index="1">cartView</numIndex>
+									</numIndex>
+                                                                        <numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.stockistView</numIndex>
+										<numIndex index="1">stockistView</numIndex>
+									</numIndex>
+                                                                        <numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.stockistSingleView</numIndex>
+										<numIndex index="1">stockistSingleView</numIndex>
+									</numIndex>
+                                                                        <numIndex index="7" type="array">
+										<numIndex index="0">LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.orderHistory</numIndex>
+										<numIndex index="1">orderHistory</numIndex>
+									</numIndex>
+								</items>
+								<size>1</size>
+								<maxitems>1</maxitems>
+							</config>
+							<onChange>reload</onChange>
+						</TCEforms>
+					</what_to_display>
+					<templateFile>
+						<TCEforms>
+							<label>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.templateFile</label>
+							<config>
+								<type>input</type>
+								<eval>trim</eval>
+								<default>EXT:pfj/res/pi1_template.html</default>
+								<wizards type="array">
+									<_PADDING>2</_PADDING>
+									<link type="array">
+										<type>popup</type>
+										<title>Link</title>
+										<icon>link_popup.gif</icon>
+										<script>browse_links.php?mode=wizard&amp;act=file</script>
+										<params type="array">
+											<blindLinkOptions>page,url,mail,spec,folder</blindLinkOptions>
+										</params>
+										<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</link>
+								</wizards>
+							</config>
+							<displayCond>FIELD:what_to_display:IN:listView,singleView,stockistView,cartView,stockistSingleView,orderHistory</displayCond>
+						</TCEforms>
+					</templateFile>
+					<staticSqlFilter>
+						<TCEforms>
+							<label>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.staticSqlFilter</label>
+							<config>
+								<type>input</type>
+								<size>256</size>
+							</config>
+							<displayCond>FIELD:what_to_display:IN:listView</displayCond>
+						</TCEforms>
+					</staticSqlFilter>
+					<category>
+						<TCEforms>
+							<label>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.category</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+							</config>
+							<displayCond>FIELD:what_to_display:IN:listView</displayCond>
+						</TCEforms>
+					</category>
+					<orderEmail>
+						<TCEforms>
+							<label>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.order_email</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+							</config>
+							<displayCond>FIELD:what_to_display:IN:cartView</displayCond>
+						</TCEforms>
+					</orderEmail>
+					<singlePid>
+						<TCEforms>
+							<label>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.singlePid</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<prepend_tname>0</prepend_tname>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+						</TCEforms>
+					</singlePid>
+				</el>
+			</ROOT>
+		</sDEF>
+		<sLISTVIEW>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.sheet_listview</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el></el>
+			</ROOT>
+		</sLISTVIEW>
+		<sSINGLEVIEW>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.sheet_singleview</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<listPid>
+						<TCEforms>
+							<label>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.listPid</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<prepend_tname>0</prepend_tname>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+						</TCEforms>
+					</listPid>
+				</el>
+			</ROOT>
+		</sSINGLEVIEW>
+		<sOTHERSETTINGS>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.sheet_othersettings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<storagePid>
+						<TCEforms>
+							<label>LLL:EXT:pfj/locallang_db.xml:tx_pfj_flexform.iAmAnExample</label>
+							<config>
+								<type>input</type>
+								<eval>trim</eval>
+								<size>50</size>
+							</config>
+						</TCEforms>
+					</storagePid>
+				</el>
+			</ROOT>
+		</sOTHERSETTINGS>
+	</sheets>
+</T3DataStructure>

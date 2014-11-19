@@ -1,0 +1,11 @@
+# Module configuration
+module.tx_pfjcsvimporter {
+	persistence {
+		storagePid = {$module.tx_pfjcsvimporter.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_pfjcsvimporter.view.templateRootPath}
+		partialRootPath = {$module.tx_pfjcsvimporter.view.partialRootPath}
+		layoutRootPath = {$module.tx_pfjcsvimporter.view.layoutRootPath}
+	}
+}

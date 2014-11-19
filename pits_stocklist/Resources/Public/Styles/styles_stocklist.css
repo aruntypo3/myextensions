@@ -1,0 +1,286 @@
+.stocklist-tbl tr td{ 
+	padding-bottom:8px; 
+	color:#58595B; 
+	font-size:11px; 
+	line-height:16px; 
+	vertical-align:top ; 
+	text-align:left;
+}
+#search {
+	color:#color:#58595B; 
+	font-size:11px; 
+	border:1px solid #dedede; 
+	width:180px; 
+	line-height:16px; 
+	padding:2px 0;
+}
+
+.orderform-content {
+	/* background-color: #f5f5f5; */
+    /* border: 0px solid #cccccc; */
+    clear: both;
+    float: left;
+    margin: 0 0 20px 0;
+    padding: 10px;
+    position: relative;
+    width: 190px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;    
+}
+.orderform-content h2 {
+	display: block;
+    margin-bottom: 12px;
+    margin-right: 0px;
+    margin-top: -3px;
+
+}
+.orderform-content #content {
+	width: 100%;
+	float: left;
+	padding: 0px;
+	margin: 0px 0px 10px 0;
+}
+.orderform-content #content .close {
+	cursor: pointer;
+    float: right;
+    position: absolute;
+    right: 0px;
+    top: 5px;
+}
+.orderform-content #content .close:hover {
+	opacity: 0.5;
+    	filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+.orderform-content #content .main-lbl {
+	display: block;
+    	font-size: 11px;
+    	margin-bottom: 5px;
+}
+.orderform-content #content .unit-blk {
+	float: left;
+	margin: 5px 0 10px 0;
+	padding: 0;
+	width: 100%;
+}
+.orderform-content #content .unit-blk .input-unit {
+	border: 1px solid #dedede;
+	color: #58595b;
+	font-size: 11px;
+	height: 18px;
+	line-height: 18px;
+	padding: 0 2px 2px 2px;
+	width: 100px;	
+	margin:0 5px 0 0;
+	float: left;
+}
+.orderform-content #content .unit-blk label {
+	display:inline-block;
+	line-height: 18px;
+}
+.orderform-content #content .other-ifo {
+	border: 1px solid #dedede;
+    color: #58595b;
+    font-size: 11px;
+    height: 90px;
+   	margin: 0;
+	padding: 0 2px 2px 2px;
+    resize: none;
+    width: 184px;
+}
+.orderform-content .biaodan {
+	float: left;
+	width: 100%;
+	padding: 0px;
+	margin: 15px 0;
+}
+.orderform-content .form-info-fields {	
+	float: left;
+	margin: 0 0px 10px 0;
+	padding: 0;
+	width: 100%;	
+}
+.orderform-content .form-info-fields label {
+	display: block;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+.orderform-content .form-info-fields input[type="text"] {
+	border: 1px solid #dedede;
+	color: #58595b;
+	font-size: 11px;
+	height: 18px;
+	line-height: 18px;
+	padding: 0 2px 2px 2px;
+	width: 175px;	
+	margin:0;
+	float: left
+}
+.orderform-content .mandatory-field {
+	color:#da2020;
+	float: left;
+    	margin: -2px 0 0 3px;
+}
+.orderform-content .error-msg {
+	color:#da2020;
+	float: left;
+	clear: left;	
+}  
+.orderform-content .btn-wrapper {
+	float: left;
+	margin: 5px 0 0;
+	padding: 0;
+	width: 100%;
+}
+ .order-content-innner {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+
+.contentlayout #metailsPages { 	
+    box-sizing: border-box;
+    float: left;
+    margin: 0;
+    padding: 0 15px;
+    width: 100%;
+}
+.contentlayout #metailsPages .detail { float: none; padding:0; margin: 15px 0 0 0; width: 98%;}
+.contentlayout #metailsPages .detail .tablewidth {margin-bottom: 20px; width: 100%}
+.contentlayout #metailsPages .detail .tablewidth #scrollList {margin: 0px; width: 100%}
+.contentlayout #metailsPages .orderform-content {width: 98%; box-sizing:border-box; margin-top: 0px; margin-bottom: 20px;}
+
+.contentlayout #metailsPages .orderform-content #content .unit-blk .input-unit {
+    border: 1px solid #cecece;   
+    width: 290px;
+}
+
+.contentlayout #metailsPages .orderform-content #content .other-ifo {
+    border: 1px solid #cecece;
+    width: 290px;
+}
+.contentlayout #metailsPages .orderform-content .form-info-fields input[type="text"] {
+    border: 1px solid #cecece;   
+    width: 290px;
+}
+.contentlayout #metailsPages .orderform-content .btn-wrapper input[type=button]{
+    background-color: #58585a;
+    border: 1px solid #000000;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font-size: 10px;
+    height: 22px;
+    margin: 0;
+    padding: 0;
+    width: auto ;
+}
+.contentlayout #metailsPages .detail .grade-filter {  
+    float: left;
+    margin: 0 0 10px 0;
+    padding: 0;
+    width: 100%;
+}
+
+.contentlayout #metailsPages .detail .grade-filter li {  
+	float: left;
+	padding:0; 
+	margin: 0;
+}
+.contentlayout #metailsPages .detail .grade-filter li input[type=text] {  
+	border: 1px solid #cecece;
+	color: #58595b;
+	float: left;
+	font-size: 11px;
+	height: 18px;
+	line-height: 18px;
+	margin: 0 10px 0 0;
+	padding: 0 2px 2px;
+	width: 180px;
+}
+.contentlayout #metailsPages .detail .grade-filter li select {  
+	border: 1px solid #cecece!important;
+	color: #58595b;
+	float: left;
+	font-size: 11px!important;
+	height: 22px;
+	line-height: 18px;
+	margin: 0 10px 0 0!important;
+	padding: 0 2px 2px;
+	width: 110px!important;
+}
+.contentlayout #metailsPages .detail .grade-filter li input[type=button] { 
+	background-color: #58585a;
+	border: 1px solid #000000;
+	color: #ffffff;
+	float: left;
+	font-size: 12px;
+	height: 22px;
+	margin: 0;
+	padding: 0 0 3px;
+	width: 70px !important;
+	cursor: pointer;
+}
+
+
+.contentlayout #metailsPages .detail .grade-filter li:last-child {
+	/*float: right*/
+}
+
+
+.contentlayout #metailsPages .detail .grade-filterlabels li {  
+	float: left;
+	padding:0 10px 0 0; 
+	margin: 0;
+	text-align: right;
+
+}
+
+.contentlayout #metailsPages .detail .grade-filterlabels li:last-child {
+	/*float: right*/
+}
+
+.grade-or{
+	float: left;
+    	font-weight: bold;
+    	margin: 4px 0px 0px 60px;
+    	padding: 0 10px 0 0;
+}
+
+.contentlayout #metailsPages .detail .grade-filter li input::-webkit-input-placeholder { color:#58595b; opacity: 1; }
+.contentlayout #metailsPages .detail .grade-filter li input::-moz-placeholder { color:#58595b; opacity: 1; } 
+.contentlayout #metailsPages .detail .grade-filter li input:-ms-input-placeholder { color:#58595b; opacity: 1; }
+.contentlayout #metailsPages .detail .grade-filter li input:-moz-placeholder { color:#58595b; opacity: 1; }
+.contentlayout #metailsPages .detail .grade-filter li input:-ms-input-placeholder{color:#58595b; opacity: 1;}
+
+#grade-label{ 
+	width: 256px !important;
+}
+
+#shape-label{
+	text-align: right !important;
+	width: 110px;
+}
+
+ .grade-filterlabels {
+    float: left;
+    margin: 0 0 10px;
+    padding: 0;
+    width: 100%;
+}
+
+#location-label{
+	width: 307px;
+}
+.error_msg{
+	float:left;
+}
+.mail_success {
+    background: none repeat scroll 0 0 #ffffff;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    font-weight: normal;
+    padding: 10px;
+    text-align: center;
+}

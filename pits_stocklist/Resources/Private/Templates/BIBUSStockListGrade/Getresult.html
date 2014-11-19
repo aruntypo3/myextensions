@@ -1,0 +1,57 @@
+<f:layout name="Default" />
+<f:section name="main">
+	<table class="documentList">
+		<tbody>
+			<tr>
+				<th width="20%"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.grade">Grade</f:translate></th>
+				<th width="15%"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.shape">Form&amp;Shape</f:translate></th>
+				<th width="10%"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.specification">Main Specification</f:translate></th>
+				<th width="15%"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.location">Location</f:translate></th>
+				<th width="20%"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.size">Size</f:translate></th>
+				<th width="12%"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.qty">Stock Qty</f:translate></th>
+				<th width="8%"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.quotation">Quotation</f:translate></th>
+			</tr>
+			<f:for each="{StockList.response}" as="result" key="responseKey" iteration="responseItems">
+				<tr class="{f:if(condition: responseItems.isOdd, then: 'grey_text' ,else : 'white_text')}">
+					<td id="grade-{result.list_uid}">{result.grade_title}</td>
+					<td id="shape-{result.list_uid}">{result.shape_title}</td>
+					<td id="spec-{result.list_uid}">{result.specification}</td>
+					<td id="location-{result.list_uid}">{result.location_title}</td>
+					<td id="size-{result.list_uid}">{result.size}</td>
+					<td id="qty-{result.list_uid}" align="center">{result.quantity}</td>
+					<td align="center"><a style="cursor: pointer;" class="inquire" id="inquire-{result.list_uid}"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.inquire">Inquire</f:translate></a></td>
+				</tr>
+			</f:for>
+			<tr>
+				<td colspan="7"></td>
+			</tr>
+		</tbody>
+	</table>
+<table class="tablewidth" style=" width: 100%;">
+	<tbody>
+	<tr>
+		<td><div id="scrollList">
+			<span class="numbers">{StockList.paginations}</span>
+			<a id="page_1" class="paginate"href="javascript:void(0)">
+				<img alt="First" title="" src="typo3conf/ext/pits_stocklist/Resources/Public/Images/icon_navi_thickleft.gif">
+			</a>
+			<a class="paginate" id="page_{StockList.previouspage}" href="javascript:void(0)">
+				<img alt="Previous" title="" src="typo3conf/ext/pits_stocklist/Resources/Public/Images/icon_navi_left.gif">
+			</a>
+			<!-- ###PAGINATION###BEGIN -->
+			<f:for each="{StockList.pages}" as="pagination" key="paginationkey" iteration="paginationIt">
+			<img class="separator" alt="|" src="/fileadmin/admin/main/templates_design/main/img/line_vertical_blue_01.gif">
+				<a href="javascript:void(0)" id="page_{pagination.0}" class="paginate" style="{pagination.1}"> {pagination.0} </a>
+			</f:for>
+			<!-- ###PAGINATION###END-->
+			<a id="page_{StockList.nextpage}" href="javascript:void(0)" class="paginate">
+				<img alt="Next" title="" src="typo3conf/ext/pits_stocklist/Resources/Public/Images/icon_navi_right.gif">
+			</a>
+			<a  id="page_{StockList.lastpage}"  class="paginate" href="javascript:void(0)">
+				<img alt="Last" title="" src="typo3conf/ext/pits_stocklist/Resources/Public/Images/icon_navi_thickright.gif">
+			</a>
+           </div>
+          </td>
+				</tr>
+			</tbody></table>
+</f:section>

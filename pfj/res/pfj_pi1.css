@@ -1,0 +1,303 @@
+@media all{
+
+.listView {
+  float:left;
+  margin-right:19px;
+  margin-bottom:30px;
+  background:url("images/bg_list.png") no-repeat scroll 0 top transparent;
+  position:relative;
+}
+.listView .item-container {
+  /*height:330px;*/
+  height:380px;
+  margin-top:13px;
+  width:225px;
+  border-bottom:1px solid #E3E3E5;
+  border-left:1px solid #E3E3E5;
+  border-right:1px solid #E3E3E5;
+  box-shadow:3px 3px 3px #D9DADC;
+}
+.listView .item-img {
+  height: 200px;
+  overflow: hidden;
+  padding: 15px 10px 10px 10px;
+  width: 205px;
+}
+.listView .item-img img {
+  display:block;
+  margin:0 auto;
+}
+.listView .item-meta {
+	padding: 0 15px;
+}
+/*	
+.listView .item-price {
+  color: #5D90A5;
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: bold;
+  padding: 0 0 0.2em 0;
+}
+*/
+.listView .item-price {
+    color: #444444;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 0.2em 0 0.4em;
+}	
+	
+.listView .item-number {
+  font-weight: bold;
+}
+.listView .morelink {
+  position:absolute;
+  bottom:15px;
+  left:15px;
+}
+.listView .morelink a {
+	display:block;
+	text-transform:uppercase;
+	color:#fff;
+	background:#5D90A5;
+	text-decoration:none;
+	font-weight: normal;
+	text-align:center;
+	padding:4px 10px;
+	font-size:11px;
+	font-family: serif,Georgia,"Times New Roman",Times;
+	}
+.single-container {
+	margin: 0 0 20px 0;
+}
+.singleView .imgBorder {
+  	background:url("images/bg_single.png") no-repeat scroll 0 top transparent;
+  	width:443px;
+  	float:left;
+  	margin-right:34px;
+}
+.singleView .singleImg {
+	padding:20px;
+	margin-top:12px;
+	border-bottom:1px solid #E3E3E5;
+	border-left:1px solid #E3E3E5;
+	border-right:1px solid #E3E3E5;
+	box-shadow: 3px 3px 5px #D9DADC;
+	margin-bottom: 20px;
+}
+.singleView .singleImg img {
+	display:block;
+	margin:0 auto;
+}
+.singleView .singleDetail {
+  	width:34%;
+  	float:left;
+  	padding: 10px 0 0 0;
+}
+  
+  .singleView .item-price,
+  .singleView .item-name,
+  .singleView .item-desc,
+  .singleView .single_cart {border-bottom:1px dotted #000;margin-bottom:0.25em}
+  
+  .singleView .item-name h1 {font-size:150%;}
+  .singleView .item-desc h2,
+  .singleView .item-price h2,
+  .singleView .single_cart h2 { font-size: 12px; text-transform: uppercase; padding-top: 5px; }
+  
+  .catView ul {list-style-type:none;padding:0 2em 0 0;}
+  .catView li {overflow:hidden;}
+  .catView .count {float:right;}
+  
+.pageBrowser table {
+  	width: auto;
+  	margin: 0 auto 20px auto;
+  	border: none;
+}
+.pageBrowser table tbody tr:hover td {
+  	background: none;
+}
+.pageBrowser table tbody tr td {
+  	border: none;
+}
+.pageBrowser .pages,.pageBrowser .currentPage {
+  	display: inline-block;
+  	padding: 5px;
+}
+.pageBrowser .bg-grey {
+  	background: #5D90A5;
+  	color: #fff;
+  	font-family: serif,Georgia,"Times New Roman",Times;
+  	padding: 5px 10px;
+}
+.pageBrowser a {
+	text-decoration: none;
+}
+.addtocart {
+	position: absolute;
+    	bottom: 15px;
+   	left: 130px;
+}
+
+/* For Stockist Search by PITS */
+.stockistView { background: url("images/bg_list.png") no-repeat scroll 0 top transparent; float: left; margin-bottom: 30px; margin-right: 19px; position: relative; }
+.stockistView .item-container { border-bottom: 1px solid #E3E3E5; border-left: 1px solid #E3E3E5; border-right: 1px solid #E3E3E5; box-shadow: 3px 3px 3px #D9DADC; height: 200px; margin-top: 13px; width: 205px; }
+.stockistView .item-meta { padding: 0 15px; }
+.stockist_company { color: #5D90A5; font-size: 14px; font-style: italic; font-weight: bold; padding: 25px 0 10px; }
+.stockist_address1,.stockist_address2,.stockist_address3 { font-weight: bold; padding-bottom: 3px; }
+.stockist_phone { padding-bottom: 3px; }
+.stockist_cardid { padding-bottom: 3px; }
+.stockist_zip { padding-bottom: 5px; }
+#stockist_form { padding-bottom: 15px; }
+.stockist_postcode_label { color: #81A2C3; font-style: italic; padding: 0 10px 0 0; }
+#postcode { border: 1px solid #CCCCCC; height: 18px; margin-right: 2px;  color: #808080; }
+.stockist_searchbutton input[type="submit"] { background: none repeat scroll 0 0 #5D90A5; color: #FFFFFF; cursor: pointer; font-family: serif,Georgia,"Times New Roman",Times New Roman; font-size: 11px; font-weight: normal; padding: 1px; text-align: center; text-decoration: none; text-transform: uppercase;    border: none;
+    padding: 2px 5px;
+    top: 0px;
+    outline: none;
+    position: relative;
+    line-height:16px; }
+#col3{ background-color: #F2F2F2; }
+.enter_pin { padding-top: 15px; margin: 0 0 1em !important; color: #808080; }
+.no_record { color: #808080; }
+.item-name {
+    color: #5D90A5;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.item-description {
+    padding-top: 5px;
+}
+.singleView .stockistssingleDetail {
+    float: left;
+    padding: 0px 0px 0px;
+    width: 55%;
+    clear: none;
+    display: inline-block;
+}
+.singleView .stockistssingleDetail .phone { padding-top: 15px; }
+.singleView .stockistssingleDetail .company_name { padding-bottom: 10px; }
+.singleView .stockistssingleDetail div { padding: 3px 0 0; }
+.singleView .stockistssingleDetail .address1,
+.singleView .stockistssingleDetail .address2,
+.singleView .stockistssingleDetail .address3,
+.singleView .stockistssingleDetail .city_zipcode,
+.singleView .stockistssingleDetail .state_country,
+.singleView .stockistssingleDetail .single_phone,
+.singleView .stockistssingleDetail .single_fax,
+.singleView .stockistssingleDetail .single_email,
+.singleView .stockistssingleDetail .single_web {
+   color: #808080;
+}
+
+.singleView .stockistssingleDetail .single_phonelabel,
+.singleView .stockistssingleDetail .single_faxlabel,
+.singleView .stockistssingleDetail .single_emaillabel,
+.singleView .stockistssingleDetail .single_weblabel {
+   color: #81A2C3;
+}
+
+.stockistView .morelink a {
+    background: none repeat scroll 0 0 #5D90A5;
+    color: #FFFFFF;
+    display: block;
+    font-family: serif,Georgia,"Times New Roman",Times;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.stockistView .morelink { bottom: 15px; left: 15px; position: absolute; }
+#map-canvas {
+    clear: none;
+    display: inline-block;
+    float: right;
+    height: 100%;
+    position: absolute !important;
+    width: 45%;
+}
+.singleDetail .single_desc, .stone_label, .metal_label, .brand_label { margin-bottom: 10px; }
+#address_block div { padding: 0px !important; color: #808080; }
+.singleDetail .addtocart {
+    bottom: 0px;
+    left: 0px;
+    position: relative !important;
+}
+.single_cart .totalprice {
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.single_cart .totalamt {
+    color: #5D90A5;
+    font-size: 13px;
+    font-weight: bold;
+}
+	
+.order_label {
+    padding-top: 14px;
+}
+	
+.singleDetail .single_desc,
+.singleDetail .item-price p,
+.singleDetail .single_cart h2 {
+    padding-bottom: 5px;
+}
+	
+.stockist_includesuburb {
+    color: #808080;
+    margin: 0 0 1em !important;
+}
+.search_block {
+    padding-bottom: 15px;
+}
+	
+.singleView .singleDetail .item-name p {color: #444444 !important;}
+.singleDetail .stone_label, .singleDetail .metal_label,	.singleDetail .brand_label {
+	float: left;
+    width: 35%;
+    clear: left;
+}
+.singleDetail .stone_name, .singleDetail .metal_name,	.singleDetail .brand_name {
+	float: left;
+    width: 65%;
+}
+.singleDetail .item-desc, .singleDetail .item-price { 
+	clear: left;
+    float: left;
+    width: 100%;
+ }
+
+ .tx-pfj-pi1 ul{
+      list-style-type: none !important;
+
+ }
+  .tx-pfj-pi1 ul li{
+      list-style-type: none !important;
+     margin-left: 0 !important;
+    padding: 7px 30px 10px;
+
+ }
+  .tx-pfj-pi1 a{
+      text-decoration: none !important;
+
+ }
+   .tx-pfj-pi1 .items-table{
+       padding-left: 30px;
+
+
+ }
+ .tx-pfj-pi1 .arrow_img {
+    float: left;
+    position: absolute;
+}
+#orderTable {
+    
+    width:600px !important;
+}
+}

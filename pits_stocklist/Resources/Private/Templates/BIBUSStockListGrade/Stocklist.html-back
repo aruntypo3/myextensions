@@ -1,0 +1,349 @@
+<f:layout name="Default" />
+<f:section name="main">
+	
+	<script>
+	$(document).ready(function(){
+		$('#order-form')[0].reset();
+		
+		//pagination fucntion
+		$(".paginate").live("click",function () {
+			search( $(this).attr("id").split("_")[1] );
+		})
+		
+		//Order form action
+		$(".inquire").live("click",function() {
+			$(".orderform-content").show();
+			
+			var currrentId = $(this).attr('id').split('-')[1];
+			var gradeDom = "#grade-"+currrentId;
+			var shapeDom = "#shape-"+currrentId;
+			var sizeDom = "#size-"+currrentId;
+			var qtyDom = "#qty-"+currrentId;
+			//alert($(shapeDom).text().replace(/\//g,"/\\"));
+			var htmlTemplate = '<div id="content-inner-'+currrentId+'" class="order-content-innner"><a class="close" onclick="closeDiv(this.parentNode)"><img height="15" src="typo3conf/ext/pits_stocklist/Resources/Public/Icons/red-x.png"></a>'+
+			'<div class="unit-blk"><input type="hidden" name="tx_pitsstocklist_pitsstocklist[grade]['+currrentId+']" value='+$(gradeDom).text()+'></div>'+
+			'<input type="hidden" name="tx_pitsstocklist_pitsstocklist[shape]['+currrentId+']" value='+$(shapeDom).text().replace(/\\/g,"/")+'>'+
+			'<input type="hidden" name="tx_pitsstocklist_pitsstocklist[size]['+currrentId+']" value='+$(sizeDom).text()+'>'+
+	     	'<label class="main-lbl">'+$(gradeDom).text()+'</label><label class="main-lbl">'+$(shapeDom).text()+'</label><label class="main-lbl">'+$(sizeDom).text()+'</label>'+
+	     	'<div class="unit-blk"><input class="input-unit" type="text" size="2" name="tx_pitsstocklist_pitsstocklist[qty]['+currrentId+']">KG</div>'+
+	     	'<textarea rows="2" class="other-ifo" cols="25" name="tx_pitsstocklist_pitsstocklist[other]['+currrentId+']" onfocus="if(this.value==\'Other Info...\') this.value=\'\';" onblur="if(this.value==\'\') this.value=\'Other Info...\';">Other Info...</textarea></div>'
+	     	
+	     	$("#content-inner-"+currrentId).remove();
+	     	$("#content").append(htmlTemplate);
+		});
+		
+		$("#order-form-submit").live("click" , function() {
+			var isValid = true;
+			if ($("#name").val() == ""){
+				$("#name_err").html("<f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.orderform.name_err'>You must enter a Name!</f:translate>");
+				isValid = false;
+			}else{
+				$("#name_err").html("");
+			}
+			
+			if ($("#company").val() == ""){
+				$("#company_err").html("<f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.orderform.company_err'>You must enter a Company!</f:translate>");
+				isValid = false;
+			}else{
+				$("#company_err").html("");
+			}
+			
+			if ($("#email").val() == ""){
+				$("#email_err").html("<f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.orderform.email_err'>You must enter an email!</f:translate>");
+				isValid = false;
+			}else{
+				$("#email_err").html("");
+			}
+			if ($("#phone").val() == ""){
+				$("#phone_err").html("<f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.orderform.phone_err'>You must enter a phone number!</f:translate>");
+				isValid = false;
+			}else{
+				$("#phone_err").html("");
+			}
+			if ( !isValid ){
+				return false;
+			}
+			var baseUrl = jQuery("#baseurl").val();
+			var pageId = jQuery("#pageId").val();
+			var langId = jQuery("#langId").val();
+			var url = baseUrl+'index.php?id='+pageId+'&L='+langId+'&tx_pitsstocklist_pitsstocklist[action]=orderprocess';
+			jQuery.ajax({
+				url:url,
+				type: "POST",
+				data: $("#order-form").serialize() ,
+				success:function(response){
+					if(response == 1 ){
+						$("#orderform-content").hide();
+					} 
+				}
+			});
+			
+			
+		});
+	});
+	function search(startfrom){
+		var searchtext = jQuery("#stocksearch").val();
+		var grade = jQuery("#grade").val();
+		var location = jQuery("#location").val();
+		var shape = jQuery("#shape").val();
+		var pageId = jQuery("#pageId").val();
+		var langId = jQuery("#langId").val();
+		var baseUrl = jQuery("#baseurl").val();
+		var url = baseUrl+'index.php?id='+pageId+'&L='+langId+'&tx_pitsstocklist_pitsstocklist[action]=getresult';
+		$('.loader_documents').show();
+		jQuery.ajax({
+			url:url,
+			type: "POST",
+			data:  { tx_pitsstocklist_pitsstocklist: ({
+				'searchtext': searchtext,
+				'grade': grade,
+				'location': location,
+				'shape': shape,
+				'startfrom': startfrom,
+			}) 
+			},
+			success:function(html){
+				jQuery("#response").html(html);
+			},
+			complete: function(){
+				$('.loader_documents').hide();
+			}
+		});
+	}
+	function closeDiv(obj){
+		var confirmBoxmsg = confirm("<f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.confirmmsg'>Are you sure, you want to delete this entry!</f:translate>");
+		if ( confirmBoxmsg == true) {
+			$("#"+obj.id).remove();
+		  }
+	}
+	</script>
+	<style type="text/css">
+.contentlayout #metailsPages { 	
+    box-sizing: border-box;
+    float: left;
+    margin: 0;
+    padding: 0 15px;
+    width: 100%;
+}
+.contentlayout #metailsPages .detail { float: none; padding:0; margin: 15px 0 0 0; width: 100%;}
+.contentlayout #metailsPages .detail .tablewidth {margin-bottom: 20px; width: 100%}
+.contentlayout #metailsPages .detail .tablewidth #scrollList {margin: 0px; width: 100%}
+.contentlayout #metailsPages .orderform-content {width: 100%; box-sizing:border-box; margin-top: 0px; margin-bottom: 20px;}
+
+.contentlayout #metailsPages .orderform-content #content .unit-blk .input-unit {
+    border: 1px solid #cecece;   
+    width: 290px;
+}
+
+.contentlayout #metailsPages .orderform-content #content .other-ifo {
+    border: 1px solid #cecece;
+    width: 290px;
+}
+.contentlayout #metailsPages .orderform-content .form-info-fields input[type="text"] {
+    border: 1px solid #cecece;   
+    width: 290px;
+}
+.contentlayout #metailsPages .orderform-content .btn-wrapper input[type=button]{
+	background-color: #58585a;
+    border: 1px solid #000000;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font-size: 10px;
+    height: 22px;
+    margin: 0;
+    padding: 0;
+    width: auto ;
+}
+.contentlayout #metailsPages .detail .grade-filter {  
+    float: left;
+    margin: 0 0 30px 0;
+    padding: 0;
+    width: 100%;
+}
+
+.contentlayout #metailsPages .detail .grade-filter li {  
+	float: left;
+	padding:0; 
+	margin: 0;
+}
+.contentlayout #metailsPages .detail .grade-filter li input[type=text] {  
+	border: 1px solid #cecece;
+	color: #58595b;
+	float: left;
+	font-size: 11px;
+	height: 18px;
+	line-height: 18px;
+	margin: 0 10px 0 0;
+	padding: 0 2px 2px;
+	width: 110px;
+}
+.contentlayout #metailsPages .detail .grade-filter li select {  
+	border: 1px solid #cecece!important;
+	color: #58595b;
+	float: left;
+	font-size: 11px!important;
+	height: 22px;
+	line-height: 18px;
+	margin: 0 10px 0 0!important;
+	padding: 0 2px 2px;
+	width: 165px!important;
+}
+.contentlayout #metailsPages .detail .grade-filter li input[type=button] { 
+	background-color: #58585a;
+	border: 1px solid #000000;
+	color: #ffffff;
+	float: left;
+	font-size: 12px;
+	height: 22px;
+	margin: 0;
+	padding: 0 0 3px;
+	width: 70px !important;
+	cursor: pointer;
+}
+.contentlayout #metailsPages .detail .grade-filter li:last-child {
+	float: right
+}
+
+</style>
+	<div class="loader_documents stocklist" style="display: none; top: 68px;"></div>
+	<div class="detail">
+		<div class="stocklist-tbl">
+		<ul class="grade-filter">
+			 <li><input type="text" value="" name="tx_pitsstocklist_pitsstocklist[search]" id="stocksearch" size="15"></li>
+			 <li><select onchange="search(0)" style="width: 230px; color: #color:#58595B; font-size: 11px; border: 1px solid #dedede; margin-left: 5px;" name="tx_pitsstocklist_pitsstocklist[grade]" id="grade">
+				<option value=""><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.grade">Grade</f:translate></option>
+				<f:for each="{StockList.grade}" as="grade" key="gradeKey" iteration="gradeItems">
+				<option value="{grade.uid}">{grade.title}</option>
+				</f:for>
+				</select>
+			</li>
+			<li><select onchange="search(0)" name="tx_pitsstocklist_pitsstocklist[location]" id="location"  style="width: 185px; color:#color:#58595B; font-size:11px; border:1px solid #dedede">
+				<option value="0" selected="selected"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.location">Location</f:translate></option>
+				<f:for each="{StockList.location}" as="location" key="locationKey" iteration="locationItems">
+				<option value="{location.uid}">{location.title}</option>
+				</f:for>
+				</select>
+			</li>
+			<li>
+				<select onchange="search(0)" name="tx_pitsstocklist_pitsstocklist[shape]" id="shape" style="width: 170px; color: #color:#58595B; font-size: 11px; border: 1px solid #dedede">
+				<option value=""><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.shape">Form&amp;Shape</f:translate></option>
+				<f:for each="{StockList.shape}" as="shape" key="shapeKey" iteration="shapeItems">
+				<option value="{shape.uid}">{shape.title}</option>
+				</f:for>
+				</select>
+			</li>
+			<li><input type="button" onclick="search(0);" style="width: 60px;" value="<f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.search'>Search</f:translate>" /></li>
+		</ul>
+		</div> 
+	<table border="0" cellpadding="0" cellspacing="0" width="539" class="stocklist-tbl">
+		<tbody>
+			<!-- <tr>
+				<td style="width: 50%"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.grade_spec">Grade or Main Specification</f:translate></td>
+				<td style="width: 50%"><span style="margin-left: 25px;"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.grade">Grade</f:translate>:</span></td>
+				<td style="width: 50%"><span style="margin-left: 25px;"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.grade">Location</f:translate>:</span></td>
+				<td style="width: 50%"><span style="margin-left: 25px;"><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.grade">Grade</f:translate>:</span></td>
+			</tr> -->
+			<tr>
+				<td><input type="text" value="" name="tx_pitsstocklist_pitsstocklist[search]" id="stocksearch" size="15"   />
+						
+					</td>
+					<td><!-- <strong><f:translate
+								key="tx_pitsstocklist_domain_model_bibusstocklist.or_text">OR</f:translate></strong> -->
+						</td>
+					<td>
+					<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<td><select onchange="search(0)"
+									name="tx_pitsstocklist_pitsstocklist[location]" id="location"  style="width: 185px; color:#color:#58595B; font-size:11px; border:1px solid #dedede">
+										<option value="0" selected="selected">
+											<f:translate
+												key="tx_pitsstocklist_domain_model_bibusstocklist.location">Location</f:translate>
+										</option>
+										<f:for each="{StockList.location}" as="location"
+											key="locationKey" iteration="locationItems">
+											<option value="{location.uid}">{location.title}</option>
+										</f:for>
+								</select></td>
+								<td><select onchange="search(0)"
+									name="tx_pitsstocklist_pitsstocklist[shape]" id="shape"
+									style="width: 170px; color: #color:#58595B; font-size: 11px; border: 1px solid #dedede">
+										<option value="">
+											<f:translate
+												key="tx_pitsstocklist_domain_model_bibusstocklist.shape">Form&amp;Shape</f:translate>
+										</option>
+										<f:for each="{StockList.shape}" as="shape" key="shapeKey"
+											iteration="shapeItems">
+											<option value="{shape.uid}">{shape.title}</option>
+										</f:for>
+								</select></td>
+								<td><input type="button" onclick="search(0);" style="width: 60px;" value="<f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.search'>Search</f:translate>" /></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+
+		<input type="hidden" id="langId" value="{StockList.langId}" /> 
+		<input type="hidden" id="baseurl" value="{StockList.baseUrl}" /> 
+		<input type="hidden" id="pageId" value="{StockList.page}" />
+		<div id="jieguo">
+			<center>
+				<h1>
+					<f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.msg">Please select Quotations the condition</f:translate>
+				</h1>
+			</center>
+		</div>
+		<div style="clear: both"></div>
+		<div id="response"></div>
+	</div>
+
+	<div class="orderform-content" style="display: none;">
+		<h2>
+			<f:translate
+				key="tx_pitsstocklist_domain_model_bibusstocklist.quotation">Quotation</f:translate>
+		</h2>
+		<form onsubmit="return form1();" id="order-form" method="post"
+			action="">
+			<div id="content"></div>
+			<div class="biaodan">
+				<div class="form-info-fields">
+					<label><f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.orderform.name'>Name</f:translate></label>
+					<input type="text" id="name" value="" name="tx_pitsstocklist_pitsstocklist[name]">
+					<span style="color: red;">*</span><span style="color: red;" id="name_err"></span>
+				</div>
+				<div class="form-info-fields">    
+					<label> <f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.orderform.company'>Company</f:translate></label>
+					<input type="text" id="company" value="" name="tx_pitsstocklist_pitsstocklist[company]" />
+					<span style="color: red;">*</span><span style="color: red;" id="compnay_err"></span> 
+				</div>
+				<div class="clear"></div>
+            	<div class="form-info-fields">
+					<label><f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.orderform.email'>Email</f:translate></label>
+					<input type="text" id="email" value="" name="tx_pitsstocklist_pitsstocklist[email]">
+					<span style="color: red;">*</span><span style="color: red;" id="email_err"></span> 
+				</div>	
+				
+				<div class="form-info-fields">
+					<label><f:translate key='tx_pitsstocklist_domain_model_bibusstocklist.orderform.phone'>Phone</f:translate></label>
+					<input type="text" id="phone" value="" name="tx_pitsstocklist_pitsstocklist[phone]">
+					<span style="color: red;">*</span><span style="color: red;" id="phone_err"></span>
+				</div>
+				<div class="btn-wrapper"> 
+					<input type="button" align="right" class="submit" id="order-form-submit" value="提交信息">
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+</f:section>

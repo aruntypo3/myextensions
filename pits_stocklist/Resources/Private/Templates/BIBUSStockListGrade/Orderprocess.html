@@ -1,0 +1,63 @@
+<f:layout name="Default" />
+<f:section name="main">
+	<table>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<td>
+				<f:if condition="{StockList.mail_user}">
+				<f:then>	
+					<f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.sal_text">Dear</f:translate>&nbsp;{StockList.name}</td>
+				</f:then>
+				<f:else>
+					<f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.admin_saltext">BIBUS METALS Inquiry</f:translate>:
+				</f:else>	
+				</f:if>
+			</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<f:if condition="{StockList.mail_user}">
+			<tr><td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.stocklist_reqmsg">You sent an inquiry to BIBUS METALS with the following content</f:translate>:</td></tr>
+		</f:if>
+		<tr>
+			<td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_name">Name</f:translate>:&nbsp;{StockList.name}</td>
+		</tr>
+		<tr>
+			<td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_company">Company</f:translate>:&nbsp;{StockList.company}</td>
+		</tr>
+		<tr>
+			<td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_email">e-Mail</f:translate>:&nbsp;{StockList.email}</td>
+		</tr>
+		<tr>
+			<td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_phone">Phone</f:translate>:&nbsp;{StockList.phone}</td>
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+			<td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_products">Product</f:translate>:</td>
+		</tr>
+		<f:for each="{StockList.items}" as="items" key="itemsKey" iteration="itemsItra" >
+			<tr><td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_grade">Grade</f:translate>:&nbsp;{items.grade}</td></tr>
+			<tr><td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_form_shape">Form&Shape</f:translate>:&nbsp;{items.shape}</td></tr>
+			<tr><td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_spec">Main Specification</f:translate>:&nbsp;{items.spec}</td></tr>
+			<tr><td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_location">Location</f:translate>:&nbsp;{items.location}</td></tr>
+			<tr><td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_size">Size</f:translate>:&nbsp;{items.size}</td></tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr><td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_reqQty">Inquiry amount</f:translate>: {items.qty}<f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_reqQtyKg">kg</f:translate></td></tr>
+			<tr><td>&nbsp;</td></tr>
+		</f:for>
+		<f:if condition="{StockList.mail_user}">
+			<tr>
+				<td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_greetings">We will contact you with an offer soon.</f:translate></td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr>
+				<td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.email_regards">Best Regards</f:translate>&#44;</td>
+			</tr>
+			<tr>
+				<td><f:translate key="tx_pitsstocklist_domain_model_bibusstocklist.siteName">BIBUS METALS (Shenzhen) Ltd. (CN)</f:translate></td>
+			</tr>
+		</f:if>	
+	</table>
+</f:section>

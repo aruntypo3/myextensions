@@ -1,0 +1,126 @@
+/*
+das hier macht andere Listen kaputt!
+Mal abgesehen davon, dass wir ja _eigentlich_ kein CSS an dieser Stelle bearbeiten...
+.contentLeft ul li, .contentLeft ul.pseudoTabs li {
+	background: none;
+	padding: 0px;
+	
+} 
+*/
+
+
+/*preload classes*/ 
+
+img.ldrgif {
+	margin: 70px 0px 0px 85px; 
+}
+
+.svw {
+	width: 50px; 
+	height: 100px;
+	
+} 
+
+.svw ul {
+	position: relative; 
+	left: -999em;
+	
+} 
+ 
+ 
+ 
+ 
+ 
+/*core classes*/ 
+
+.stripViewer {  
+	position: relative; 
+	overflow: hidden;  
+	border: 0px;   
+	margin: 0px 0 1px 0; 
+} 
+
+.stripViewer ul { /* this is your UL of images */ 
+	margin: 0; 
+	padding: 0; 
+	position: relative; 
+	left: 0; 
+	top: 0; 
+	width: 211px; 
+	list-style-type: none; 
+} 
+
+.stripViewer ul li {  
+	float:left; 
+
+    /* added by AW: */
+	background: none;
+	padding: 0px;
+	margin:0;
+	float:left;
+	width:100%;
+	list-style:none;
+} 
+.stripViewer ul li a{margin:0;padding:0;float:left:width:100%;}
+.stripViewer ul li a img{ margin:0;padding:0;/* float:left;*/ float:none;width:auto}
+
+.smallGallery ul{
+	float:left;
+	height:auto;
+	/*background-color:#ffffff;*/
+}
+
+
+.stripTransmitter { 
+	overflow: auto; 
+	width: 1%; 
+} 
+
+.stripTransmitter ul { 
+	margin: 0; 
+	padding: 0; 
+	position: relative; 
+	list-style-type: none; 
+} 
+
+.stripTransmitter ul li{ 
+	width: 20px; 
+	float:left; 
+	margin: 0 1px 1px 0; 
+} 
+
+.stripTransmitter a{ 
+	font: bold 10px Verdana, Arial; 
+	text-align: center; 
+	line-height: 22px; 
+	background: #ff0000; 
+	color: #fff; 
+	text-decoration: none; 
+	display: block; 
+} 
+
+
+.stripTransmitter a:hover, a.current{ 
+	background: #fff; 
+	color: #ff0000; 
+} 
+ 
+ 
+ 
+ 
+/*tooltips formatting*/ 
+
+#tooltip { 
+	background: #fff; 
+	color: #000; 
+	/*opacity: 0.85;*/ 
+	border: 5px solid #dedede; 
+} 
+
+#tooltip h3 {  
+	font: normal 10px Verdana;  
+	margin: 0;  
+	padding: 6px 2px;  
+	border: 0; 
+} 
+

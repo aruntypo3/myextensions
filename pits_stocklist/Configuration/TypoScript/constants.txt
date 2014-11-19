@@ -1,0 +1,19 @@
+plugin.tx_pitsstocklist {
+	view {
+		# cat=plugin.tx_pitsstocklist/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:pits_stocklist/Resources/Private/Templates/
+		# cat=plugin.tx_pitsstocklist/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:pits_stocklist/Resources/Private/Partials/
+		# cat=plugin.tx_pitsstocklist/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:pits_stocklist/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_pitsstocklist//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		fromEmail = info@bibusmetals.cn
+		adminEmail = info@bibusmetals.cn
+		adminName = BIBUS METALS (Shenzhen) Ltd. (CN)
+	}
+}

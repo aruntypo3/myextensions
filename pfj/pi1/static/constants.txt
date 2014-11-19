@@ -1,0 +1,13 @@
+# cat=tx_pfj_pi1//10; type=int+; label= Show List View PER Page
+plugin.tx_pfj_pi1.listViewPerPage = 9
+
+# cat=tx_pfj_pi1//20; type=int+; label= Additional Page for show more and less page link
+plugin.tx_pfj_pi1.additionPage = 5
+
+# cat=tx_pfj_pi1//30; type=text; label= Sort by field
+plugin.tx_pfj_pi1.sortField = item_name
+
+# cat=tx_pfj_pi1//40; type=options[DESC,ASC]; label= Sort Type
+plugin.tx_pfj_pi1.sortType = ASC
+
+

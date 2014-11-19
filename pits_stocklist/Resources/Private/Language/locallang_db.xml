@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'pits_stocklist'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+            
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistgrade">B I B U S Stock List Grade</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistgrade.title">Title</label>
+
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistlocation">B I B U S Stock List Location</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistlocation.title">Title</label>
+
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistproductshape">B I B U S Stock List Product Shape</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklistproductshape.title">Title</label>
+
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist">B I B U S Stock List</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.title">Title</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.description">Description</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.quantity">Quantity</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.shape">Shape</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.size">Size</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.location">Location</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.grade">Grade</label>
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.specification">Specification</label>
+
+			<label index="tx_pitsstocklist_domain_model_bibusstocklist.scheduler_name">BIBUS Stocklist Import</label>
+            <label index="tx_pitsstocklist_domain_model_bibusstocklist.scheduler_description">Scheduler to import stocklist data from xls files</label>
+		</languageKey>
+	</data>
+</T3locallang>
