@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'pits_job'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+            
+      <label index="flexform_title">TNT Job Settings</label>
+			<label index="tx_pitsjob_domain_model_pitsjob">Job Details</label>
+			<label index="tx_pitsjob_domain_model_jobcategory">Job Category</label>
+			<label index="tx_pitsjob_domain_model_categoryName">Category Name</label>
+			<label index="jobDetail_Tab">Job Data</label>
+			<label index="contactInfo_Tab">Contact Info</label>
+			<label index="tx_pitsjob_domain_model_jobDate">Date</label>
+      <label index="tx_pitsjob_domain_model_jobexpireDate">Job Expire Date</label>
+			<label index="tx_pitsjob_domain_model_categoryId">Rubrik</label>
+			<label index="tx_pitsjob_domain_model_jobTitle">Titel</label>
+			<label index="tx_pitsjob_domain_model_shortText">Kurzbeschrieb</label>
+			<label index="tx_pitsjob_domain_model_detailText">Detailbeschrieb</label>
+			<label index="tx_pitsjob_domain_model_contactInfo">Kontaktinformationen</label>
+			<label index="tx_pitsjob_domain_model_jobCheck">Chiffre</label>
+			<label index="tx_pitsjob_domain_model_name">Name</label>
+			<label index="tx_pitsjob_domain_model_company">Firmenname</label>
+			<label index="tx_pitsjob_domain_model_address">Adresse</label>
+			<label index="tx_pitsjob_domain_model_zipcode">Postleitzahl</label>
+			<label index="tx_pitsjob_domain_model_place">Ort</label>
+      <label index="tx_pitsjob_domain_model_country">Land</label>
+			<label index="tx_pitsjob_domain_model_phone">Telefon</label>
+			<label index="tx_pitsjob_domain_model_email">E-Mail</label>
+			<label index="tx_pitsjob_domain_model_web">Website</label>
+			<label index="ff.admin_email">Admin Email</label>
+			<label index="ff.category_select">Select Category</label>
+			<label index="ff.detailPage">Detail Page</label>
+			<label index="ff.alljobsPage">All Jobs Page</label>
+			<label index="ff.adformPage">Ad Form Page</label>
+			<label index="ff.all_category">Alle</label>
+			<label index="ff.latestViewTemplate">Latest View Template File ( Eg: fileadmin/templates/Latest.html )</label>
+      <label index="ff.latestJobItems">Number of Latest Job Items</label>
+      <label index="tx_pitsjob_domain_model_webcode">Webcode</label>
+      <label index="tt_news.webcode">Webcode</label>
+      <label index="agree_terms">Ich habe die AGB Kleinanzeigen gelesen und stimme diesen zu</label>
+
+       </languageKey>
+	</data>
+</T3locallang>

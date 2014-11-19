@@ -1,0 +1,117 @@
+<f:layout name="Default" />
+
+<f:section name="main">     
+        <link rel="stylesheet" type="text/css" media="all" href="typo3conf/ext/tnt_download_module/Resources/Public/Css/all2.css">
+    <!--<link rel="stylesheet" type="text/css" media="all" href="typo3conf/ext/tnt_download_module/Resources/Public/Css/green.css">-->
+    <script src="typo3conf/ext/tnt_download_module/Resources/Public/Js/main.js" type="text/javascript"></script>
+    <input type="hidden" id="page_id" value="{pages.id}"/>
+    <input type="hidden" id="page_lang" value="{pages.lang}"/>
+    <div class="tx-tnt-download-module-filters">
+        <ul id="tx-tnt-download-module-container" class="filtersList">
+            <li class="clearfix filterItem drilldownFilter">
+                <span class="header drilldownFilter"><f:translate key="thema_label">Thema</f:translate></span>
+                <span class="fields drilldownFilter">
+                    <select id="thema_selector">
+                        <option value=""><f:translate key="empty_thema">Bitte wählen Sie ein Thema</f:translate></option>
+                        <f:for each="{categories}" as="category" iteration="itemIteration">
+                            <f:if condition="{category.selected}">
+                                <f:then>
+                                    <option selected value="{category.parentId}">{category.category_title}</option>
+                                </f:then>
+                                <f:else>
+                                    <option value="{category.parentId}">{category.category_title}</option>
+                                </f:else>
+                            </f:if>
+                        </f:for>
+                    </select>
+                     <a href='javascript:void(0);' onclick='resetData(1)' class="reset"></a>
+                    <span id='step2'>
+                        <select id = "thema_subcat" onChange='load(1)'>
+                            <option value="0"><f:translate key="empty_thema">Bitte wählen Sie ein Thema</f:translate></option>
+                            <f:for each="{subCategories}" as="category" iteration="itemIteration">
+                                <f:if condition="{category.selected}">
+                                    <f:then>
+                                        <option selected value="{category.parentId}">{category.category_title}</option>
+                                    </f:then>
+                                    <f:else>
+                                        <option value="{category.parentId}">{category.category_title}</option>
+                                    </f:else>
+                                </f:if>
+                            </f:for>
+                        </select>
+                    </span>
+
+                </span>
+            </li>
+            <li class="clearfix filterItem searchfieldFilter">
+                <span class="header searchfieldFilter"><f:translate key="text_filter">Suchbegriff</f:translate></span>
+                <span class="fields searchfieldFilter">
+                    <input type="text" style="" class="filter" id ="filter_text" value="{permaOptions.filterText}" name="">
+                </span>
+                <a href='javascript:void(0);' onclick='resetData(2)' class="reset"></a>
+            </li> 
+            <li class="filterItem permalink">
+                <a id="permaLink" href="javascript:void(0);"><f:translate key="perma_link">Premalink</f:translate></a>
+            </li>
+        </ul>
+    </div>
+    <div class="ajaxLoadingIndicator" style="display: none;">
+        <img align="left" src="/typo3conf/ext/tnt_download_module/Resources/Public/images/reloading.gif" alt="">
+        <f:translate key="loaderText">lade Daten, bitte warten</f:translate>
+    </div>
+    <div id="documnets" class="documnets">
+        <f:format.html parseFuncTSPath="">{downloadModule.pageNation}</f:format.html>
+    <input type='hidden' value='{permaLink}' id='permalink'/>
+    <f:if condition="{downloadModule.data}">
+        <f:then>
+            <table id="keyword" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th><span>
+                                <a id='sort1' class='' href='javascript:void(0);' onclick='sortData("tx_tntdownloadmodule_domain_model_downloadmodule.document_title",this)'>
+                                    <f:translate key="docTableHeaderTitle">Titel</f:translate>
+                                </a>
+                            </span>
+
+                        </th>
+                        <th class="alignc"><span>
+                                <a id='sort2' class='' href='javascript:void(0);' onclick='sortData("sf.size",this)'>
+                                    <f:translate key="docTableHeaderSize">Gr�sse</f:translate>
+                                </a>
+                            </span>
+                        </th>
+                        <th class="alignc"><span>
+                                <a id='sort3' class='' href='javascript:void(0);' onclick='sortData("sf.extension",this)'>
+                                <f:translate key="docTableHeaderType">Type</f:translate>
+                                </a>
+                            </span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <f:for each="{downloadModule.data}" as="downloadFile" iteration="itemIteration">
+                    <tr>
+                        <td class="lalign">
+                    <f:if condition="{downloadFile.isDownloable}">
+                        <f:then>
+                            <f:link.action action="file" controller="DownloadModule" arguments="{fileId: downloadFile.identifier}">{downloadFile.document_title}</f:link.action>
+                        </f:then>
+                        <f:else>
+                            {downloadFile.document_title}
+                        </f:else>
+                    </f:if>
+                    </td>
+                    <td class="lalign">{downloadFile.size}<span> K</span></td>
+                    <td class="lalign"><span class='file_{downloadFile.extension}'><img src="typo3conf/ext/tnt_download_module/Resources/Public/images/file-{downloadFile.extension}.png" alt="#" width="20" height="20" border="0" /></span></td>
+
+                    </tr>
+                </f:for>
+                </tbody>
+            </table>
+        </f:then>
+        <f:else>
+            <p class="info"><f:translate key="docTableNodata">Die gegenw�rtige Filterung ergibt keine Treffer.</f:translate></p>
+        </f:else>
+    </f:if>
+     <f:format.html parseFuncTSPath="">{downloadModule.pageNation}</f:format.html>
+    </div>
+</f:section>

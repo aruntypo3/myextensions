@@ -1,0 +1,147 @@
+
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:pits_job/Resources/Private/Language/locallang_db.xml:flexform_title</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                   <switchableControllerActions>
+                        <TCEforms>
+                            <label>Choose View</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Ads Form View</numIndex>
+                                        <numIndex index="1">Pitsjob->adform;Pitsjob->success</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Job List View</numIndex>
+                                        <numIndex index="1">Pitsjob->list;Pitsjob->detail</numIndex>
+                                    </numIndex>
+
+                                    <numIndex index="2">
+                                        <numIndex index="0">Job Detail View</numIndex>
+                                        <numIndex index="1">Pitsjob->detail;Pitsjob->list</numIndex>
+                                    </numIndex>
+									
+									<numIndex index="3">
+                                        <numIndex index="0">Job Latest View</numIndex>
+                                        <numIndex index="1">Pitsjob->latest;Pitsjob->detail</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+                    <settings.adminEmail>
+                    	<TCEforms>
+							<label>LLL:EXT:pits_job/Resources/Private/Language/locallang_db.xml:ff.admin_email</label>
+							<config>
+								<type>input</type>
+								<size>20</size>
+							</config>
+						</TCEforms>
+                    </settings.adminEmail>
+                    <settings.categorySelect>
+                        <TCEforms>
+                            <label>LLL:EXT:pits_job/Resources/Private/Language/locallang_db.xml:ff.category_select</label>
+                              <config>
+                                <type>select</type>
+                                <foreign_table>tx_pitsjob_domain_model_jobcategory</foreign_table>
+                                <foreign_table_where>
+                                        AND tx_pitsjob_domain_model_jobcategory.hidden = 0
+                                        AND tx_pitsjob_domain_model_jobcategory.deleted = 0
+                                        ORDER BY tx_pitsjob_domain_model_jobcategory.category_name
+                                </foreign_table_where>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </settings.categorySelect>
+                    <settings.detailPage>
+                    	<TCEforms>
+							<label>LLL:EXT:pits_job/Resources/Private/Language/locallang_db.xml:ff.detailPage</label>
+							<config>
+								<type>input</type>
+			                	<eval>trim</eval>
+			                	<wizards type="array">
+					                <_PADDING type="integer">2</_PADDING>
+					                <link type="array">
+				                        <type>popup</type>
+				                        <title>Link</title>
+				                        <icon>link_popup.gif</icon>
+				                        <script>browse_links.php?mode=wizard</script>
+				                        <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+		                 			</link>
+                 				</wizards>
+							</config>
+						</TCEforms>
+                    </settings.detailPage>
+                    <settings.alljobsPage>
+                    	<TCEforms>
+							<label>LLL:EXT:pits_job/Resources/Private/Language/locallang_db.xml:ff.alljobsPage</label>
+							<config>
+								<type>input</type>
+			                	<eval>trim</eval>
+			                	<wizards type="array">
+					                <_PADDING type="integer">2</_PADDING>
+					                <link type="array">
+				                        <type>popup</type>
+				                        <title>Link</title>
+				                        <icon>link_popup.gif</icon>
+				                        <script>browse_links.php?mode=wizard</script>
+				                        <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+		                 			</link>
+                 				</wizards>
+							</config>
+						</TCEforms>
+                    </settings.alljobsPage>
+                    <settings.adformPage>
+                    	<TCEforms>
+							<label>LLL:EXT:pits_job/Resources/Private/Language/locallang_db.xml:ff.adformPage</label>
+							<config>
+								<type>input</type>
+			                	<eval>trim</eval>
+			                	<wizards type="array">
+					                <_PADDING type="integer">2</_PADDING>
+					                <link type="array">
+				                        <type>popup</type>
+				                        <title>Link</title>
+				                        <icon>link_popup.gif</icon>
+				                        <script>browse_links.php?mode=wizard</script>
+				                        <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+		                 			</link>
+                 				</wizards>
+							</config>
+						</TCEforms>
+                    </settings.adformPage>
+                    <settings.latestViewTemplate>
+                    	<TCEforms>
+							<label>LLL:EXT:pits_job/Resources/Private/Language/locallang_db.xml:ff.latestViewTemplate</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+                    </settings.latestViewTemplate>
+                    <settings.latestJobItems>
+                    	<TCEforms>
+				<label>LLL:EXT:pits_job/Resources/Private/Language/locallang_db.xml:ff.latestJobItems</label>
+				<config>
+					<type>input</type>
+					<size>30</size>
+				</config>
+			</TCEforms>
+                    </settings.latestJobItems>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

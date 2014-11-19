@@ -1,0 +1,43 @@
+ /* 08/05/14 new css style */
+
+.tx-tnt-download-module {float: left; margin: 0; padding: 0; width: 100%;}
+.tx-tnt-download-module-filters{float: left;margin: 0 0 10px 0;padding: 0;width: 100%;}
+.tx-tnt-download-module-filters ul.filtersList {float: left;margin: 10px 0;padding: 0;width: 100%;}
+.tx-tnt-download-module-filters ul.filtersList li {float: left; margin: 0 0 5px 0; padding: 0!important; width: 100%;list-style-type: none!important;background: none!important;}
+.tx-tnt-download-module-filters ul.filtersList li .header {float: left;font-weight: bold;color: #333333;line-height:22px; margin: 0; padding: 0 0 1px 0; width: 165px;}
+.tx-tnt-download-module-filters ul.filtersList li .fields { float: left; margin: 0; padding: 0;width: 220px;}
+.tx-tnt-download-module-filters ul.filtersList li .fields select{float: left;width: 200px; text-align: left;}
+.tx-tnt-download-module-filters ul.filtersList li .fields #step2{margin-top: 5px; float: left}
+.tx-tnt-download-module-filters ul.filtersList li .fields input{ float: right; width: 192px; text-align: left;line-height: 17px;height: 17px;}
+.tx-tnt-download-module-filters ul.filtersList li input, select {margin: 0; border:1px solid #C5CDD1; color:#333; font-size: 12px;}
+.tx-tnt-download-module-filters ul.filtersList li.permalink {margin-top: 15px;}
+.tx-tnt-download-module-filters ul.filtersList li.permalink a  {padding: 0!important; margin:0; text-align: left;  background-image: none !important;}
+.tx-tnt-download-module-filters ul.filtersList li .fields .reset ,#middle-content-wrap .csc-default ul li a.reset{ float: left; margin: 0; padding: 0!important; background:url(../images/resetFilter.png) no-repeat right 5px!important; width: 16px; height:25px; margin:0 0 0 4px; padding: 0;}
+.tx-tnt-download-module-filters ul.filtersList li.searchfieldFilter .fields {width: 200px;}
+.tx-tnt-download-module-filters ul.filtersList li.searchfieldFilter .reset { float: left; margin: 0; padding: 0!important; background:url(../images/resetFilter.png) no-repeat right 5px!important; width: 16px; height:25px; margin:0 0 0 4px; padding: 0;}
+select:focus, input:focus {background-image: none;background-color: #EAF1E6;color: #333;outline-color: #EAF1E6;}
+.documnets {float: left;margin: 0;padding: 0;width: 100%; padding-bottom:25px; }
+.documnets .pagination  {float: left;margin: 0 0 15px 0;padding-top: 16px;width: 100%;}
+.documnets .pagination ul {float: left; margin: 0 !important; padding: 0;  width: 100%;}
+.documnets .pagination ul li {padding: 0 5px 0 0!important; margin: 0; background-image: none !important; list-style-type: none !important; display: inline}
+/*.documnets .pagination ul li:before {content: "|"; padding:  0 6px 0 5px!important;}*/
+/*.documnets .pagination ul li:first-child:before {content: ""; padding: 0!important;}
+.documnets .pagination ul li:last-child:before {content: ""; padding: 0 0 0 7px!important;}*/
+.documnets .pagination ul li a {padding: 0!important; margin: 0; background-image: none !important; display: inline}
+.documnets table {padding:0; margin:0; width: 100%; border-collapse:collapse; border-spacing: 0;}
+.documnets table tr th, .documnets table tr td {border-collapse:#3A8441; border-bottom: 1px dotted; padding: 0; margin:0; vertical-align: middle; font-size:12px;}
+.documnets table tr th {padding: 3px 0; color:#000;}
+.documnets table tr th:last-child {padding-left: 10px}
+.documnets table tr td {padding: 3px 0 4px 0; text-align: center; color:#333!important; font-size:11px; line-height: 17px;}
+.documnets table tr th a, .documnets table tr td a {margin: 0; padding:0!important;}
+.documnets table tr td a {color:#4C5D6B!important; font-size:11px; text-decoration: none; cursor: pointer; background-image: none !important;}
+.documnets table tr td a:hover {color:#3A8441!important;text-decoration: none }
+.documnets table tr td:first-child {text-align: left; font-weight: bold; }
+.documnets table tr th:first-child {width: 69.9%; }
+.documnets table tr td:last-child {padding-left: 10px}
+.documnets table tr th a.sort_down, #middle-content-wrap .csc-default ul li a.sort_down, #middle-content-wrap .csc-default a.sort_down[id] { background:url(../images/arrow-down.png) no-repeat right 5px!important; margin:0; padding:0 15px 0 0 !important; text-decoration: none}
+.documnets table tr th a.sort_up, #middle-content-wrap .csc-default ul li a.sort_up, #middle-content-wrap .csc-default a.sort_up[id] { background:url(../images/arrow-up.png) no-repeat right 5px!important; margin:0; padding:0 15px 0 0 !important; text-decoration: none}
+.documnets table tr th a.no_sort { background:url() no-repeat right 5px!important; margin:0; padding:0 15px 0 0 !important; text-decoration: none}
+.documnets table tr th.alignc{ text-align: center; }
+.documnets table thead tr { border-bottom: 1px dotted !important; }
+

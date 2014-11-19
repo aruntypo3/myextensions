@@ -1,0 +1,78 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script type="text/javascript" src="typo3conf/ext/pits_supplier/Resources/Public/Js/supplier_script.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.scrollTo( '#wrapper' );	 
+});
+</script>
+<div id="loader" style="display: none;">
+	<img src="typo3conf/ext/pits_supplier/Resources/Public/Icons/loader.gif" />
+</div>
+<f:if condition="{supplierList.direct_Submit}">  
+ <div id="wrapper">
+	<div class="innermiddle">
+		<div class="brandsearchdiv">
+      <form action="{supplierList.currentUrl}" id="searchForm" method="POST">
+				<label class="bs-searchlabel" for="title">
+					<f:translate key="tx_pitssupplier_domain_model_pitssupplier.searchtitle">SUCHE:</f:translate>
+				</label>
+				<input class="bs-searchtext" type = "text" id="keyword" name="keyword" value="" />
+				<input type="hidden" name="pageid" value="{supplierDetail.pid}" id="pageid"/>
+				<input type="hidden" name="languageUid" value="{supplierDetail.languageUid}" id="languageUid"/>
+				<input type="hidden" name="currentUrl" value="{supplierList.currentUrl}" id="currentUrl"/>
+				<input type="hidden" name="direct_Submit" value="1" id="direct_Submit"/>
+				<div class="search-btn-wrapper">
+				<input class="bs-searchbtn" type="button" name="search" value="<f:translate key='tx_pitssupplier_domain_model_pitssupplier.search_button'>SUCHEN</f:translate>" id="search"/>
+      			</div>
+      </form>
+		</div>
+	</div>
+</div>
+<div class="alphanumaricdiv">
+	<ul class="alphanumeric_listing">
+		<li>
+			<a href="javascript:void(0)" class="alpha_atag adetail" id="a_index_all">
+				<f:translate key="tx_pitssupplier_domain_model.allSupplierdata">Alle</f:translate>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)" class="alpha_atag adetail" id="a_index_0-9">
+				<f:translate key="tx_pitssupplier_domain_model_digits_only">0-9</f:translate>
+			</a>
+		</li>
+		<f:for each="{supplierList.alphabets}" as="alphabet" key="label"> 
+			<li id="div_index_{alphabet}" class="list_alphabets"> 
+				<a id="a_index_{alphabet}"  href="javascript:void(0)" class="alpha_atag adetail" >{alphabet} </a>
+			</li> 
+		</f:for>
+	</ul>
+</div>  
+</f:if> 
+<div id="replacing_div">
+<div class="alphadetails">
+<div class="supplierNameDetail"><f:link.external uri="{supplierList.currentUrl}?tx_pitssupplier_pitssupplier[supplierUid]={supplierDetails.uid}" target="_blank">{supplierDetails.supplier_name}</f:link.external></div>
+<div class="supplier_details">
+  <ul class="detailData">
+	<li><span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.address">Adresse</f:translate></span><span>{supplierDetails.address}</span></li>
+	<li><span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.plz">PLZ, Ort</f:translate></span><span>{supplierDetails.zip} {supplierDetails.location}</span></li>
+	<li><span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.telefone">Telefon</f:translate></span><span>{supplierDetails.telephone}</span></li>
+	<li><span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.fax">Fax</f:translate></span><span>{supplierDetails.fax}</span></li>
+	<li><span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.email">E-Mail</f:translate></span><span><f:link.email email="{supplierDetails.email}">{supplierDetails.email}</f:link.email></span></li>
+	<li><span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.web1">Website</f:translate></span><span><f:link.external uri="{supplierDetails.web1}" target="_blank">{supplierDetails.web1}</f:link.external></span></li>
+	<li><span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.web2">Website 2</f:translate></span><span><f:link.external uri="{supplierDetails.web2}" target="_blank">{supplierDetails.web2}</f:link.external></span></li>
+	<li><span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.b2bwebshop">B2B-Webshop</f:translate></span><span><f:link.external uri="{supplierDetails.b2b_webshop}" target="_blank">{supplierDetails.b2b_webshop}</f:link.external></span></li>
+	<li>
+		<span class="supplier_label"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.brandNames">Marken</f:translate></span>
+ 	    <span class="marken_array"><f:format.raw>{brandDatas}</f:format.raw></span>
+	</li>
+ </ul>	
+</div>
+<div class="supplierText"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.detailText">Markeneinträge mit einem Stern * bezeichnen offizielle Untervertreiber. Deren Sortiment dieser Marke ist teilweise eingeschränkt und mit reduzierten Serviceleistungen verbunden.</f:translate></div>
+
+<a href="javascript:void(0);" id="supplier_backtoList" class="more">
+	   <span><f:translate key="tx_pitssupplier_domain_model_pitssupplier.backtoList">ZURÜCK ZUR ÜBERSICHT</f:translate></span>
+</a>
+</div>
+</div>
+</f:section>

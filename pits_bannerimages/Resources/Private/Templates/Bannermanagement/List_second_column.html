@@ -1,0 +1,66 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script type="text/javascript" src="typo3conf/ext/pits_bannerimages/Resources/Public/Js/script.js"></script>    
+<div class="info-block data">
+    <f:for each="{imageArray}" as="imageData">
+	<f:if condition="{imageData.urlStatus}">
+	<f:then>
+    		<f:if condition="{imageData.image_link}">
+		<f:then>
+	    		<f:link.external uri="{imageData.image_link}" target="_blank" onclick="return dbEntry('{imageData.uid}','{imageDetails.pageId}','{imageData.title}','{imageData.image}','{imageDetails.ip_address}','{imageDetails.languageUid}')">
+				<f:if condition="{imageData.isGif}">
+                                    <f:then>
+                                        <img src="fileadmin/{imageData.image}" width="{imageDetails.width}" alt="" />
+                                    </f:then>
+                                    <f:else>
+                                        <f:image src="fileadmin/{imageData.image}" width="{imageDetails.width}" alt="" />
+                                    </f:else>
+                                </f:if>
+			</f:link.external>
+	  	</f:then>
+	  	<f:else>
+	    		<a href="javascript:void(0)" onclick="return dbEntry('{imageData.uid}','{imageDetails.pageId}','{imageData.title}','{imageData.image}','{imageDetails.ip_address}','{imageDetails.languageUid}')">    
+               		<f:if condition="{imageData.isGif}">
+                                    <f:then>
+                                        <img src="fileadmin/{imageData.image}" width="{imageDetails.width}" alt="" />
+                                    </f:then>
+                                    <f:else>
+                                        <f:image src="fileadmin/{imageData.image}" width="{imageDetails.width}" alt="" />
+                                    </f:else>
+                                </f:if>
+       		 </a>  
+	  	</f:else>
+		</f:if>		
+  	</f:then>
+  	<f:else>
+    		<f:if condition="{imageData.image_link}">
+		<f:then>
+			<f:link.page pageUid="{imageData.image_link}" target="_blank" onclick="return dbEntry('{imageData.uid}','{imageDetails.pageId}','{imageData.title}','{imageData.image}','{imageDetails.ip_address}','{imageDetails.languageUid}')">
+				<f:if condition="{imageData.isGif}">
+                                    <f:then>
+                                        <img src="fileadmin/{imageData.image}" width="{imageDetails.width}" alt="" />
+                                    </f:then>
+                                    <f:else>
+                                        <f:image src="fileadmin/{imageData.image}" width="{imageDetails.width}" alt="" />
+                                    </f:else>
+                                </f:if>
+			</f:link.page>
+	  	</f:then>
+	  	<f:else>
+	    		<a href="javascript:void(0)" onclick="return dbEntry('{imageData.uid}','{imageDetails.pageId}','{imageData.title}','{imageData.image}','{imageDetails.ip_address}','{imageDetails.languageUid}')">    
+               		<f:if condition="{imageData.isGif}">
+                                    <f:then>
+                                        <img src="fileadmin/{imageData.image}" width="{imageDetails.width}" alt="" />
+                                    </f:then>
+                                    <f:else>
+                                        <f:image src="fileadmin/{imageData.image}" width="{imageDetails.width}" alt="" />
+                                    </f:else>
+                                </f:if>
+       		 </a>  
+	  	</f:else>
+		</f:if>		
+  	</f:else>
+	</f:if>	
+    </f:for>
+</div>       
+</f:section>

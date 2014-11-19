@@ -1,0 +1,42 @@
+{namespace k=Tx_Hevents_ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div class="colmask rightmenu">
+    <div class="colleft">
+        <div class="col1wrap">
+            <div class="col1">
+				<!-- Column 1 start -->
+				<h2>Choose</h2>
+				<h3>{event.title}</h3> 
+				<h3>{date.start -> f:format.date(format:'d.m.Y H:i')} - {date.end -> f:format.date(format:'d.m.Y H:i')}</h3> 
+				<!-- <div class="eventDates">{date.end -> f:format.date(format:'d.m.Y H:i')}</div> -->
+				<br/>
+				<f:if condition="{islogged}">
+					<f:then>
+						<!-- <f:translate key="tx_hevents_domain_model_booking.welcomemsg">Hi</f:translate>, {user.first_name}!<br/> -->
+						<div class="bookingButton"><f:link.action action="book" controller="Booking" arguments="{event: event.uid, date: date.uid}" noCacheHash="1"><f:translate key="tx_hevents_domain_model_booking.reguser">Continue booking</f:translate></f:link.action></div>
+					</f:then>
+					<f:else>
+						<p class="NovecentoRegular">Are you already a User of Henry & Fine? Please Log In.
+						<f:cObject typoscriptObjectPath="plugin.tx_hevents.settings.loginBox" /><br/><br/>
+						<div class="bordered">
+							<p><f:link.page pageUid="{registerPage}" class="buttonLook">Register now</f:link.page> <br><br>As a new user of Henry & Fine. Make use of the Favorites List and much more.</p>
+						</div><br/>
+						<div class="bookingButton"><f:link.action action="book" controller="Booking" arguments="{event: event.uid, date: date.uid}" noCacheHash="1"><f:translate key="tx_hevents_domain_model_booking.guestuser">Continue booking as Guest</f:translate></f:link.action></div>
+					</f:else>
+				</f:if>
+				<!-- Column 1 end -->
+			</div>
+        </div>
+       <div class="col2">
+            <!-- Column 2 start -->
+			<a href="https://www.paypal.com/webapps/mpp/how-paypal-works" target="_new"><img src="/fileadmin/templates/img/paypal_logo.gif" /></a>
+			<br/><br/><a href="http://saferpay.com" target="_blank"><img width="114px" src="/fileadmin/templates/img/saferpay_logo.png" /></a>
+			<!-- Column 2 end -->
+        </div>
+    </div>
+</div>
+
+</f:section>

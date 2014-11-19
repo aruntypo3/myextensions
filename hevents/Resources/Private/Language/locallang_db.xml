@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'hevents'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+            
+			<label index="tx_hevents_domain_model_event">Event</label>
+			<label index="tx_hevents_domain_model_event.title">Title</label>
+			<label index="tx_hevents_domain_model_event.description">Description</label>
+			<label index="tx_hevents_domain_model_event.provider">Provider</label>
+			<label index="tx_hevents_domain_model_event.locationaddress">Location with Address</label>
+			<label index="tx_hevents_domain_model_event.latitude">Latitude</label>
+			<label index="tx_hevents_domain_model_event.longitude">Longitude</label>
+			<label index="tx_hevents_domain_model_event.location">Location</label>
+			<label index="tx_hevents_domain_model_event.price">Price</label>
+			<label index="tx_hevents_domain_model_event.images">Images</label>
+			<label index="tx_hevents_domain_model_event.categories">Categories</label>
+			<label index="tx_hevents_domain_model_event.dates">Dates</label>
+			<label index="tx_hevents_domain_model_event.city">City</label>
+			<label index="tx_hevents_domain_model_event.duration">Duration</label>
+
+			<label index="tx_hevents_domain_model_category">Category</label>
+			<label index="tx_hevents_domain_model_category.title">Title</label>
+			<label index="tx_hevents_domain_model_category.description">Description</label>
+			<label index="tx_hevents_domain_model_category.marker">Marker</label>
+			<label index="tx_hevents_domain_model_category.icon">Icon</label>
+			<label index="tx_hevents_domain_model_category.activeicon">Aktive Icon</label>
+
+			<label index="tx_hevents_domain_model_date">Date</label>
+			<label index="tx_hevents_domain_model_date.start">Start Date</label>
+			<label index="tx_hevents_domain_model_date.end">End Date</label>
+			<label index="tx_hevents_domain_model_time.start">Start Time</label>
+			<label index="tx_hevents_domain_model_time.end">End Time</label>
+
+			<label index="tx_hevents_domain_model_booking">Booking</label>
+			<label index="tx_hevents_domain_model_booking.correctinfo">Are Your Information correct?</label>
+			<label index="tx_hevents_domain_model_booking.amount">Amount</label>
+			<label index="tx_hevents_domain_model_booking.price">Price</label>
+			<label index="tx_hevents_domain_model_booking.ppstatus">Ppstatus</label>
+			<label index="tx_hevents_domain_model_booking.ppstatus.0">progress</label>
+			<label index="tx_hevents_domain_model_booking.ppstatus.1">dispatch</label>
+			<label index="tx_hevents_domain_model_booking.ppstatus.2">canceled</label>
+			<label index="tx_hevents_domain_model_booking.delevieraddress">deliver address</label>
+			<label index="tx_hevents_domain_model_booking.ppref">Ppref</label>
+			<label index="tx_hevents_domain_model_booking.email">E-Mail</label>
+			<label index="tx_hevents_domain_model_booking.name">Name</label>
+			<label index="tx_hevents_domain_model_booking.forename">Forename</label>
+			<label index="tx_hevents_domain_model_booking.address">Address</label>
+			<label index="tx_hevents_domain_model_booking.zip">Zip</label>
+			<label index="tx_hevents_domain_model_booking.city">City</label>
+			<label index="tx_hevents_domain_model_booking.country">Country</label>
+			<label index="tx_hevents_domain_model_booking.dname">delivery name</label>
+			<label index="tx_hevents_domain_model_booking.dforename">delivery forename</label>
+			<label index="tx_hevents_domain_model_booking.daddress">delivery address</label>
+			<label index="tx_hevents_domain_model_booking.dzip">delivery zip</label>
+			<label index="tx_hevents_domain_model_booking.dcity">delivery city</label>
+			<label index="tx_hevents_domain_model_booking.dcountry">delivery country</label>
+			<label index="tx_hevents_domain_model_booking.event">Event</label>
+			<label index="tx_hevents_domain_model_booking.date">Date</label>
+			<label index="tx_hevents_domain_model_booking.user">User</label>
+			<label index="tx_hevents_domain_model_booking.lkey">Language</label>
+			
+
+			<label index="tx_hevents_domain_model_city">City</label>
+			<label index="tx_hevents_domain_model_city.title">Title</label>
+			<label index="tx_hevents_domain_model_city.country">Country</label>
+			<label index="tx_hevents_domain_model_country.country">Country</label>
+			<label index="tx_hevents_domain_model_country">Country</label>
+			
+			<label index="tx_hevents_domain_model_user">User</label>
+			<label index="tx_hevents_domain_model_user.dname">delivery name</label>
+			<label index="tx_hevents_domain_model_user.dforename">delivery forename</label>
+			<label index="tx_hevents_domain_model_user.daddress">delivery address</label>
+			<label index="tx_hevents_domain_model_user.dzip">delivery zip</label>
+			<label index="tx_hevents_domain_model_user.dcity">delivery city</label>
+			<label index="tx_hevents_domain_model_user.dcountry">delivery country</label>
+			<label index="tx_hevents_domain_model_user.optkey">Opt In Key</label>
+			<label index="tx_hevents_domain_model_user.opt">Opt In Ok</label>
+			<label index="fe_user.tx_extbase_type.Tx_Hevents_User">Henry Events User</label>
+			
+			<label index="tx_hevents_domain_model_event.avail_seats">Available Seats</label>
+			<label index="tx_hevents_domain_model_event.remain_seats">Remaining Seats</label>
+			<label index="tx_hevents_domain_model_event.transid">Transaction Id</label>
+			<label index="tx_hevents_domain_model_event.transstatus">Transaction Status</label>
+						
+		</languageKey>
+	</data>
+</T3locallang>

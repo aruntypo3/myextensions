@@ -1,0 +1,23 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<h1>Bookings</h1>
+
+<f:if condition="{islogged}">
+	<f:then>
+		<ul>
+			<f:for each="{bookings}" as="booking">
+				<li>
+					{booking.date.start -> f:format.date(format:'d.m.Y H:i')} - {booking.date.end -> f:format.date(format:'d.m.Y H:i')} : <f:link.action action="single" controller="Event" arguments="{event : booking.event}">{booking.event.title}</f:link.action>
+				</li>
+			</f:for>
+		</ul>
+	</f:then>
+	<f:else>
+		Log In:
+		<f:cObject typoscriptObjectPath="plugin.tx_hevents.settings.loginBox" />
+	</f:else>
+</f:if>
+
+</f:section>

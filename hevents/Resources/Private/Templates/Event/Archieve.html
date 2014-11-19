@@ -1,0 +1,25 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<div id="archiveEventList">
+<h2><f:translate key="basic.pastevents" /></h2>
+<ul class="clear clearfix">
+	<f:for each="{events}" as="event" iteration="itr">
+		<li class="slider-item {f:if(condition:'{itr.isFirst}', then:'first-item')} {f:if(condition:'{itr.isLast}', then:'last-item')}">
+			<f:link.page pageUid="{f:cObject(typoscriptObjectPath:'plugin.tx_hevents.settings.singlePage')}" class="eventLink" additionalParams="{tx_hevents_pi1: {event: event.uid, action:'single'}}">
+				<f:render partial="FirstImage" arguments="{event:event, width:'220c', height:'149c-65', sliderDummyImage:sliderDummyImage}"/>
+				<div class="sliderText">
+					<div class="eventCat"><img src="{f:uri.image(src:event.category.icon)}" alt="{event.category.title} Icon" /> {event.category.title}</div>
+					<div class="borderSmall"></div>
+					<div class="eventTitle">{event.title}</div> 
+					<div class="eventPrice"><span>CHF</span> {event.price}</div>
+				</div>
+			</f:link.page>
+			<f:render partial="AddButton" arguments="{event:event,archive:1}"/>
+		</li>
+	</f:for>
+</ul>
+</div>
+
+
+</f:section>

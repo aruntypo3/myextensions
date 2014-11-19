@@ -1,0 +1,39 @@
+plugin.tx_tntdownloadmodule {
+	view {
+		templateRootPath = {$plugin.tx_tntdownloadmodule.view.templateRootPath}
+		partialRootPath = {$plugin.tx_tntdownloadmodule.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_tntdownloadmodule.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_tntdownloadmodule.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_tntdownloadmodule._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-tnt-download-module table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-tnt-download-module table th {
+		font-weight:bold;
+	}
+
+	.tx-tnt-download-module table td {
+		vertical-align:top;
+	}
+)

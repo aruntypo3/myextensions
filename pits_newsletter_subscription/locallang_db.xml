@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'pits_newsletter_subscription'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">pits_newsletter_subscription</label>
+			<label index="sheetTitle">General</label>
+			<label index="from_name">From Name</label>
+			<label index="from_email">From Email</label>
+			<label index="storage_folder">Storage Folder</label>
+			<label index="success_page">Success Page</label>
+			<label index="show_successmsg">Display Success Message</label>
+		</languageKey>
+	</data>
+</T3locallang>

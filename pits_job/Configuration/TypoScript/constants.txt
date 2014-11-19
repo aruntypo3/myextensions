@@ -1,0 +1,17 @@
+plugin.tx_pitsjob {
+	view {
+		# cat=plugin.tx_pitsjob/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:pits_job/Resources/Private/Templates/
+		# cat=plugin.tx_pitsjob/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:pits_job/Resources/Private/Partials/
+		# cat=plugin.tx_pitsjob/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:pits_job/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_pitsjob//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	mvc {
+		callDefaultActionIfActionCantBeResolved = 1
+	}
+}

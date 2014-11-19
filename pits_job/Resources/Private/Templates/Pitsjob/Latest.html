@@ -1,0 +1,22 @@
+<f:layout name="Default" />
+<f:section name="main">
+<div class="info-block">
+	<div class="heading">
+		<strong class="title"><f:translate key='latest_jobs'>CYCLJOBS</f:translate></strong>
+		<a class="link" target="_top" href="{latestData.alljobUrl}"><f:translate key='all_jobs'>ALLE JOBS</f:translate></a> 
+	</div>
+	<div class="block-holder">
+		<f:flashMessages />
+		<ul>
+		<f:for each="{jobLatestArray}" as="jobLatestItems">
+			<li class="list_items">
+				<a href="{latestData.detailUrl}?tx_pitsjob_pitsjob[jobId]={jobLatestItems.uid}&tx_pitsjob_pitsjob[catId]={jobLatestItems.category_id}&no_cache=1" class="detail_link">
+					{jobLatestItems.job_title}
+				</a>
+			</li>	
+		</f:for>
+		</ul>
+		<a class="more" target="_top" href="{latestData.adformUrl}"><span><f:translate key='adfrom_link'>INSERAT AUFGEBEN</f:translate></span></a>
+	</div>
+</div>	
+</f:section>

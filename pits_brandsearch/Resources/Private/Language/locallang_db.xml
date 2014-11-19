@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'pits_brandsearch'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+            
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch">Brandsearch</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_name">Brand Name</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_firma">Firma</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_firstname">Vorname</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_lastname">Name</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_address">Adresse</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_land">Land</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_zipcode">PLZ</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_location">Ort</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_telephone">Telefon</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_fax">Fax</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_email">E-Mail</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.brand_web">Website</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.flexform_title">TNT-Brand Search Configuration</label>
+			<label index="tx_pitsbrandsearch_domain_model_brandsearch.supplierList_Page">Supplier Page Id</label>
+			
+		</languageKey>
+	</data>
+</T3locallang>

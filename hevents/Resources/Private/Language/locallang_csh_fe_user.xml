@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for table fe_user</description>
+		<type>CSH</type>
+		<csh_table>fe_user</csh_table>
+	</meta>
+	<data type="array">
+	<languageKey index="default" type="array">
+	   
+			<label index="dname.description">delivery name</label>
+			<label index="dforename.description">delivery forename</label>
+			<label index="daddress.description">delivery address</label>
+			<label index="dzip.description">delivery zip</label>
+			<label index="dcity.description">delivery city</label>
+			<label index="dcountry.description">delivery country</label>
+		</languageKey>
+	</data>
+</T3locallang>

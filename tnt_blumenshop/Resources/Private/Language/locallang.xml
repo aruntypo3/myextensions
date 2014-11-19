@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the TNT Blumen Shop extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_tntblumenshop_domain_model_products">Products</label>
+			<label index="order_product">bestellen</label>
+			<label index="single_caption">Für wen möchten Sie die Blumen bestellen?</label>
+			<label index="user_name">Nachname des Patienten</label>
+			<label index="user_firstname">Vorname des Patienten</label>
+			<label index="user_wohnort">Wohnort des Patienten</label>
+			<label index="amount">Betrag</label>
+			<label index="labelprice1_1">CHF </label>
+			<label index="labelprice2_1">CHF </label>
+			<label index="labelprice3_1">CHF </label>
+			<label index="labelprice1_2"></label>
+			<label index="labelprice2_2"></label>
+			<label index="labelprice3_2"></label>
+			<label index="special_request">Besondere Wünsche oder Bemerkungen</label>
+			<label index="special_request_subheader">(z.B. spezieller Anlass, bestimmter Liefertermin etc.)</label>
+			<label index="form1_count">SCHRITT 1 VON 4: </label>
+			<label index="form1_detail">WÄHLEN SIE IHRE BLUMENKATEGORIE</label>
+			<label index="form2_count">SCHRITT 2 VON 4: </label>
+			<label index="form2_detail">DETAILBESTELLUNG</label>
+			<label index="price_extramap">Begleitkarte</label>
+			<label index="priceextra1">Ich wünsche keine Karte</label>
+			<label index="priceextra2_1">Kleine Karte (Format ca. A7 CHF </label>
+			<label index="priceextra3_1">Grosse Karte (Format ca. A6, CHF </label>
+			<label index="priceextra2_2">)</label>
+			<label index="priceextra3_2">)</label>
+			<label index="text_cart">Text für Karte (max. 120 Zeichen)</label>
+			<label index="form2_submit">TESTS</label>
+			<label index="mandatory">Bitte füllen Sie dieses Feld!</label>
+			<label index="form3_count">SCHRITT 3 VON 4: </label>
+			<label index="form3_detail">KOORDINATEN AUFTRAGGEBER</label>
+			<label index="contact_price">Preiskategorie:</label>
+			<label index="labelprice">CHF </label>
+			<label index="labelprice_end"></label>
+			<label index="contact_username">Name Patient:</label>
+			<label index="contact_vorname">Vorname Patient:</label>
+			<label index="contact_wohnort">Wohnort Patient:</label>
+			<label index="contact_specialrequest">Bemerkungen:</label>
+			<label index="contact_specialcomments">Text Karte:</label>
+			<label index="edit_productinfo">Bestellung ändern</label>
+			<label index="cost_overview">Kostenübersicht</label>
+			<label index="cost_overviewprice">Blumen:</label>
+			<label index="cost_overviewpriceextra">Karte:</label>
+			<label index="cost_overviewfixedprice">Liefergebühr:</label>
+			<label index="total_cost">Total:</label>
+			<label index="contact_info">Koordinaten Auftraggeber</label>
+			<label index="contact_name">Nachname</label>
+			<label index="contact_firstname">Vorname</label>
+			<label index="contact_firma">Firma</label>
+			<label index="contact_strasse">Strasse / Nr.</label>
+			<label index="contact_ort">PLZ / Ort</label>
+			<label index="contact_telefon">Telefon</label>
+			<label index="contact_mobile">Mobile</label>
+			<label index="contact_email">E-Mail</label>
+			<label index="payment_method">Kreditkarte</label>
+			<label index="invalid_email">Bitte geben Sie eine gültige E-Mail-Adresse!</label>
+			<label index="invalid_phone">Bitte geben Sie eine gültige Telefonnummer!</label>
+			<label index="select_cardtype">Bitte wählen</label>
+			<label index="price_error">Bitte wählen Sie den Preis!</label>
+			<label index="priceextra_error">Bitte wählen Sie!</label>
+			<label index="select_card_error">Bitte wählen Sie eine Option!</label>
+			<label index="please_wait">Bitte warten Sie...</label>
+			<label index="mail_subject">GZO Blumen Service Bestellung von</label>
+			<label index="mail_productinfo">Informationen</label>
+			<label index="mail_contactinfo">Auftraggeber</label>
+			<label index="mail_patientname">Name Patient/in</label>
+			<label index="mail_patientvorname">Vorname Patient/in</label>
+			<label index="mail_textcart">Text für Karte</label>
+			<label index="visa">VISA</label>
+			<label index="master">MasterCard</label>
+			<label index="mail_amount">Bestellung</label>
+			<label index="mail_cat_amounttext">Kategorie CHF</label>
+			<label index="swisspostfinance">Swiss PostFinance - PostFinance Card</label>
+			<label index="mail_pricedetails">Kostenübersicht</label>
+			<label index="mail_price1">Blumen</label>
+			<label index="mail_price2">Grosse Karte</label>
+			<label index="mail_price3">Servicegebühr</label>
+			<label index="mail_price4">Total</label>
+			<label index="check_document">Kunde wünscht einen Beleg</label>
+			<label index="static_mailtext">
+				Vielen Dank für Ihre Bestellung beim GZO Blumen Service. Dies ist Ihre Bestellbestätigung. Sollten Sie einen Beleg gewünscht haben, wird Ihnen dieser nach erfolgreicher Auslieferung der Blumen ebenfalls per Email zugesendet. Mehr Informationen zu Zahlung und Lieferung entnehmen Sie bitte den allgemeinen Geschäftsbedingungen.  
+				Bitte beachten Sie, dass Sie keine Rückmeldung erhalten, falls der gewünschte Empfänger nicht mehr im GZO hospitalisiert ist. Ihre Bestellung verfällt dann – Ihre Kreditkarte wird nicht belastet.
+			</label>
+			<label index="contact_doccheck">Ich wünsche einen Beleg.</label>
+			<label index="doc_yes">ja</label>
+			<label index="doc_no">nein</label>
+			<label index="price_0">Keine Karte</label>
+			<label index="price_250">Kleine Karte</label>
+			<label index="price_500">Grosse Karte</label>
+			<label index="mail_patientwohnort">Wohnort Patient/in</label>
+			<label index="tx_tntblumenshop.step1">Schritt 1</label>
+			<label index="tx_tntblumenshop.step2">Schritt 2</label>
+			<label index="tx_tntblumenshop.step3">Schritt 3</label>
+			<label index="tx_tntblumenshop.step4">Schritt 4</label>
+			<label index="tx_tntblumenshop.selectProduct">Wählen Sie Ihre Blumenkategorie</label>
+			<label index="tx_tntblumenshop.orderDetails">Detailbestellung</label>
+			<label index="tx_tntblumenshop.cordinateDetails">Koordinaten Auftraggeber</label>
+		</languageKey>
+	</data>
+</T3locallang>

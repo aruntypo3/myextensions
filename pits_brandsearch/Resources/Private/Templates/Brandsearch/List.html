@@ -1,0 +1,72 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script type="text/javascript" src="typo3conf/ext/pits_brandsearch/Resources/Public/Js/brandsearch_script.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.scrollTo( '#wrapper' );	 
+});
+</script>
+<div id="wrapper">
+	<div class="innermiddle">
+		<div class="brandsearchdiv">
+			<form action="" id="searchForm" method="POST" onSubmit="return false;">
+				<label class="bs-searchlabel" for="title">
+					<f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.searchtitle">SUCHE:</f:translate>
+				</label>
+				<input class="bs-searchtext" type = "text" id="keyword" name="keyword" value="" >
+				<input type="hidden" name="pageid" value="{brandList.pid}" id="pageid"/>
+				<input type="hidden" name="languageUid" value="{brandList.languageUid}" id="languageUid"/>
+				<input type="hidden" name="currentUrl" value="{brandList.currentUrl}" id="currentUrl"/>
+				<div class="search-btn-wrapper">
+				<input class="bs-searchbtn" type="button" name="search" id="search" value="<f:translate key='tx_pitsbrandsearch_domain_model_brandsearch.search_button'>SUCHEN</f:translate>" />
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div id="loader" style="display: none;">
+	<img src="typo3conf/ext/pits_brandsearch/Resources/Public/Icons/loader.gif" />
+</div>
+<div class="alphanumaricdiv">
+	<ul class="alphanumeric_listing">
+		<li>
+			<a href="javascript:void(0)" class="alpha_atag active adetail" id="a_index_all">
+				<f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.allBranddata">Alle</f:translate>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void(0)" class="alpha_atag adetail" id="a_index_0-9">
+				<f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.digits_only">0-9</f:translate>
+			</a>
+		</li>
+		<f:for each="{brandList.alphabets}" as="alphabet" key="label"> 
+			<li id="div_index_{alphabet}" class="list_alphabets"> 
+				<a id="a_index_{alphabet}" href="javascript:void(0)" class="alpha_atag adetail">{alphabet} </a>
+			</li> 
+		</f:for>
+	</ul>
+	<div id="replacing_div">
+		<div class="alphadetails">
+			<div class="accordion" id="accordion-3">
+				<f:for each="{brandSearch}" as="brandData" key="title">
+					<div id="div_main_{title}" class="common_class" >
+						<div id="div_title_{title}" class="contentul title_alphabet" >
+							<a href="javascript:void(0)" class="active" >{title}</a><a href="{brandList.currentUrl}#top" class="gotolink"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.totop">NACH OBEN</f:translate></a>
+						</div>
+						<ul id="div_content_{title}" class="brand_listing">
+							<f:for each="{brandData}" as="individualData" key="key">
+								<li>
+									<span class="showBrandTitle" id="brand_{individualData.uid}">
+										<a href="javascript:void(0);" class="detail-link" onclick="return showDetails('{individualData.uid}','{brandList.pid}','{brandList.languageUid}')">{individualData.brand_name}</a>
+									</span>
+								</li>	
+							</f:for>
+						</ul>
+					</div>
+				</f:for>
+			</div>
+		</div>
+	</div>
+</div>
+
+</f:section>

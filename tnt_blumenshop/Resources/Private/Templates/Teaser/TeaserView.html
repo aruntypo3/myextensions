@@ -1,0 +1,33 @@
+<f:layout name="Default" />
+<f:section name="main">
+	<f:if condition="{flexformArray.targetLink}">
+		<f:then>
+			<h2 class="desktop-hide collapsed" data-target="#mod-widget-blum-mod" data-toggle="collapse">
+				<a>{flexformArray.teaserHeader}</a>
+			</h2>	
+			<h2 class="mob-hide"><a href="{flexformArray.targetLink}">{flexformArray.teaserHeader}</a></h2>
+			<f:if condition="{flexformArray.teaserImagePath}">
+				<div class="collapse in" id="mod-widget-blum-mod">
+					<a class="thumb" href="{flexformArray.targetLink}">
+						<img alt="{flexformArray.teaserHeader}" src="fileadmin{flexformArray.teaserImagePath}" />
+					</a>
+					<p><f:format.html parseFuncTSPath="lib.parseFunc">{flexformArray.teaserContent}</f:format.html></p>
+				</div>	
+			</f:if>
+		</f:then>
+		<f:else>
+			<h2 class="desktop-hide collapsed" data-target="#mod-widget-blum-mod" data-toggle="collapse">
+				<a>{flexformArray.teaserHeader}</a>
+			</h2>
+			<h2 class="mob-hide"><a href="javascript:void(0);">{flexformArray.teaserHeader}</a></h2>
+			<f:if condition="{flexformArray.teaserImagePath}">
+				<div class="collapse in" id="mod-widget-blum-mod">
+					<a class="thumb" href="javascript:void(0);">
+						<img alt="{flexformArray.teaserHeader}" src="fileadmin{flexformArray.teaserImagePath}">
+					</a>
+					<p><f:format.html parseFuncTSPath="lib.parseFunc">{flexformArray.teaserContent}</f:format.html></p>
+				</div>	
+			</f:if>
+		</f:else>
+	</f:if>
+</f:section>

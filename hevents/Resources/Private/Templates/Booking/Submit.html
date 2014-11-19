@@ -1,0 +1,76 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<p>&nbsp;</p>
+<table width="90%" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><label for="email"><f:translate key="tx_hevents_domain_model_booking.amount" /></label></td>
+		<td>{booking.amount}</td>
+	</tr>
+	<tr>
+		<td><label for="email"><f:translate key="tx_hevents_domain_model_booking.email" /></label></td>
+		<td>{booking.email}</td>
+	</tr>
+	<tr>
+		<td><label for="name"><f:translate key="tx_hevents_domain_model_booking.name" /></label></td>
+		<td>{booking.name}</td>
+	</tr>
+	<tr>	
+		<td><label for="forename"><f:translate key="tx_hevents_domain_model_booking.forename" /></label></td>
+		<td>{booking.forename}</td>
+	</tr>
+	<tr>
+		<td><label for="address"><f:translate key="tx_hevents_domain_model_booking.address" /></label></td>
+		<td>{booking.address}</td>
+	</tr>
+	<tr>	
+		<td><label for="zip"><f:translate key="tx_hevents_domain_model_booking.zip" /></label></td>
+		<td>{booking.zip}</td>
+	</tr>
+	<tr>
+		<td><label for="city"><f:translate key="tx_hevents_domain_model_booking.city" /></label></td>
+		<td>{booking.city}</td>
+	</tr>
+	<tr>	
+		<td><label for="country"><f:translate key="tx_hevents_domain_model_booking.country" /></label></td>
+		<td>{booking.country}</td>
+	</tr>
+</table>
+
+
+<br/><label for="delevieraddress"><b><f:translate key="tx_hevents_domain_model_booking.delevieraddress"></f:translate></b></label>
+
+<div id="delevieraddress-container" style="display:block;">
+<table cellspacing="0" cellpadding="0">
+	<tr>
+		<td><label for="dname"><f:translate key="tx_hevents_domain_model_booking.dname" /></label></td>
+		<td><f:if condition="{booking.dname}"><f:then>{booking.dname}</f:then><f:else>{booking.name}</f:else></f:if></td>
+	</tr>
+	<tr>	
+		<td><label for="dforename"><f:translate key="tx_hevents_domain_model_booking.dforename" /></label></td>
+		<td><f:if condition="{booking.dforename}"><f:then>{booking.dforename}</f:then><f:else>{booking.forename}</f:else></f:if></td>
+	</tr>
+	<tr>
+		<td><label for="daddress"><f:translate key="tx_hevents_domain_model_booking.daddress" /></label></td>
+		<td><f:if condition="{booking.daddress}"><f:then>{booking.daddress}</f:then><f:else>{booking.address}</f:else></f:if></td>
+	</tr>
+	<tr>	
+		<td><label for="dzip"><f:translate key="tx_hevents_domain_model_booking.dzip" /></label></td>
+		<td><f:if condition="{booking.dzip}"><f:then>{booking.dzip}</f:then><f:else>{booking.zip}</f:else></f:if></td>
+	</tr>
+	<tr>
+		<td><label for="dcity"><f:translate key="tx_hevents_domain_model_booking.dcity" /></label>
+		<td><f:if condition="{booking.dcity}"><f:then>{booking.dcity}</f:then><f:else>{booking.city}</f:else></f:if></td>
+	</tr>
+	<tr>		
+		<td><label for="dcountry"><f:translate key="tx_hevents_domain_model_booking.dcountry" /></label></td>
+		<td><f:if condition="{booking.dcountry}"><f:then>{booking.dcountry}</f:then><f:else>{booking.country}</f:else></f:if></td>
+	</tr>
+</table>
+<br/>
+<label><f:translate key="tx_hevents_domain_model_booking.correctinfo" /></label>
+<f:link.action action="pay" controller="Booking" arguments="{event: event, date: date}" noCacheHash="1"><strong>Ja</strong></f:link.action>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<f:link.action action="book" controller="Booking" arguments="{event: event, date: date}" noCacheHash="1" noCache="1">Nein</f:link.action>
+
+
+</f:section>

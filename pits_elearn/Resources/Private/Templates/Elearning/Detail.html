@@ -1,0 +1,39 @@
+<f:layout name="Default" />
+<f:section name="main">
+    <script src="typo3conf/ext/pits_elearn/Resources/Public/Js/actions.js"></script>
+    <form class="online-form2" action="{action}" method="POST">
+            <div id="id-thema_div">
+                    <select name="tx_pitselearn_pitselearn[tnt_thema]" onChange="doGetValue(this.value,'{pageId}')">
+                        <f:for each="{elearnings}" as="themaName" key="uid">
+
+                            <f:if condition="{uid}=={themaId}">
+                                <f:then>
+                                     <option value="{uid}" selected="selected">{themaName}</option>
+                                </f:then>
+                                <f:else>
+                                     <option value="{uid}">{themaName}</option>
+                                </f:else>
+                            </f:if>
+
+                        </f:for>
+
+                    </select>
+            </div>
+                    <div id="id-chapters_div">
+                        <select name="tnt_thema_chapter" class="selects-holder">
+                            <f:for each="{chapters}" as="chapterName" key="cuid" iteration="itemIterator">
+                              <f:if condition="{chapterId}=={cuid}">
+                                <f:then>
+                                      <option value="{cuid}" selected="selected">{themaId}.{itemIterator.cycle}.{chapterName}</option>
+                                </f:then>
+                                <f:else>
+                                      <option value="{cuid}">{themaId}.{itemIterator.cycle}.{chapterName}</option>
+                                </f:else>
+                            </f:if>
+                            </f:for>
+                        </select>
+
+                    </div>
+                    <input type="submit" class="submit" value="go"/>
+    </form>
+</f:section>

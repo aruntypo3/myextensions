@@ -1,0 +1,105 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script type="text/javascript" src="typo3conf/ext/pits_brandsearch/Resources/Public/Js/brandsearch_script.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.scrollTo( '#wrapper' );	 
+});
+</script>
+<div id="loader" style="display: none;">
+	<img src="typo3conf/ext/pits_brandsearch/Resources/Public/Icons/loader.gif" />
+</div>
+<f:if condition="{brandList.direct_Submit}"> 
+ <div id="wrapper">
+	<div class="innermiddle">
+	<div class="brandsearchdiv">
+      <form action="" id="searchForm" method="POST" onSubmit="return false;">
+				<label class="bs-searchlabel" for="title">
+					<f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.searchtitle">SUCHE:</f:translate>
+				</label>
+				<input class="bs-searchtext" type = "text" id="keyword" name="keyword" value="" />
+				<input type="hidden" name="pageid" value="{brandDetail.pid}" id="pageid"/>
+				<input type="hidden" name="languageUid" value="{brandDetail.languageUid}" id="languageUid"/>
+				<input type="hidden" name="currentUrl" value="{brandList.currentUrl}" id="currentUrl"/>
+				<input type="hidden" name="direct_Submit" value="1" id="direct_Submit"/>
+				<div class="search-btn-wrapper">
+				<input class="bs-searchbtn" type="button" name="search" id="search" value="<f:translate key='tx_pitsbrandsearch_domain_model_brandsearch.search_button'>SUCHEN</f:translate>" />
+      			</div>
+        </form>
+		</div>
+	</div>
+</div>
+<div class="alphanumaricdiv">
+	<ul class="alphanumeric_listing">
+		<li>
+			<f:if condition="{brandList.direct_Submit}"> 
+			<f:then>
+				<a href="javascript:void(0)" class="alpha_atag adetail" id="a_index_all">
+					<f:translate key="tx_pitssupplier_domain_model.allSupplierdata">Alle</f:translate>
+				</a>
+			</f:then>
+			<f:else>
+				<a href="javascript:void(0)" class="alpha_atag adetail" id="a_index_all">
+					<f:translate key="tx_pitssupplier_domain_model.allSupplierdata">Alle</f:translate>
+				</a>
+			</f:else>
+			</f:if>	
+		</li>
+		<li>
+			<a href="javascript:void(0)" class="alpha_atag adetail" id="a_index_0-9">
+				<f:translate key="tx_pitssupplier_domain_model_digits_only">0-9</f:translate>
+			</a>
+		</li>
+		<f:for each="{brandList.alphabets}" as="alphabet" key="label"> 
+			<li id="div_index_{alphabet}" class="list_alphabets"> 
+				<a id="a_index_{alphabet}" href="javascript:void(0)" class="alpha_atag adetail" >{alphabet} </a>
+			</li> 
+		</f:for>
+	</ul>
+</div>  
+</f:if> 
+<div id="replacing_div">
+<div class="alphadetails">
+<div class="accordion" id="accordion-3">
+	<f:for each="{inhouseBrands}" as="inhouseBrand" key="title">
+		<div id="div_main" class="common_class_details" >
+			<div id="div_title" class="contentul title_brandname" >
+				<f:link.external uri="{brandList.currentUrl}?tx_pitsbrandsearch_pitsbrandsearch[brandUid]={inhouseBrand.uid}" target="_blank">{inhouseBrand.brand_name}</f:link.external>
+			</div>
+			<ul id="div_content" class="supplier_listing">
+				<f:for each="{inhouseBrand.child}" as="individualData" key="key">
+					<li>
+						<span class="showSupplierTitle" id="suppllier_{individualData.uid}">
+							<a href="{brandDetail.supplierListPageUrl}?tx_pitssupplier_pitssupplier[supplierUid]={individualData.uid}" class="detail-link">{individualData.supplier_name}</a>
+						</span>
+					</li>	
+				</f:for>
+			</ul>
+		</div>
+	</f:for>
+</div>
+<div class="brandDetailText"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.detailText">Markeneinträge mit einem Stern * bezeichnen offizielle Untervertreiber. Deren Sortiment dieser Marke ist teilweise eingeschränkt und mit reduzierten Serviceleistungen verbunden.</f:translate></div>
+<div class="brandNameHead"><f:link.external uri="{brandList.currentUrl}?tx_pitsbrandsearch_pitsbrandsearch[brandUid]={brandDetails.uid}" target="_blank"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.serviceAddress">Serviceadresse</f:translate></f:link.external></div>
+
+<div class="brand_details">
+  <ul class="detailData">
+	<li><span class="brand_label"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.brand_firma">Firma</f:translate></span><span class="brandData_val">{brandDetails.brand_firma}</span></li>
+	<li><span class="brand_label"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.brand_address">Adresse</f:translate></span><span class="brandData_val">{brandDetails.brand_address}</span></li>
+	<li><span class="brand_label"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.brand_zipcode">PLZ, Ort</f:translate></span><span class="brandData_val">{brandDetails.brand_zipcode} {brandDetails.brand_location}</span></li>
+	<li><span class="brand_label"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.brand_telephone">Telefon</f:translate></span><span class="brandData_val">{brandDetails.brand_telephone}</span></li>
+	<li><span class="brand_label"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.brand_fax">Fax</f:translate></span><span class="brandData_val">{brandDetails.brand_fax}</span></li>
+	<li><span class="brand_label"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.brand_email">E-Mail</f:translate></span><span class="brandData_val"><f:link.email email="{brandDetails.brand_email}">{brandDetails.brand_email}</f:link.email></span></li>
+	<li><span class="brand_label"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.brand_web">Website</f:translate></span><span class="brandData_val"><f:link.external uri="{brandDetails.brand_web}" target="_blank">{brandDetails.brand_web}</f:link.external></span></li>
+ </ul>	
+</div>
+<div class="brandDetailText"><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.bottom_detailText">Sofern keine separaten Service-Kontakte eingetragen sind, stehen die Vertriebspartner der Marke über ihre allgemeinen Kontaktangaben als Anlaufstelle bereit.</f:translate></div>
+
+<a href="javascript:void(0);" id="brands_backtoList" class="more">
+	   <span><f:translate key="tx_pitsbrandsearch_domain_model_brandsearch.backtoList">ZURÜCK ZUR ÜBERSICHT</f:translate></span>
+</a>
+
+
+
+</div>
+</div>
+</f:section>

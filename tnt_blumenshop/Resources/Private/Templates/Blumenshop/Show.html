@@ -1,0 +1,124 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script type="text/javascript">
+	errorText = '<f:translate key="mandatory">Mandatory</f:translate>';
+	priceerrorText = '<f:translate key="price_error">Mandatory</f:translate>';
+	price_extraerrorText = '<f:translate key="priceextra_error">Mandatory</f:translate>';
+</script>
+<script type="text/javascript" src="typo3conf/ext/tnt_blumenshop/Resources/Public/Js/validate.js"></script>
+
+<article>
+	<h1>{flexformArray.title}</h1>
+</article>
+<section class="mod schritt">
+	<div class="mod-highlight infos cta">
+		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step1">Schritt 1</f:translate></i></span></a>
+		<a class="active" href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step2">Schritt 2</f:translate></i></span></a>
+		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step3">Schritt 3</f:translate></i></span></a>
+		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step4">Schritt 4</f:translate></i></span></a>
+	</div>
+	<h3><f:translate key="tx_tntblumenshop.orderDetails">Detailbestellung</f:translate></h3>
+	<f:for each="{productArray}" as="product_detail" key="number">
+		<f:form action="show" name="productinfo" arguments="{product_uid: '{product_detail.uid}'}" enctype="multipart/form-data" onsubmit="return validateForm()" class="schritt">
+			<fieldset class="pos-spec">
+				<f:image src="uploads/tx_tntblumenshop/{product_detail.image}" alt="{product_detail.image}" width="{detailimgW}m" height="{detailimgH}m" />
+             	<input type="hidden"  value="{product_detail.uid}" id="uid" name="tx_tntblumenshop_tntblumenshop[uid]">
+             	<div class="row">
+                	<div class="col-sm-6 step2_subhead">
+                    	<h5><f:translate key="single_caption">Für wen möchten Sie die Blumen bestellen?</f:translate></h5>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-sm-6">
+                    	<div class="form-group">
+                        	<label for="user_name"><f:translate key="user_name">Name</f:translate></label>
+                          	<input type="text" class="form-control user_name required" size="30" value="{ses_username}" name="tx_tntblumenshop_tntblumenshop[user_name]" id="user_name" />
+                          	<p id="username_error" class="error_class">{username_error}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                          	<label for="user_firstname"><f:translate key="user_firstname">Vorname</f:translate></label>
+                        	<input type="text" class="form-control user_firstname required" size="30" value="{ses_firstname}" name="tx_tntblumenshop_tntblumenshop[user_firstname]" id="user_firstname" />
+                    		<p id="userfirstname_error" class="error_class">{firstname_error}</p>
+                    	</div>
+                	</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                          	<label for="user_wohnort"><f:translate key="user_wohnort">Wohnort</f:translate></label>
+                        	<input type="text" class="form-control user_wohnort required" size="30" value="{ses_wohnort}" name="tx_tntblumenshop_tntblumenshop[user_wohnort]" id="user_wohnort" />
+                    	</div>
+                	</div>
+                </div>
+				<div class="row thin">
+                	<div class="col-sm-6">
+                    	<h5><f:translate key="amount">Betrag</f:translate></h5>
+                        <div class="form-group radiobtn">
+                        	<label class="radio">
+                            	<f:form.radio name="price" value="{product_detail.price_1}" checked="{ses_price} == {product_detail.price_1}" class="custom-rdo" /><f:translate key="labelprice1_1">Fr.</f:translate>{product_detail.price_1}<f:translate key="labelprice1_2"></f:translate>
+                          	</label>
+                          	<label class="radio">
+                            	<f:form.radio name="price" value="{product_detail.price_2}" checked="{ses_price} == {product_detail.price_2}" class="custom-rdo" /><f:translate key="labelprice2_1">Fr.</f:translate>{product_detail.price_2}<f:translate key="labelprice2_2"></f:translate>
+                          	</label>
+                          	<label class="radio">
+                            	<f:form.radio name="price" value="{product_detail.price_3}" checked="{ses_price} == {product_detail.price_3}" class="custom-rdo" /><f:translate key="labelprice3_1">Fr.</f:translate>{product_detail.price_3}<f:translate key="labelprice3_2"></f:translate>
+                          	</label>
+                        </div>
+                        <p id="price_error" class="error_class">{price_error}</p>
+                   </div>
+                </div>	
+			</fieldset>
+			<fieldset class="pos-spec">
+				<div class="row request-comment">
+                	<div class="col-sm-12">
+                    	<h5><f:translate key="special_request">Besondere Wünsche oder Bemerkungen</f:translate></h5>
+                    </div>
+               	</div>
+               	<div class="row">
+                	<div class="col-sm-12">
+                    	<div class="form-group">
+                        	<label><f:translate key="special_request_subheader">(z.B. Wunschfarbe, spezieller Anlasse, bestimmter Liefertermin, etc.)</f:translate></label>
+                          	<f:form.textarea rows="10" name="special_request" value="{special_request}" class="span12" id="special_request" title="Besondere Wünsche oder Bemerkungen" />
+                          	<p id="specialrequest_error" class="error_class">{specialrequest_error}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row thin">
+                	<div class="col-sm-12">
+                    	<h5><f:translate key="price_extramap">Begleitkarte</f:translate></h5>
+                        <div class="form-group radiobtn">
+                        	<label class="radio">
+                            	<f:form.radio name="priceextra" value="1" checked="{ses_priceextra} == 1" class="custom-rdo1" /><f:translate key="priceextra1">Ich wünsche keine Karte</f:translate>
+                          	</label>
+                          	<label class="radio">
+                            	<f:form.radio name="priceextra" value="{flexformArray.price_extra1}" checked="{ses_priceextra} == {flexformArray.price_extra1}" class="custom-rdo1" /><f:translate key="priceextra2_1">Kleine Karte (Format ca. A7 CHF </f:translate>{flexformArray.price_extra1}<f:translate key="priceextra2_2">)</f:translate>
+                          	</label>
+                          	<label class="radio">
+                            	<f:form.radio name="priceextra" value="{flexformArray.price_extra2}" checked="{ses_priceextra} == {flexformArray.price_extra2}" class="custom-rdo1" /><f:translate key="priceextra3_1">Grosse Karte (Format ca. A6, CHF </f:translate>{flexformArray.price_extra2}<f:translate key="priceextra3_2">)</f:translate>
+                          	</label>
+                        </div>
+                        <p id="priceextra_error" class="error_class">{priceextra_error}</p>
+                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                          	<label for="text_cart"><f:translate key="text_cart">Text für Karte (max. 120 Zeichen ohne Leerschläge)</f:translate></label>
+                        	<textarea rows="10" class="span12" id="text_cart" name="tx_tntblumenshop_tntblumenshop[special_comments]" onfocus="charLimit(119);" onkeydown="return docharLimit(119,event);" onkeypress="return docharLimit(119,event);" onkeyup="return docharLimit(119,event);">{special_comments}</textarea>
+                    		<p id="textcart_error" class="error_class">{specialcomments_error}</p>
+                    	</div>
+                	</div>
+                </div>
+			</fieldset>
+   	 	  	<f:form.submit class="btn btn-primary" name="submit" value="Weiter" />
+		</f:form>
+	</f:for>
+	
+</section>
+	
+
+</f:section>

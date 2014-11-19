@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the TNT E-Learning extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_pitselearn_domain_model_elearning">Elearning</label>
+                        <label index="pits_elearn.main_head">Online-Lernfragen:</label>
+                        <label index="pits_elearn.sub_head">Teste jetzt dein Fachwissen</label>
+                        <label index="pits_elearn.no_selection">Nichts ausgewählt!</label>
+                        <label index="pits_elearn.answerEmpty_error">Bitte zuerst die Frage beantworten.</label>
+                        <label index="pits_elearn.proceed_next">Weiter</label>
+                        <label index="pits_elearn.previous">Zurück</label>
+                        <label index="pits_elearn.show_result">Zur Auswertung</label>
+                        <label index="pits_elearn.sponsertext_label">Bildungspartner: </label>
+                        <label index="pits_elearn.totalmark_label">Du hast &#60;span class="mark_highlight" style="color:green;"&#62;%s&#60;&#47;span&#62; der Fragen richtig beantwortet.</label>
+                        <label index="pits_elearn.questCount">FRAGE &#60;strong&#62;%s&#60;&#47;strong&#62; VON &#60;strong&#62;%s&#60;&#47;strong&#62;</label>
+                        <label index="pits_elearn.rightAnswer">Richtig</label>
+                        <label index="pits_elearn.wrongAnswer">Leider falsch</label>
+                        <label index="pits_elearn.resultDisplayHead">Auswertung</label>
+                        <label index="pits_elearn.checkAnswer">Antwort prüfen</label>
+                        <label index="pits_elearn.proceedtoNext">Zur nächsten Frage</label>
+                        <label index="pits_elearn.showSoln">Lösung anzeigen</label>
+                        <label index="pits_elearn.askAgain">Antwort nochmals prüfen</label>
+                        <label index="pits_elearn.selectChapter">Bitte wählen</label>
+                        <label index="pits_elearn.showImage">LÖsungsweg Anzeigen</label>
+                        <label index="pits_elearn.freetext_righttitle">Richtige Antwort:</label>
+                        <label index="pits_elearn.right_answer">Richtige Antwort</label>
+                        <label index="pits_elearn.reset">Antwort nochmals prüfen</label>
+                        <label index="pits_elearn.select_thema">Fachbereich</label>
+                        <label index="pits_elearn.select_chapter">Kapitel</label>
+		</languageKey>
+	</data>
+</T3locallang>

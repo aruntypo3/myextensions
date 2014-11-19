@@ -1,0 +1,49 @@
+plugin.tx_tntblumenshop {
+	view {
+		templateRootPath = {$plugin.tx_tntblumenshop.view.templateRootPath}
+		partialRootPath = {$plugin.tx_tntblumenshop.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_tntblumenshop.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_tntblumenshop.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	settings {
+		fixedPrice = {$plugin.tx_tntblumenshop.settings.fixedPrice}
+		listimgW = {$plugin.tx_tntblumenshop.settings.listimgW}
+		listimgH = {$plugin.tx_tntblumenshop.settings.listimgH}
+		detailimgW = {$plugin.tx_tntblumenshop.settings.detailimgW}
+		detailimgH = {$plugin.tx_tntblumenshop.settings.detailimgH}
+		currency = {$plugin.tx_tntblumenshop.settings.currency}
+		loaderW = {$plugin.tx_tntblumenshop.settings.loaderW}
+		loaderH = {$plugin.tx_tntblumenshop.settings.loaderH}
+	}
+}
+
+plugin.tx_tntblumenshop._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-tnt-blumenshop table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-tnt-blumenshop table th {
+		font-weight:bold;
+	}
+
+	.tx-tnt-blumenshop table td {
+		vertical-align:top;
+	}
+)

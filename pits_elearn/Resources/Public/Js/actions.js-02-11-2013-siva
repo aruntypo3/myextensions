@@ -1,0 +1,125 @@
+
+$(document).ready(function() {
+    //$('a.lightbox').lightBox();
+    //$("a.lightbox").slimbox();
+    $('.green-box').hide();
+    $("#ansimage").live("click" , function (){
+        var imageSrc = $(this).attr("href") ;
+        jQuery.slimbox(imageSrc, "");
+        return false;
+    })
+
+    $('.qsolution').hide();
+    $('.title-ans').hide();
+    $('#questionsForm').each (function(){
+        this.reset();
+    });
+    themaValue = $('.select-thema').val();
+    domLenghth = $('.select-thema').length;
+    page_id =  $('.thema_page_id').val();
+    if(themaValue != '' && themaValue != 0 && domLenghth != 0 ){
+        doGetValue(themaValue,page_id);
+
+    }
+    $('#show_sol').click(function(){
+        $( '.solutions_class' ).css( "background", "#cbefc0" );
+        $('.ask_again').hide();
+        $("#showSolutionStatus").val(1);
+        $('.proceed_next').show();
+    });
+});
+function doGetValue(themaValue,pageId){
+    $.ajax({
+        type: "GET",
+        url: "?id="+pageId+"&tx_pitselearn_pitselearn[action]=ajaxChapters&tx_pitselearn_pitselearn[controller]=Elearning&tx_pitselearn_pitselearn[themaValue]="+themaValue,
+        success: function (data) {
+            $('#id-chapters_div').html(data)
+        }
+    })
+
+
+}
+
+function freetextAnswer(pageId, type)
+{
+	
+    var formData = $("#questionsForm").serialize();
+    $.ajax({
+        type: "GET",
+        cache: false,
+        url: "?id="+pageId+"&tx_pitselearn_pitselearn[action]=detail&tx_pitselearn_pitselearn[controller]=Elearning&tx_pitselearn_pitselearn[submit]=submit&tx_pitselearn_pitselearn[type]="+type+"&no_cache=1",
+        data: formData,
+        success: function (Response) {
+            obj = JSON.parse( Response );
+					
+            if(obj['proceed_next'] == 1 ){
+                //location.reload(true);
+                window.location.reload(true);
+                $('#show_sol').attr( 'disabled' );
+                return ;
+            }
+            if(obj['previousQuest'] == 1 ){
+                //location.reload(true);
+                window.location.reload(true);
+                $('#show_sol').attr( 'disabled' );
+                return ;
+            }
+			
+            if( obj['ansStatus'] == 1 &&  obj['errortext'] == '' ) {
+                $('.right_img').show();
+                $('.wrong_img').hide();
+                $('#error_text').html('');
+                $('.ask_again').hide();
+                $('.proceed_next').show();
+                $('#show_sol').removeAttr("disabled");
+            }else if ( obj['ansStatus'] == 0 &&  obj['errortext'] == '' ) {
+                $('.wrong_img').show();
+                $('.right_img').hide();
+                $('#error_text').html('');
+                $('#show_sol').removeAttr("disabled");
+                $('.ask_again_button').val("Ask Again");
+                $('.ask_again').show();
+                $('.proceed_next').hide();
+            }else {
+                $('#error_text').html(obj['errortext']);
+                $('.wrong_img').hide();
+                $('.right_img').hide();
+                $('#show_sol').attr( 'disabled' );
+                $('.ask_again').show();
+                $('.proceed_next').hide();
+            }
+        }
+    });
+	
+}
+
+
+function doShowAnswer(pageId,qId, qtype){
+    $.ajax({
+        type: "GET",
+        url: "?id="+pageId+"&tx_pitselearn_pitselearn[action]=showResult&tx_pitselearn_pitselearn[controller]=Elearning&tx_pitselearn_pitselearn[qType]="+qtype+"&tx_pitselearn_pitselearn[qId]="+qId,
+        success: function (data) {
+            if(qtype == 'dragdrop'){
+                obj = JSON.parse( data );
+                $.each(obj,function(index,value){
+                    var uid = value.uid;
+                    var imageName = "uploads/tx_pitselearn/"+value.dragdrop_answer_img ;
+                    var image = "<img width='180' height= '160'src='"+imageName+"'>";
+                    $( "table" ).find( "#dropSecond_"+value.uid ).html(image);
+                     $("#dropSecond_"+value.uid).removeClass( "empty_container" ).addClass( "only" );
+                    $('.green-box').show();
+
+                });
+            }else if(qtype == 'freetext'){
+                $('.qsolution').html(data);
+                $('.title-ans').show();
+                $('.qsolution').show();
+            }
+        }
+    })
+
+
+
+
+
+}

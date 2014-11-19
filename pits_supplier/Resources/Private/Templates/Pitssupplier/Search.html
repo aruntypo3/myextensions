@@ -1,0 +1,26 @@
+<f:layout name="Default" />
+<f:section name="main">
+<f:flashMessages class="noResult"/>
+<div id="replacing_div">
+		<div class="alphadetails">
+			<div class="accordion" id="accordion-3">
+				<f:for each="{supplierSearch}" as="supplierData" key="title">
+					<div id="div_main_{title}" class="common_class" >
+						<div id="div_title_{title}" class="contentul title_alphabet" >
+							<a href="javascript:void(0)" class="active" >{title}</a><a href="{supplierList.currentUrl}#top" class="gotolink"><f:translate key="tx_pitssupplier_domain_model_pitssupplier.totop">NACH OBEN</f:translate></a>
+						</div>
+						<ul id="div_content_{title}" class="supplier_listing">
+							<f:for each="{supplierData}" as="individualData" key="key">
+								<li>
+									<span class="showSupplierTitle" id="supplier_{individualData.uid}">
+										<a href="javascript:void(0);" class="detail-link" onclick="return showDetails('{individualData.uid}','{supplierList.pid}','{supplierList.languageUid}')">{individualData.supplier_name}</a>
+									</span>
+								</li>	
+							</f:for>
+						</ul>
+					</div>
+				</f:for>
+			</div>
+		</div>
+</div>
+</f:section>

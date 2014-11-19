@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the TNT Supplier extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_pitssupplier_domain_model_pitssupplier">Pitssupplier</label>
+			<label index="tx_pitssupplier_domain_model.allSupplierdata">Alle</label>
+			<label index="tx_pitssupplier_domain_model_digits_only">0-9</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.totop">NACH OBEN</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.address">Adresse</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.plz">PLZ, Ort</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.telefone">Telefon</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.fax">Fax</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.email">E-Mail</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.web1">Website</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.web2">Website 2</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.b2bwebshop">B2B-Webshop</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.brandNames">Marken</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.searchboxVal">FIRMENNAME / LIEFERANT</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.searchtitle">SUCHE:</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.search_button">SUCHEN</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.backtoList">ZURÜCK ZUR ÜBERSICHT</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.no_results">Kein Ergebnis für die Abfrage gefunden!</label>
+			<label index="tx_pitssupplier_domain_model_pitssupplier.detailText">Markeneinträge mit einem Stern * bezeichnen offizielle Untervertreiber. Deren Sortiment dieser Marke ist teilweise eingeschränkt und mit reduzierten Serviceleistungen verbunden.</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,17 @@
+plugin.tx_pitssupplier {
+	view {
+		# cat=plugin.tx_pitssupplier/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:pits_supplier/Resources/Private/Templates/
+		# cat=plugin.tx_pitssupplier/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:pits_supplier/Resources/Private/Partials/
+		# cat=plugin.tx_pitssupplier/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:pits_supplier/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_pitssupplier//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		scrollToJs = typo3conf/ext/pits_supplier/Resources/Public/Js/scrollTo.js
+	}
+}

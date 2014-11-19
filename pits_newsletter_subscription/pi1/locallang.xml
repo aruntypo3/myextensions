@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_pitsnewslettersubscription_pi1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="list_mode_1">Mode 1</label>
+			<label index="list_mode_2">Mode 2</label>
+			<label index="list_mode_3">Mode 3</label>
+			<label index="back">Back</label>
+			<label index="submit_button_label">Click here to submit value</label>
+			<label index="success_message">Vielen Dank für das Abonnement unseres Newsletters.</label>
+			<label index="error_message">Sie sind bereits für Cyclinfo Newsletter abonniert.</label>
+			<label index="mail_msg">Hi,&#60;&#98;&#114;&#62;&#60;&#98;&#114;&#62;Bitte klicken Sie hier, um den Newsletter zu abonnieren:&#60;br&#47;&#62;
+									&#60;a href="%s"&#62;%s&#60;&#47;a&#62; &#60;br&#47;&#62;&#60;br&#47;&#62;
+									Falls Sie diese E-Mail versehentlich erhalten haben, löschen Sie sie einfach. 
+									Sie werden nicht in unseren Verteiler eingetragen, wenn Sie nicht auf den Bestätigungs-Link klicken.&#60;&#98;&#114;&#62;&#60;&#98;&#114;&#62;
+									Für Fragen zu diesem Verteiler wenden Sie sich bitte an:&#60;br&#47;&#62;
+									&#60;a href="mailto:mail@cyclinfo.ch"&#62;mail@cyclinfo.ch&#60;&#47;a&#62;</label>
+			<label index="regsuccess_msg">Anmeldung bestätigt.&#60;br&#47;&#62;
+									Ihre Eintragung in unseren Verteiler ist jetzt bestätigt.&#60;br&#47;&#62;&#60;br&#47;&#62;
+									Vielen Dank für Ihre Anmeldung.</label>					
+		</languageKey> 
+	</data>
+</T3locallang>

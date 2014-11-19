@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the TNT Banner Management extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_pitsbannerimages_domain_model_bannermanagement">Bannermanagement</label>
+			<label index="tx_pitsbannerimages_domain_model_bannerbackend">Bannerbackend</label>
+		</languageKey>
+	</data>
+</T3locallang>

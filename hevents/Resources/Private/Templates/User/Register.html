@@ -1,0 +1,113 @@
+{namespace k=Tx_Hevents_ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<h2><f:translate key="register.register" /></h2>
+
+<f:render partial="FormErrors" />
+
+<f:form method="post" action="submit" name="arrayuser" noCacheHash="1">
+	
+	<table width="70%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td colspan="2">
+				<label for="email"><f:translate key="register.email" /></label>
+				<f:form.textfield property="email" id="email" value="{user.email}" /><br />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="pwd"><f:translate key="register.password" /></label>
+				<f:form.password property="password" id="password" /><br />
+			</td>
+			<td><label for="password_confirm"><f:translate key="register.passwordconfirm" /></label>
+				<f:form.password property="password_confirm" id="password_confirm" /><br />
+			</td>
+		</tr>
+	</table>
+	
+	
+	<br />
+
+	<table width="70%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<label for="name"><f:translate key="tx_hevents_domain_model_booking.name" /></label>
+				<f:form.textfield property="lastName" id="name" value="{user.lastName}"/><br />
+			</td>
+			<td>
+				<label for="forename"><f:translate key="tx_hevents_domain_model_booking.forename" /></label>
+				<f:form.textfield property="firstName" id="forename" value="{user.firstName}"/><br />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="address"><f:translate key="tx_hevents_domain_model_booking.address" /></label>
+				<f:form.textfield property="address" id="adress" value="{user.address}"/><br />
+			</td>
+			<td>
+				<label for="zip"><f:translate key="tx_hevents_domain_model_booking.zip" /></label>
+				<f:form.textfield property="zip" id="zip" value="{user.zip}"/><br />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="city"><f:translate key="tx_hevents_domain_model_booking.city" /></label>
+				<f:form.textfield property="city" id="city" value="{user.city}"/><br />
+			</td>
+			<td>
+				<label for="country"><f:translate key="tx_hevents_domain_model_booking.country" /></label>
+				<f:form.select name="country" options="{countrylist}" property="country" id="country" value="{user.country}" /><br />
+				<f:comment><f:form.textfield id="country" property="country" value="{user.country}"/><br /><br /></f:comment>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<label for="delevieraddress"><f:translate key="tx_hevents_domain_model_booking.delevieraddress" /></label>
+				<f:form.checkbox id="delevieraddress" property="delevieraddress" value="1" checked="{booking.delevieraddress}" id="delevieraddress"/>
+			</td>
+		</tr>
+		</table>
+		<br/>
+		
+		<div id="delevieraddress-container" style="display:none;">
+		<table width="70%" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<label for="dname"><f:translate key="tx_hevents_domain_model_booking.dname" /></label>
+				<f:form.textfield property="dname" value="{user.dname}"/><br />
+			</td>
+			<td>
+				<label for="dforename"><f:translate key="tx_hevents_domain_model_booking.dforename" /></label>
+				<f:form.textfield property="dforename" value="{user.dforename}"/><br />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="daddress"><f:translate key="tx_hevents_domain_model_booking.daddress" /></label>
+				<f:form.textfield property="daddress" value="{user.daddress}"/><br />
+			</td>
+			<td>
+				<label for="dzip"><f:translate key="tx_hevents_domain_model_booking.dzip" /></label>
+				<f:form.textfield property="dzip" value="{user.dzip}"/><br />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="dcity"><f:translate key="tx_hevents_domain_model_booking.dcity" /></label>
+				<f:form.textfield property="dcity" value="{user.dcity}"/><br />
+			</td>
+			<td>
+				<label for="dcountry"><f:translate key="tx_hevents_domain_model_booking.dcountry" /></label>
+				<f:form.select name="dcountry" options="{countrylist}" property="dcountry" id="dcountry" value="{user.dcountry}" /><br />
+				<f:comment><f:form.textfield property="dcountry" value="{user.dcountry}"/><br /><br /></f:comment>
+			</td>
+		</tr>
+	</table>
+	</div>
+
+	<f:form.submit value="{f:translate(key:'basic.register')}" /></div>
+</f:form>
+
+</f:section>

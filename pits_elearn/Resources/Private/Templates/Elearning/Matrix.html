@@ -1,0 +1,135 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script type="text/javascript" src="typo3conf/ext/pits_elearn/Resources/Public/Js/actions.js"></script>
+<div class="tnt_questions">
+<section class="partner-block">
+	<ul class="list">
+		<f:for each="{questionsRecord.partnerImages}" as="counter">
+			<li>
+				<f:link.page pageUid="{questionsRecord.detailPage}" additionalParams="{tx_pitspartner_pitspartner: {uid: counter.uid}}">
+					<f:image src="fileadmin/Dateien/Bildungspartner/Logos_sw/{counter.user_image}" width="102c" height="73c" alt="{counter.title}" />
+				</f:link.page>
+			</li>
+		</f:for>
+	</ul>
+</section>
+
+<article class="post-block">
+	<div class="question-controllbar">
+		<div class="previous">
+			<f:if condition="{questionsRecord.firstRecordFlag} == 0">
+				<a href="javascript:void(0)" onclick="return freetextAnswer('{pageId}','previous_quest')">
+					<f:translate key="pits_elearn.previous">Previous</f:translate>
+				</a>
+			</f:if>		
+		</div>
+        <div class="question-counter"><f:format.htmlentitiesDecode>{questionCount.counter}</f:format.htmlentitiesDecode></div>
+        <div class="next">
+        	<f:if condition="{questionsRecord.lastRecordFlag} == 0">
+        		<f:then>
+        			<a href="javascript:void(0)" onclick="return freetextAnswer('{pageId}','next_quest')">
+        				<f:translate key="pits_elearn.proceed_next">Next</f:translate>
+        			</a>
+        		</f:then>
+        		<f:else>
+                	<a href="javascript:void(0)" onclick="return freetextAnswer('{pageId}','next_quest')">
+        				<f:translate key="pits_elearn.show_result">Zur Auswertung</f:translate>
+        			</a>
+        		</f:else>	
+        	</f:if>
+          </div>
+    </div>
+</article>
+ 
+<f:form action="detail" name="questionsForm" id="questionsForm">
+	<div class="question-head">
+		<p class="quest_title"><strong>{matrixQuestionsOptions.main.matrix_question_title}</strong></p>
+		<p class="quest_text">{matrixQuestionsOptions.main.matrix_question_text}</p>
+		<span id="error_text"></span>
+	</div>
+	 <div class="image-holder fl-right">
+    	<f:if condition="{matrixQuestionsOptions.main.matrix_question_img}">
+            <f:image  class="question_image" style="display:none;" src="fileadmin/{questionsRecord.question_image}" width="500m" height="500m" alt="" />
+            <f:image src="fileadmin/{matrixQuestionsOptions.main.matrix_question_img}" width="310m" height="306m" alt="" />
+        </f:if>
+    </div>
+	<div class="fl-left choices">
+	<div class="qst-matrix">
+	<table border="0" cellpadding="1" cellspacing="1" width="100%">
+    <tr>
+        <th>&nbsp;</th>
+        <th><span class="matrix_colhead">{matrixQuestionsOptions.main.matrix_question_colname1}</span></th>
+        <th><span class="matrix_colhead">{matrixQuestionsOptions.main.matrix_question_colname2}</span></th>
+        <th><span class="matrix_colhead">{matrixQuestionsOptions.main.matrix_question_colname3}</span></th>
+    </tr>
+    
+    <f:for each="{matrixQuestionsOptions.quest}" as="question" key="uid">
+    <tr>
+		<td>{question.title}</td>
+        <f:for each="{question.options}" as="opt" key="id">
+        	<f:if condition="{opt.isRight}==1"><f:then>
+            	<td class="{answerClass}"></f:then>
+            <f:else><td class=""></f:else>
+            </f:if>
+         	<input type="checkbox" name="tx_pitselearn_pitselearn[answerData][mat_question_id][{question.quest_id}][]" value="{opt.id}" {opt.checked} />
+         	<input type="hidden" name="tx_pitselearn_pitselearn[answerData][matrixQuestionId][]" value="{question.quest_id}" {opt.checked} />
+            </td>
+       </f:for>
+    </tr>
+    </f:for>
+    </table>
+	</div>
+	</div>
+    
+     <div class="btn-wrapper">
+    <input type="hidden"  value="{questionsRecord.question_id}" name="tx_pitselearn_pitselearn[quest_uid]">
+    <input type="hidden" id="showSolutionStatus" value="{buttonOpt.showSolutionStatus}" name="tx_pitselearn_pitselearn[quest_status]">
+    
+    
+    
+     <span class="right_img" style="display:none;">
+     	<f:image src="typo3conf/ext/pits_elearn/Resources/Public/Icons/right_img.png" width="40" height="44" alt="" /><f:translate key="pits_elearn.rightAnswer">Richtig</f:translate>
+     </span>
+     
+     <span class="wrong_img" style="display:none;">
+     	<f:image src="typo3conf/ext/pits_elearn/Resources/Public/Icons/wrong_img.png" width="40" height="44" alt="" /><f:translate key="pits_elearn.wrongAnswer">Leider falsch</f:translate>
+     </span>
+     
+    <span class="ask_again" style="display: {buttonOpt.showAskAgain};">
+    	<input type="button" class="bs-btn" name="tx_pitselearn_pitselearn[submit]" value="{buttonOpt.askAgainButtonValue}" onclick="return freetextAnswer('{pageId}','answer_submit')" />
+    </span>
+    
+    <f:if condition="{questionsRecord.lastRecordFlag} == 0">
+        <f:then>
+    		<span class="proceed_next {buttonOpt.buttonChange}">
+    			<input type="button" class="bs-btn" name="tx_pitselearn_pitselearn[nextQuestion]" value="<f:translate key='pits_elearn.proceedtoNext'>Zur nächsten Frage</f:translate>" onclick="return freetextAnswer('{pageId}','next_quest')" />
+    		</span>
+    	</f:then>
+    	<f:else>
+    		<span class="proceed_next {buttonOpt.buttonChange}">
+    			<input type="button" class="bs-btn" name="tx_pitselearn_pitselearn[nextQuestion]" value="<f:translate key='pits_elearn.show_result'>Zur Auswertung</f:translate>" onclick="return freetextAnswer('{pageId}','next_quest')" />
+    		</span>
+    	</f:else>
+    </f:if>		
+
+    <f:if condition="{buttonOpt.showSolStatus}">
+    	<f:then>
+
+		</f:then>
+		<f:else>
+			<span class="{buttonOpt.showSolnButtonChange}">
+    			<input type="button" id="show_sol" class="show_solution" name="tx_pitselearn_pitselearn[submit]" {buttonOpt.showSolnButtonEnable} onclick="return doShowAnswer('{pageId}','{questionsRecord.question_id}','{questionsRecord.type}')" value="<f:translate key='pits_elearn.showSoln'>Lösung anzeigen</f:translate>" />
+    		</span>
+		</f:else>
+    </f:if>	
+    </div>
+   </f:form>
+
+   <div class="edu-partners">
+   		<div class="inner-edu-partners">
+        	<p>{questionsRecord.sponsertext_label}<f:link.external uri="{questionsRecord.sponser_link}" target="_blank">{questionsRecord.sponser_link}</f:link.external></p>
+        </div>
+   </div>
+  </div>
+
+</f:section>

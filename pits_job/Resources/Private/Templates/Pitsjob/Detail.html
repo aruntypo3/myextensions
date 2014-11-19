@@ -1,0 +1,21 @@
+<f:layout name="Default" />
+<f:section name="main">
+ <h1>{jobDetail.job_title}</h1>
+ <div class="detailed_content">
+  <div class="short_content">
+ 		<f:format.raw>{jobDetail.short_description}</f:format.raw>
+ 	</div> 
+ 	<div class="detail_content">
+ 		<f:format.raw>{jobDetail.detail_description}</f:format.raw>
+ 	</div>
+ 	<f:if condition="{jobDetail.contact_info}">
+ 		<div class="contact_block">
+ 			<span><f:translate key='kontact_detailhead'>Kontakt</f:translate>:</span>
+ 			<f:format.raw>{jobDetail.contact_info}</f:format.raw>
+ 		</div>	
+	</f:if>
+ </div>
+ <a href="javascript:void(0);" onclick="history.go(-1);return false;" class="more">
+		<span><f:translate key='backto_jobs_search'>ZURÜCK</f:translate></span>
+ </a>
+</f:section>

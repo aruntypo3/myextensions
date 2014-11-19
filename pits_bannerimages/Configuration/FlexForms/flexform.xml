@@ -1,0 +1,79 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.flexform_title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.image_position>
+					<TCEforms>
+					      <label>LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.select_position</label>
+					      <config>
+					           <type>select</type>
+					           <items type="array">
+					                <numIndex index="0" type="array">
+					                	<numIndex index="0">LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.middle_column</numIndex>
+					                	<numIndex index="1">first_column</numIndex>
+					              	</numIndex>
+					                <numIndex index="1" type="array">
+					                	<numIndex index="0">LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.right_column</numIndex>
+					                	<numIndex index="1">second_column</numIndex>
+					                </numIndex>
+					                <numIndex index="2" type="array">
+					                	<numIndex index="0">LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.third_column</numIndex>
+					                	<numIndex index="1">third_column</numIndex>
+					                </numIndex>
+					                <numIndex index="3" type="array">
+					                	<numIndex index="0">LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.top_banner</numIndex>
+					                	<numIndex index="1">top_banner</numIndex>
+					                </numIndex>
+					           </items>   
+					           <maxitems>1</maxitems>
+					           <size>1</size>
+					       </config>
+					</TCEforms>
+					</settings.image_position>    
+					<settings.flexform.selected_images>
+					<TCEforms>
+						<label>LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.select_image</label>
+						<config>
+                               <type>select</type>
+                               <foreign_table>tx_pitsbannerimages_domain_model_bannermanagement</foreign_table>
+                               <foreign_table_where>and tx_pitsbannerimages_domain_model_bannermanagement.deleted=0 and tx_pitsbannerimages_domain_model_bannermanagement.hidden=0 and tx_pitsbannerimages_domain_model_bannermanagement.sys_language_uid=###REC_FIELD_sys_language_uid###</foreign_table_where>                               
+                               <maxitems>10000</maxitems>
+                               <size>10</size>
+                               <multiple>0</multiple>
+                               <selectedListStyle>width:300px</selectedListStyle>
+                               <itemListStyle>width:300px</itemListStyle>
+                       </config>
+					</TCEforms>
+					</settings.flexform.selected_images>
+                    <settings.show_random>
+						<TCEforms>
+							<label>LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.show_random_image</label>
+							<config>
+								 <type>check</type>
+							</config>
+						</TCEforms>
+					</settings.show_random>
+                    <settings.image_width>
+						<TCEforms>
+							<label>LLL:EXT:pits_bannerimages/Resources/Private/Language/locallang_db.xml:tx_pitsbannerimage.image_width</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+							</config>
+						</TCEforms>
+					</settings.image_width>
+				</el>
+			</ROOT>
+	    </sDEF>
+	</sheets>
+</T3DataStructure>
+
+

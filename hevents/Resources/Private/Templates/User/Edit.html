@@ -1,0 +1,101 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<f:if condition="{islogged}">
+	<f:then>
+		<f:render partial="FormErrors" />
+	
+		<div class="errordiv" id="email_div"><span id="email_span"><f:translate key="tx_hevents_domain_model_booking.error.email">Mandatory</f:translate></span><br/></div>
+		<div class="errordiv" id="name_div"><span id="name_span"><f:translate key="tx_hevents_domain_model_booking.error.name">Mandatory</f:translate></span><br/></div>
+		<div class="errordiv" id="forename_div"><span id="forename_span"><f:translate key="tx_hevents_domain_model_booking.error.forename">Mandatory</f:translate></span><br/></div>
+		<div class="errordiv" id="address_div"><span id="address_span"><f:translate key="tx_hevents_domain_model_booking.error.address">Mandatory</f:translate></span><br/></div>
+		<div class="errordiv" id="zip_div"><span id="zip_span"><f:translate key="tx_hevents_domain_model_booking.error.zip">Mandatory</f:translate></span><br/></div>
+		<div class="errordiv" id="city_div"><span id="city_span"><f:translate key="tx_hevents_domain_model_booking.error.city">Mandatory</f:translate></span><br/></div>
+		<div class="errordiv" id="country_div"><span id="country_span"><f:translate key="tx_hevents_domain_model_booking.error.country">Mandatory</f:translate></span><br/></div>
+		
+		<f:form method="post" action="submitedit" name="user" object="{user}" noCacheHash="1" onsubmit="return validateForm()">
+		<table width="70%" cellspacing="0" cellpadding="0">
+			<tr>
+				<td colspan="2">
+					<label for="email"><f:translate key="tx_hevents_domain_model_booking.email" /></label>
+					<f:form.textfield property="email" id="email" /><br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="name"><f:translate key="tx_hevents_domain_model_booking.name" /></label>
+					<f:form.textfield property="lastName" id="name" /><br />
+				</td>
+				<td>
+					<label for="forename"><f:translate key="tx_hevents_domain_model_booking.forename" /></label>
+					<f:form.textfield property="firstName" id="forename" /><br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="address"><f:translate key="tx_hevents_domain_model_booking.address" /></label>
+					<f:form.textfield property="address" id="adress" /><br />
+				</td>
+				<td>
+					<label for="zip"><f:translate key="tx_hevents_domain_model_booking.zip" /></label>
+					<f:form.textfield property="zip" id="zip" /><br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="city"><f:translate key="tx_hevents_domain_model_booking.city" /></label>
+					<f:form.textfield property="city" id="city" /><br />
+				</td>
+				<td>
+					<label for="country"><f:translate key="tx_hevents_domain_model_booking.country" /></label>
+					<f:form.textfield id="country" property="country" /><br />
+				</td>
+			</tr>
+			<tr>
+				<td cospan="2">
+					<br/>
+					<h3><f:translate key="tx_hevents_domain_model_booking.delevieraddress" /></h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="dname"><f:translate key="tx_hevents_domain_model_booking.dname" /></label>
+					<f:form.textfield property="dname" /><br />
+				</td>
+				<td>
+					<label for="dforename"><f:translate key="tx_hevents_domain_model_booking.dforename" /></label>
+					<f:form.textfield property="dforename" /><br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="daddress"><f:translate key="tx_hevents_domain_model_booking.daddress" /></label>
+					<f:form.textfield property="daddress" /><br />
+				</td>
+				<td>
+					<label for="dzip"><f:translate key="tx_hevents_domain_model_booking.dzip" /></label>
+					<f:form.textfield property="dzip" /><br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="dcity"><f:translate key="tx_hevents_domain_model_booking.dcity" /></label>
+					<f:form.textfield property="dcity" /><br />
+				</td>
+				<td>
+					<label for="dcountry"><f:translate key="tx_hevents_domain_model_booking.dcountry" /></label>
+					<f:form.textfield property="dcountry" /><br /><br />
+				</td>
+			</tr>
+		</table>
+	
+			<f:form.submit value="{f:translate(key:'basic.save')}" /></div>
+		</f:form>
+	</f:then>
+	<f:else>
+		<f:translate key="basic.login" />
+	</f:else>
+</f:if>	
+
+</f:section>

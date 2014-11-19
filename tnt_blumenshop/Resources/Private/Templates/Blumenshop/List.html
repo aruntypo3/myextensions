@@ -1,0 +1,30 @@
+<f:layout name="Default" />
+<f:section name="main">
+<f:if condition="{imageArray}">
+  <article>
+  	<h1>{flexformArray.title}</h1>
+  	<p>{flexformArray.intro_text}</p>
+  </article>
+  
+  <section class="mod schritt">
+  	<div class="mod-highlight infos cta">
+  		<a class="active" href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step1">Schritt 1</f:translate></i></span></a>
+  		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step2">Schritt 2</f:translate></i></span></a>
+  		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step3">Schritt 3</f:translate></i></span></a>
+  		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step4">Schritt 4</f:translate></i></span></a>
+  	</div>
+  	<h3><f:translate key="tx_tntblumenshop.selectProduct">Wählen Sie Ihre Blumenkategorie</f:translate></h3>
+  	<div class="row">
+  		<f:for each="{imageArray}" as="shop_images" key="number">
+  			<div class="col-xs-6 col-md-4">
+  				<f:link.action action="show" arguments="{product_uid: shop_images.uid}">
+  					<f:image src="uploads/tx_tntblumenshop/{shop_images.image}" alt="{shop_images.title}" width="{listimgW}m" height="{listimgH}m" />
+  				</f:link.action>
+  				<f:link.action action="show" arguments="{product_uid: shop_images.uid}">{shop_images.title}</f:link.action>
+  				<f:link.action action="show" arguments="{product_uid: shop_images.uid}" class="category"><f:translate key="order_product">bestellen</f:translate></f:link.action>
+  			</div>
+  		</f:for>
+  	</div>
+  </section>
+</f:if>
+</f:section>

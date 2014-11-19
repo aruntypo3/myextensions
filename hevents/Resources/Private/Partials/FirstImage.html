@@ -1,0 +1,8 @@
+<f:if condition="{f:count(subject:event.images)}">
+	<f:then>
+		<img src="{f:uri.image(src:event.images.0,width:width,height:height)}" alt="{event.title}" />
+	</f:then>
+	<f:else>
+		<img src="{f:uri.image(src:'{sliderDummyImage}',width:width,height:height)}" alt="{event.title}" />
+	</f:else>
+</f:if>

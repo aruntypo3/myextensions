@@ -1,0 +1,46 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+    <f:if condition="{pages.jqueryEnable}">
+       <script src="typo3conf/ext/tnt_download_module/Resources/Public/Js/jquery-1.9.0.min.js" type="text/javascript"></script>
+    </f:if>
+    <link rel="stylesheet" type="text/css" media="all" href="typo3conf/ext/tnt_download_module/Resources/Public/Css/all2.css">
+    <script src="typo3conf/ext/tnt_download_module/Resources/Public/Js/main.js" type="text/javascript"></script>
+    <input type="hidden" id="page_id" value="{pages.id}"/>
+    <input type="hidden" id="page_lang" value="{pages.lang}"/>
+    <div class="tx-tnt-download-module-filters">
+        <ul id="tx-tnt-download-module-container" class="filtersList">
+            <li class="clearfix filterItem drilldownFilter">
+                <span class="header drilldownFilter"><f:translate key="thema_label">Thema</f:translate></span>
+                <span class="fields drilldownFilter">
+                    <select id="thema_selector">
+                        <option value=""><f:translate key="empty_thema">Bitte wählen Sie ein Thema</f:translate></option>
+                        <f:for each="{categories}" as="category" iteration="itemIteration">
+                            <option value="{category.parentId}">{category.category_title}</option>
+                        </f:for>
+                    </select>
+                    <a href='javascript:void(0);' onclick='resetData(1)' class="reset"></a>
+                    <span id='step2'></span>
+
+                </span>
+            </li>
+            <li class="clearfix filterItem searchfieldFilter">
+                <span class="header searchfieldFilter"><f:translate key="text_filter">Suchbegriff</f:translate></span>
+                <span class="fields searchfieldFilter">
+                    <input type="text" style="" class="filter" id ="filter_text" value="">
+                </span>
+                <a href='javascript:void(0);' onclick='resetData(2)' class="reset"></a>
+            </li>
+            <li class="filterItem permalink">
+                <a id="permaLink" href="javascript:void(0);"><f:translate key="perma_link">Premalink</f:translate></a>
+            </li>
+        </ul>
+    </div>
+    <div class="ajaxLoadingIndicator" style="display: none;">
+        <img align="left" src="/typo3conf/ext/tnt_download_module/Resources/Public/images/reloading.gif" alt="">
+        <f:translate key="loaderText">lade Daten, bitte warten</f:translate>
+    </div>
+    <div id="documnets" class="documnets">
+    </div>
+</f:section>

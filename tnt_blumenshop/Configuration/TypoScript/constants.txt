@@ -1,0 +1,24 @@
+plugin.tx_tntblumenshop {
+	view {
+		# cat=plugin.tx_tntblumenshop/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:tnt_blumenshop/Resources/Private/Templates/
+		# cat=plugin.tx_tntblumenshop/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:tnt_blumenshop/Resources/Private/Partials/
+		# cat=plugin.tx_tntblumenshop/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:tnt_blumenshop/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_tntblumenshop//a; type=string; label=Default storage PID
+		storagePid =
+	}
+        settings {
+		fixedPrice = 7.00
+		listimgW = 210
+		listimgH = 210
+		detailimgW = 215
+		detailimgH = 215
+		currency = CHF
+		loaderW = 100
+		loaderH = 65
+	}
+}

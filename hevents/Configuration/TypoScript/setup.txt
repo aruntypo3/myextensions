@@ -1,0 +1,113 @@
+page.includeCSS.tx_hevents = EXT:hevents/Resources/Public/Css/main.css
+
+plugin.tx_hevents {
+	view {
+		templateRootPath = {$plugin.tx_hevents.view.templateRootPath}
+		partialRootPath = {$plugin.tx_hevents.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_hevents.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_hevents.persistence.storagePid}
+	}
+	
+  features {
+     rewrittenPropertyMapper = 0
+  }
+  
+	settings {
+		
+		#jQuery
+		addJQuery = 1
+		JQueryVerion = 1.6
+		JQueryUiVerion = 1.8
+		jQueryThemeCss = http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/cupertino/jquery-ui.css
+		
+		similarCnt = 3
+		
+		singlePage = TEXT
+		singlePage.value = 17
+		
+		registerPid = 4
+		
+		#flexible [0..n] = content
+		redSlider {
+			0 = RECORDS
+			0.tables = tt_content
+			0.source = 15
+			1 = RECORDS
+			1.tables = tt_content
+			1.source = 16
+			2 = RECORDS
+			2.tables = tt_content
+			2.source = 17
+		}
+		
+		#example Typoscript Title
+		eventTitle = RECORDS
+		eventTitle {
+			tables = tx_hevents_domain_model_event
+			conf.tx_hevents_domain_model_event = TEXT
+			conf.tx_hevents_domain_model_event.field = title
+			source.data = GP:tx_hevents_pi1|event
+		}
+		
+		#example Typoscript Title
+		userFavs = RECORDS
+		userFavs {
+			tables = fe_users
+			conf.fe_users = TEXT
+			conf.fe_users.field = favs
+			source.data = TSFE:fe_user|user|uid
+		}
+		
+		sliderDummyImage = TEXT
+		sliderDummyImage = fileadmin/templates/img/dummy_slider.jpg
+		
+		maxPrice = 3000
+		
+		loginBox = RECORDS
+		loginBox.tables = tt_content
+		loginBox.source = 3
+		
+		user {
+			pid = 14
+			# needs to be set to Tx_Extbase_Domain_Model_FrontendUserGroup
+			group = 1
+			
+			register {
+				mail {
+					sender = info@henry.kommando.info
+				}
+			}
+		}
+		
+		paypal {
+			url = TEXT
+			
+			## LIVE
+			#url.value = https://www.paypal.com/cgi-bin/webscr
+			
+			## Debug
+			url.value = https://www.sandbox.paypal.com/cgi-bin/webscr
+			
+			email = TEXT
+			email.value = eric_e_1361146240_biz@web.de
+			returnUrl = TEXT
+			returnUrl.typolink {
+				parameter = 2
+				returnLast = url
+				forceAbsoluteUrl = 1 
+			}
+		}
+		
+		saferpay {
+			url = https://www.saferpay.com/hosting/CreatePayInit.asp
+			paymentConfirmUrl = https://www.saferpay.com/hosting/VerifyPayConfirm.asp
+			paymentCompleteUrl = https://www.saferpay.com/hosting/paycompletev2.asp
+			accountId = 99867-94913159
+			responsePid = 21
+		    adminEmail = tom.novak@abteilung.ch
+		    adminName = Henry & Fine
+      	}
+	}
+}

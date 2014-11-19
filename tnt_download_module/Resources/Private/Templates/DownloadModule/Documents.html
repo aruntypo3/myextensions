@@ -1,0 +1,53 @@
+<f:layout name="AjaxSubcat"/>
+
+<f:section name="main">
+    <f:format.html parseFuncTSPath="">{downloadModule.pageNation}</f:format.html>
+    <input type='hidden' value='{permaLink}' id='permalink'/>
+    <f:if condition="{downloadModule.data}">
+        <f:then>
+            <table id="keyword" cellspacing="0" cellpadding="0">
+            	 <thead>
+                    <tr></tr>
+                </thead>
+	            <tbody>
+	                <f:for each="{downloadModule.data}" as="downloadFile" iteration="itemIteration">
+	                    <tr>
+		                    <f:if condition="{downloadFile.isDownloable}">
+		                        <f:then>
+		                        	<td class="lalign">
+		                            	<f:link.action action="file" controller="DownloadModule" arguments="{fileId: downloadFile.identifier}">{downloadFile.document_title}</f:link.action>
+		                        	</td>
+		                        	<td class="lalign">&nbsp;</td>
+		                        </f:then>
+		                        <f:else>
+		                        	<td class="lalign">
+		                        		 <f:if condition="{loginPageId}">
+		                        			<f:then>
+		                            			<f:link.page pageUid="{loginPageId}">{downloadFile.document_title}</f:link.page>
+		                            		</f:then>
+		                            		<f:else>
+		                            		   {downloadFile.document_title}
+		                            		</f:else>	
+		                            	</f:if>
+		                            </td>
+		                            <td class="lalign">
+		                        		<img src="typo3conf/ext/tnt_download_module/Resources/Public/images/tab_stop.png" alt="protected_img" />
+		                        	</td>
+		                        </f:else>
+		                    </f:if>
+		                    </td>
+		                    <td class="lalign">{downloadFile.document_language}</td>
+		                    <td class="lalign">{downloadFile.size}<span> K</span></td>
+		                    <td class="lalign"><span class='file_{downloadFile.extension}'><img src="typo3conf/ext/tnt_download_module/Resources/Public/images/file-{downloadFile.extension}.png" alt="#" width="20" height="20" border="0" /></span></td>
+		                    </tr>
+	                </f:for>
+	            </tbody>
+            </table>
+            <f:format.html parseFuncTSPath="">{downloadModule.pageNation}</f:format.html>
+        </f:then>
+        <f:else>
+            <p class="info"><f:translate key="docTableNodata">Die gegenw�rtige Filterung ergibt keine Treffer.</f:translate></p>
+        </f:else>
+    </f:if>
+     
+</f:section>

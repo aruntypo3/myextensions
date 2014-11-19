@@ -1,0 +1,278 @@
+<?php
+
+/* * *************************************************************
+ *  Copyright notice
+ *
+ *  (c) 2013 Sivaprasad,Abin <abin.s@pitsolutions.com,sivaprasad.s@pitsolutions.com>, PITS
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ * ************************************************************* */
+
+/**
+ *
+ *
+ * @package pits_elearn
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ *
+ */
+class Tx_PitsElearn_Domain_Model_Elearning extends Tx_Extbase_DomainObject_AbstractEntity {
+    /*
+     * Get all thema under a pid
+     */
+
+    public function doGetThema($recordPid = NULL) {
+        $select_fields = $GLOBALS['TSFE']->sys_language_uid != 0 ? 'l10n_parent as uid,thema_name' : 'uid, thema_name';
+        $from_table = '`tx_pitselearn_domain_model_thema`';
+        $where_clause = 'sys_language_uid = ' . $GLOBALS['TSFE']->sys_language_uid . ' AND pid=' . $recordPid;
+        $where_clause .= $enableFields;
+        $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+        $themaInformations = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+                $select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = '', $limit = '', $uidIndexField = '');
+        //echo $GLOBALS['TYPO3_DB']->debug_lastBuiltQuery;
+        foreach ($themaInformations as $key => $value) {
+            $newKey = $value['uid'];
+            $newArr[$newKey] = $value['thema_name'];
+        }
+        return $newArr;
+    }
+
+    public function doGetChapters($themaValue) {
+        $select_fields = $GLOBALS['TSFE']->sys_language_uid != 0 ? 'l10n_parent as uid,chapter_name' : 'uid, chapter_name';
+        $from_table = '`tx_pitselearn_domain_model_chapter`';
+        $where_clause = 'sys_language_uid = ' . $GLOBALS['TSFE']->sys_language_uid . ' AND thema_id=' . $themaValue;
+        $where_clause .= $enableFields;
+        $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+        $themaInformations = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+                $select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = '', $limit = '', $uidIndexField = '');
+        foreach ($themaInformations as $key => $value) {
+            $newKey = $value['uid'];
+            $newArr[$newKey] = $value['chapter_name'];
+        }
+        return $newArr;
+    }
+
+    public function doGetQuesions($whereClause , $questCount) {
+
+    	$limitVar = ( $questCount ) ? 10 : 1;
+    	
+        $storeSessionValue = $GLOBALS["TSFE"]->fe_user->getKey("ses", "sessionVal");
+        if (( sizeof($storeSessionValue) > 0))
+            $storeSessionValue = unserialize($storeSessionValue);
+            
+       	$offSet = ( $questCount ) ? 0 : $storeSessionValue['currentRecordCount'];
+       	  
+        $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+        $query = "( SELECT '' as matrix_question,tx_pitselearn_domain_model_dragdrop.uid as question_id, tx_pitselearn_domain_model_dragdrop.dragdrop_title as title, tx_pitselearn_domain_model_dragdrop.dragdrop_question as text,
+                        '' as question_image, tx_pitselearn_domain_model_dragdrop.dragdrop_answer as answer, '' as answer_image,
+                        tx_pitselearn_domain_model_dragdrop.dragdrop_sponser_link as sponser_link,	tx_pitselearn_domain_model_dragdrop.dragdrop_points as points,
+                        tx_pitselearn_domain_model_dragdrop.sys_language_uid as sys_language_uid, 'dragdrop' as type FROM tx_pitselearn_domain_model_dragdrop
+                        WHERE tx_pitselearn_domain_model_dragdrop.thema_id = " . $storeSessionValue['selectedThema'] . " AND tx_pitselearn_domain_model_dragdrop.chapter_id = " . $storeSessionValue['selectedChapter'] . "
+                        " . $whereClause['dragdrop'] . " ORDER  BY RAND()
+                        )
+                            UNION
+                            ( SELECT '' as matrix_question,tx_pitselearn_domain_model_freetextquestion.uid as question_id, tx_pitselearn_domain_model_freetextquestion.question_title as title, tx_pitselearn_domain_model_freetextquestion.question_text as text,
+                            tx_pitselearn_domain_model_freetextquestion.image as question_image, tx_pitselearn_domain_model_freetextquestion.answer_text as answer, tx_pitselearn_domain_model_freetextquestion.answer_img as answer_image,
+                            tx_pitselearn_domain_model_freetextquestion.sponser_link as sponser_link, tx_pitselearn_domain_model_freetextquestion.points as points, tx_pitselearn_domain_model_freetextquestion.sys_language_uid as sys_language_uid,
+                            'freetext' as type	FROM tx_pitselearn_domain_model_freetextquestion WHERE tx_pitselearn_domain_model_freetextquestion.thema_id = " . $storeSessionValue['selectedThema'] . "
+                            AND tx_pitselearn_domain_model_freetextquestion.chapter_id = " . $storeSessionValue['selectedChapter'] . " " . $whereClause['freetext'] . " ORDER  BY RAND()
+                            )
+                                UNION
+                                ( SELECT '' as matrix_question,tx_pitselearn_domain_model_multiplechoice.uid as question_id, tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_title as title, tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_text as text,
+                                tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_img as question_image,	tx_pitselearn_domain_model_multiplechoice.multiplechoice_answer as answer,	'' as answer_image,
+                                tx_pitselearn_domain_model_multiplechoice.multiplechoice_sponser as sponser_link, tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_points as points, tx_pitselearn_domain_model_multiplechoice.sys_language_uid as sys_language_uid,
+                                'mutiple_choice' as type FROM tx_pitselearn_domain_model_multiplechoice WHERE tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_thema = " . $storeSessionValue['selectedThema'] . "
+                                AND tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_chapter = " . $storeSessionValue['selectedChapter'] . " " . $whereClause['multiple_choice'] . " ORDER  BY RAND()
+                                )
+                                    UNION
+                                    ( SELECT '' as matrix_question,tx_pitselearn_domain_model_matrix.uid as question_id,	tx_pitselearn_domain_model_matrix.matrix_question_title as title, tx_pitselearn_domain_model_matrix.matrix_question_text as text,
+                                    tx_pitselearn_domain_model_matrix.matrix_question_img as question_image, '' as answer, '' as answer_image, tx_pitselearn_domain_model_matrix.matrix_sponser as sponser_link,
+                                    tx_pitselearn_domain_model_matrix.matrix_question_point as points, tx_pitselearn_domain_model_matrix.sys_language_uid as sys_language_uid, 'matrix' as type	FROM tx_pitselearn_domain_model_matrix
+                                    WHERE tx_pitselearn_domain_model_matrix.matrix_question_thema = " . $storeSessionValue['selectedThema'] . " AND tx_pitselearn_domain_model_matrix.matrix_question_chapter = " . $storeSessionValue['selectedChapter'] . " " . $whereClause['matrix'] . "
+                                     ORDER  BY RAND()     ) ORDER BY RAND(" . $storeSessionValue['currentRandomSeed'] . ") LIMIT " .$offSet. ", $limitVar";
+        
+        $result = $GLOBALS['TYPO3_DB']->sql_query($query);
+        while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($result)) {
+            $resultArray[] = $row;
+        }
+
+        return ( $questCount ) ? count($resultArray) : $resultArray[0];
+    }
+
+    public function doGetResult($request) {
+        $html = '';
+        switch ($request['qType']) {
+            case 'dragdrop':
+                 $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+                $select_fields = $GLOBALS['TSFE']->sys_language_uid != 0 ? 'l10n_parent as uid,title' : '*';
+                $from_table = '`tx_pitselearn_domain_model_dragdrop` AS MC JOIN `tx_pitselearn_domain_model_dragdrop_answers` AS MCA ON `MCA`.`parentid`=`MC`.`uid`';
+                $where_clause .= '`MC`.`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid . ' AND `MC`.`uid`=' . $request['qId'];
+
+                $dragDropRecord = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+                        $select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = '', $limit = '', $uidIndexField = '');
+                $html = $this->makeHtml($dragDropRecord);
+                break;
+            case 'freetext':
+                $select_fields = $GLOBALS['TSFE']->sys_language_uid != 0 ? 'l10n_parent as uid,title' : '*';
+                $from_table = '`tx_pitselearn_domain_model_freetextquestion`';
+                $where_clause .= '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid . ' AND `uid`=' . $request['qId'];
+                $answerArr = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+                               $select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = '', $limit = '', $uidIndexField = '');
+                $answerArr['answer_text']="<span class='green'>".$answerArr[0]['answer_text']."</span><p><a rel='lightbox' href='uploads/tx_pitselearn/".$answerArr[0]['answer_img']."' class='lightbox'><img src='uploads/tx_pitselearn/".$answerArr[0]['answer_img']' width=20 height= 20 />".Tx_Extbase_Utility_Localization::translate('pits_elearn.showImage', 'pitsElearn')."</a></p>";
+                $html = $answerArr['answer_text'];
+                break;
+        }
+        echo $html;
+        exit();
+    }
+
+    public function makeHtml($answerArr) {
+        $html = '<table style="width:30%; height:50px;"><tbody>';
+        foreach ($answerArr as $key => $value) {
+            $image = $value['dragdrop_answer_img'];
+            $uid = $value['uid'];
+            $html .= "<tr><td><img src='uploads/tx_pitselearn/$image' alt='Right_Answers' height='69' width='336'></td></tr>";
+        }
+        $html.='</tbody></table>';
+        echo $html;
+    }
+
+    public function doGetMatrixOption($qid) {
+        $select_fields = '*';
+        $from = 'tx_pitselearn_domain_model_matrix';
+        $whereClause = '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid.' AND uid ="' . $qid . '" AND deleted = 0 AND hidden = 0';
+        $orderByClause = '';
+        $limitClause = '';
+        $matrixMainOptions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($select_fields, $from, $whereClause, '', $orderByClause, $limitClause);
+        $questionImage = explode(',', $matrixMainOptions[0]['matrix_question_img']);
+        $matrixMainOptions[0]['matrix_question_img'] = $questionImage[count($questionImage) - 1];
+        $optionsValues['main'] = $matrixMainOptions[0];
+        $select_fields = '*';
+        $from = 'tx_pitselearn_domain_model_matrix_question AS MQ';
+        $whereClause = '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid.' AND MQ.parentid = "' . $qid . '" AND MQ.deleted = 0 AND MQ.hidden = 0';
+        $orderByClause = '';
+        $limitClause = '';
+        $matrixQuestionsOptions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($select_fields, $from, $whereClause, '', $orderByClause, $limitClause);
+        $i = 0;
+        foreach ($matrixQuestionsOptions as $key => $value) {
+            $j = 0;
+            $optionsValues['quest'] [$i]['title'] = $value['matrix_question_title'];
+            $optionsValues['quest'] [$i]['quest_id'] = $value['uid'];
+            $select_fields = '*';
+            $from = 'tx_pitselearn_domain_model_matrix_answer';
+            $whereClause = '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid.' AND parentid = "' . $value['uid'] . '" AND deleted = 0 AND hidden = 0';
+            $orderByClause = '';
+            $limitClause = '';
+            $matrixQuestions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($select_fields, $from, $whereClause, '', $orderByClause, $limitClause);
+            foreach ($matrixQuestions as $pin => $data) {
+                $optionsValuesQuestions[$j]['id'] = $data['uid'];
+                $optionsValuesQuestions[$j]['title'] = $data['matrix_answer_title'];
+                $optionsValuesQuestions[$j]['isRight'] = $data['matrix_answer_is_true'];
+                $j++;
+            }
+            $optionsValues['quest'][$i]['options'] = $optionsValuesQuestions;
+            $i++;
+        }
+        return $optionsValues;
+    }
+
+    public function doGetRightAnswerCount($parentId, $uid = NULL) {
+        $selectFields = '*';
+        $tableName = 'tx_pitselearn_domain_model_matrix_answer';
+        $whereCondition = '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid.' AND parentid=' . $parentId . ' AND matrix_answer_is_true = 1  AND deleted = 0 AND hidden = 0 ';
+        $whereCondition .= (!empty($uid) ) ? ' AND uid=' . $uid : '';
+        $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+        $trueAnswerInDb = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($selectFields, $tableName, $whereCondition);
+        return $trueAnswerInDb;
+    }
+
+    public function doGetAllPartnerImages($enableFields, $partnerIds) {
+        $select_fields = 'user_image,title,uid';
+        $from_table = '`tx_pitspartner_domain_model_partner`';
+        $where_clause = 'user_image IS NOT NULL AND sys_language_uid = ' . $GLOBALS['TSFE']->sys_language_uid . ' AND uid IN(' . $partnerIds.')';
+        $where_clause .= $enableFields;
+        $partnerImages = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+                $select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = 'RAND()', $limit = '3');
+        return $partnerImages;
+    }
+
+    public function doGetAllPartners($enableFields, $chapterId) {
+        $select_fields = 'partners';
+        $from_table = '`tx_pitselearn_domain_model_chapter`';
+        $where_clause = 'sys_language_uid = ' . $GLOBALS['TSFE']->sys_language_uid . ' AND uid=' . $chapterId;
+        $where_clause .= $enableFields;
+        $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+        $partners = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+                $select_fields, $from_table, $where_clause, $groupBy = '', $orderBy = 'RAND()', $uidIndexField = '');
+        return $partners[0]['partners'];
+    }
+
+    public function doGetDragDropOption($qId) {
+          $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+        $select_fields = 'uid, dragdrop_answers_text, dragdrop_answer_img';
+        $from = 'tx_pitselearn_domain_model_dragdrop_answers';
+        $whereClause = '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid. ' AND parentid = "' . $qId . '" AND deleted = 0 AND hidden = 0';
+        $orderByClause = '';
+        $limitClause = '';
+        $dragdropOptions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($select_fields, $from, $whereClause, '', $orderByClause, $limitClause);
+        foreach ($dragdropOptions as $key => $value) {
+            $randOptions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($select_fields, $from, $whereClause, '', "RAND(" . time() . ")", '');
+            $dragdropOptions[$key]['dragdrop_answer_imgRandom'] = $randOptions[$key]['dragdrop_answer_img'];
+            $dragdropOptions[$key]['dragdrop_answer_imgRandomUid'] = $randOptions[$key]['uid'];
+        }       
+        return $dragdropOptions;
+    }
+
+    public function doGetMultipleChoiceOption($qId) {
+        $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+        $select_fields = 'uid, multiplechoice_answers_title, multiplechoice_answers_is_true';
+        $from = 'tx_pitselearn_domain_model_multiplechoice_answers';
+        $whereClause = '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid.' AND parentid = "' . $qId . '" AND deleted = 0 AND hidden = 0';
+        $orderByClause = '';
+        $limitClause = '';
+        $multipleChoiceOptions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($select_fields, $from, $whereClause, '', $orderByClause, $limitClause);
+        foreach ($multipleChoiceOptions as $key => $value) {
+            $multipleChoiceOptions[$key]['class'] = "";
+            if ($value['multiplechoice_answers_is_true'] == 1) {
+                $multipleChoiceOptions[$key]['class'] = "solutions_class";
+            }
+            if ($storeSessionValue['answerRecord'][$answerRecordKey]['point'] != "") {
+                $multipleChoiceOptions[$key]['checked'] = ( in_array($value['uid'], $storeSessionValue['answerRecord'][$answerRecordKey]['answerText']) ) ? 'checked' : '';
+            }
+        }
+        return $multipleChoiceOptions;
+    }
+
+    public function doGetFreeTextAnswer( $questionUid ) {
+
+         $trueAnswer = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('answer_text', 'tx_pitselearn_domain_model_freetextquestion', '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid.' AND uid=' . $questionUid . ' AND deleted = 0 AND hidden = 0');
+         return $trueAnswer[0];
+    }
+
+    public function doGetMultipleChoiceAnswer($questionUid) {
+        $selectFields = '*';
+        $tableName = 'tx_pitselearn_domain_model_multiplechoice_answers';
+        $whereCondition = '`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_uid.' AND parentid=' . $questionUid . ' AND multiplechoice_answers_is_true = 1  AND deleted = 0 AND hidden = 0';
+        $GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+        $trueAnswerInDb = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($selectFields, $tableName, $whereCondition);
+        return $trueAnswerInDb;
+    }
+
+}
+
+?>

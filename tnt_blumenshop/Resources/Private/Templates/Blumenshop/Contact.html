@@ -1,0 +1,149 @@
+<f:layout name="Default" />
+<f:section name="main">
+{namespace selectOption = Tx_TntBlumenshop_ViewHelpers}
+<script type="text/javascript">
+	errorText = '<f:translate key="mandatory">Mandatory</f:translate>';
+	selectboxError = '<f:translate key="select_card_error">Mandatory</f:translate>';
+	invalidEmail = '<f:translate key="invalid_email">Mandatory</f:translate>';
+	invalidPhone = '<f:translate key="invalid_phone">Mandatory</f:translate>';
+</script>
+<script type="text/javascript" src="/typo3conf/ext/tnt_blumenshop/Resources/Public/Js/validate.js?{timestampJS}"></script>
+<article>
+	<h1>{flexformArray.title}</h1>
+</article>
+<section class="mod schritt">
+	<div class="mod-highlight infos cta">
+		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step1">Schritt 1</f:translate></i></span></a>
+		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step2">Schritt 2</f:translate></i></span></a>
+		<a class="active" href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step3">Schritt 3</f:translate></i></span></a>
+		<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step4">Schritt 4</f:translate></i></span></a>
+	</div>
+	<h3><f:translate key="tx_tntblumenshop.cordinateDetails">Koordinaten Auftraggeber</f:translate></h3>
+	<f:for each="{productinfoContact}" as="contact_detail" key="number">
+			<div class="pos-spec step3_subhead">
+				<f:image src="uploads/tx_tntblumenshop/{contact_detail.image}" alt="{contact_detail.image}" width="{detailimgW}m" height="{detailimgH}m" />
+				<div class="row">
+	            	<div class="col-sm-8">
+	            		<span><f:translate key="contact_price">Preiskategorie:</f:translate></span><i class="step3_blumenprice"><f:translate key="labelprice">Fr.</f:translate>{ses_priceInfo}<f:translate key="labelprice_end"></f:translate></i>
+	            	</div>
+	            </div>
+	            <div class="row">
+                    <div class="col-sm-8"><span><f:translate key="contact_username">Name Patient:</f:translate></span><i class="step3_blumenpatientname">{ses_nameInfo}</i></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8"><span><f:translate key="contact_vorname">Vorname Patient:</f:translate></span><i>{ses_vornameInfo}</i></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8"><span><f:translate key="contact_wohnort">Wohnort Patient:</f:translate></span><i>{ses_wohnortInfo}</i></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 remarks"><span><f:translate key="contact_specialrequest">Bemerkungen:</f:translate></span><i>{ses_specialrequestInfo}</i></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 textcard"><span><f:translate key="contact_specialcomments">Text Karte:</f:translate></span><i>{ses_specialcommentsInfo}</i></div>
+                </div>
+                <f:link.action action="show" class="link"  arguments="{product_uid: contact_detail.uid}"><f:translate key="edit_productinfo">Bestellung ändern</f:translate></f:link.action>
+			</div>
+			<div class="listedCnt">
+            	<h5><f:translate key="cost_overview">Kostenübersicht</f:translate></h5>
+                <ul>
+                	<li><span><f:translate key="cost_overviewprice">Blumen:</f:translate></span><i><f:translate key="labelprice">Fr.</f:translate>{ses_priceInfo}<f:translate key="labelprice_end"></f:translate></i></li>
+                    <li><span><f:translate key="cost_overviewpriceextra">Karte:</f:translate></span><i><f:translate key="labelprice">Fr.</f:translate>{ses_priceextraInfo}<f:translate key="labelprice_end"></f:translate></i></li>
+                    <li><span><f:translate key="cost_overviewfixedprice">Liefergebühr:</f:translate></span><i><f:translate key="labelprice">Fr.</f:translate>{fixedPrice}<f:translate key="labelprice_end"></f:translate></i></li>
+                    <li><span><f:translate key="total_cost">Total:</f:translate></span><i><f:translate key="labelprice">Fr.</f:translate>{totalAmt}<f:translate key="labelprice_end"></f:translate></i></li>
+                </ul>
+            </div>
+            <div class="schritt3">
+            	<h5><f:translate key="contact_info">Koordinaten Auftaggeber</f:translate></h5>
+            	<f:form action="contact" name="contactinfo" arguments="{product_uid: '{contact_detail.uid}'}" enctype="multipart/form-data" onsubmit="return validatecontactForm();" class="schritt">
+            		<fieldset class="pos-spec">
+	           			<div class="form-group">
+	                    	<label class="col-sm-2 control-label" for="contact_name"><f:translate key="contact_name">Name</f:translate></label>
+	                        <div class="col-sm-10">
+	                        	<input type="text" class="form-control contact_name required" value="{ses_contactname}" name="tx_tntblumenshop_tntblumenshop[contact_name]" id="contact_name">
+	                        	<div id="contact_name_error" class="contact_errorclass">{contact_name_error}</div>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+                        	<label class="col-sm-2 control-label" for="contact_firstname"><f:translate key="contact_firstname">Vorname</f:translate></label>
+                          	<div class="col-sm-10">
+                            	<input type="text" class="form-control contact_firstname required" value="{ses_contactfirstname}" name="tx_tntblumenshop_tntblumenshop[contact_firstname]" id="contact_firstname">
+								<div id="contact_firstname_error" class="contact_errorclass">{contact_firstname_error}</div>
+                          	</div>
+                        </div>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label" for="contact_firma"><f:translate key="contact_firma">Firma</f:translate></label>
+                        	<div class="col-sm-10">
+                            	<input type="text" class="form-control contact_firma required" value="{ses_contactfirma}" name="tx_tntblumenshop_tntblumenshop[contact_firma]" id="contact_firma">
+								<div id="contact_firma_error" class="contact_errorclass">{contact_firma_error}</div>
+                         	</div>
+                        </div>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label" for="contact_strasse"><f:translate key="contact_strasse">Strasse / Nr.</f:translate></label>
+                          	<div class="col-sm-10">
+                            	<input type="text" class="form-control contact_strasse required" value="{contact_strasse}" name="tx_tntblumenshop_tntblumenshop[contact_strasse]" id="contact_strasse">
+								<div id="contact_strasse_error" class="contact_errorclass">{contact_strasse_error}</div>
+                          	</div>
+                        </div>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label" for="contact_ort"><f:translate key="contact_ort">PLZ / Ort</f:translate></label>
+                          	<div class="col-sm-10">
+	                          	<div class="col-sm-3">
+	                            	<input type="text" class="form-control" value="{contact_ort1}" name="tx_tntblumenshop_tntblumenshop[contact_ort1]" id="contact_ort1">
+	                          	</div>
+	                          	<div class="col-sm-9">
+	                          		<input type="text" class="form-control" value="{contact_ort2}" name="tx_tntblumenshop_tntblumenshop[contact_ort2]" id="contact_ort2">
+	                          	</div>
+	                          	<div id="contact_ort_error" class="contact_errorclass">{contact_ort_error}</div>
+                          	</div>
+                        </div>
+                        <div class="form-group overridden">
+                        	<label class="col-sm-2 control-label" for="payment_method"><f:translate key="payment_method">Payment Method</f:translate></label>
+                          	<div class="col-sm-10">
+                            	<select name="paymentoptions" id="paymentOptions" class="selectpicker custom-select form-control kreditkarte default-sm blumenservice">
+                    				<option value=""><f:translate key="select_cardtype">Bitte wählen</f:translate></option>
+                    				<f:for each="{paymentOptions}" as="select_payment" key="PaymentKey">
+                    					<selectOption:SelectBox length="{PaymentKey},{ses_paymentOptions},{select_payment}" />
+                    				</f:for>
+                    			</select>
+                    			<div id="payment_method_error" class="contact_errorclass">{payment_method_error}</div>
+                          	</div>
+                        </div>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label" for="contact_telefon"><f:translate key="contact_telefon">Telefon</f:translate></label>
+                          	<div class="col-sm-10">
+                            	<input type="text" class="form-control contact_telefon required" value="{contact_telefon}" name="tx_tntblumenshop_tntblumenshop[contact_telefon]" id="contact_telefon">
+                          		<div id="contact_telefon_error" class="contact_errorclass">{contact_telefon_error}</div>
+                          	</div>
+                        </div>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label" for="contact_mobile"><f:translate key="contact_mobile">Mobile</f:translate></label>
+                          	<div class="col-sm-10">
+                           		<input type="text" class="form-control contact_mobile required" value="{contact_mobile}" name="tx_tntblumenshop_tntblumenshop[contact_mobile]" id="contact_mobile">
+                          		<div id="contact_mobile_error" class="contact_errorclass">{contact_mobile_error}</div>
+                          	</div>
+                        </div>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label" for="contact_email"><f:translate key="contact_email">E-Mail</f:translate></label>
+                          	<div class="col-sm-10">
+                            	<input type="text" class="form-control contact_email required" value="{contact_email}" name="tx_tntblumenshop_tntblumenshop[contact_email]" id="contact_email">
+                          		<div id="contact_email_error" class="contact_errorclass">{contact_email_error}</div>
+                          	</div>   	
+                        </div>
+                        <div class="form-group">
+                        	<label class="col-sm-2 control-label media-check" for="doc_check"></label>
+                          	<div class="col-sm-10">
+                            	<f:form.checkbox name="doc_check" value="1" checked="{ses_doccheck} == 1" class="custom-chkbox" /><f:translate key="contact_doccheck">Ich wünsche einen Beleg</f:translate>
+                          	</div>
+                        </div>
+                        <div class="form-group">
+                        	<div class="col-sm-offset-2 col-sm-10">
+                            	<f:form.submit class="btn btn-primary lrg" name="submit" value="Weiter zur Bezahlung" />
+                          	</div>
+                        </div>
+            		</fieldset>
+            	</f:form>
+            </div>      
+		</f:for>	
+</section>
+</f:section>

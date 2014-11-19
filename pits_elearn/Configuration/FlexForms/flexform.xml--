@@ -1,0 +1,82 @@
+
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:pits_elearn/Resources/Private/Language/locallang_db.xml:tx_pitselearn.flexform_title</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.targetPage>
+                        <TCEforms>
+                            <label>LLL:EXT:pits_elearn/Resources/Private/Language/locallang_db.xml:tx_pitselearn.flexform_redirect_page</label>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                                <wizards type="array">
+                                    <_PADDING type="integer">2</_PADDING>
+                                    <link type="array">
+                                        <type>popup</type>
+                                        <title>Link</title>
+                                        <icon>link_popup.gif</icon>
+                                        <script>browse_links.php?mode=wizard</script>
+                                        <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+                                    </link>
+                                </wizards>
+                            </config>
+                        </TCEforms>
+                    </settings.targetPage>
+                    <settings.themaSelect>
+                        <TCEforms>
+                            <label>LLL:EXT:pits_elearn/Resources/Private/Language/locallang_db.xml:tx_pitselearn.flexform_thema_select</label>
+
+                            <config>
+                                <type>select</type>
+                                <foreign_table>tx_pitselearn_domain_model_thema</foreign_table>
+                                <foreign_table_where>
+                                        AND tx_pitselearn_domain_model_thema.hidden = 0
+                                        AND tx_pitselearn_domain_model_thema.deleted = 0
+                                        ORDER BY tx_pitselearn_domain_model_thema.thema_name
+                                </foreign_table_where>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </settings.themaSelect>
+
+
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Choose View</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">List View</numIndex>
+                                        <numIndex index="1">Elearning->select;Elearning->ajaxChapters;Elearning->detail;Elearning->resultRender;Elearning->themaLink;Elearning->showResult</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                  
+                                        <numIndex index="0">Detail View</numIndex>
+                                        <numIndex index="1">Elearning->detail;Elearning->resultRender;Elearning->select;Elearning->showResult;Elearning->ajaxChapters;Elearning->themaLink</numIndex>
+                                    </numIndex>
+
+                                    <numIndex index="2">
+                                        <numIndex index="0">ThemaLinks</numIndex>
+                                        <numIndex index="1">Elearning->themaLink;Elearning->detail;Elearning->select;Elearning->ajaxChapters;Elearning->resultRender;Elearning->showResult</numIndex>
+                                    </numIndex>
+
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

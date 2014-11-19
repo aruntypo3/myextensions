@@ -1,0 +1,38 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:pits_brandsearch/Resources/Private/Language/locallang_db.xml:tx_pitsbrandsearch_domain_model_brandsearch.flexform_title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.flexform.url>
+					<TCEforms>
+						<label>LLL:EXT:pits_brandsearch/Resources/Private/Language/locallang_db.xml:tx_pitsbrandsearch_domain_model_brandsearch.supplierList_Page</label>
+						<config>
+                  			<type>input</type>
+			                <eval>trim</eval>
+			                <wizards type="array">
+				                <_PADDING type="integer">2</_PADDING>
+				                <link type="array">
+			                        <type>popup</type>
+			                        <title>Link</title>
+			                        <icon>link_popup.gif</icon>
+			                        <script>browse_links.php?mode=wizard</script>
+			                        <JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+	                 			</link>
+                 			</wizards>
+             		 	</config>
+					</TCEforms>
+					</settings.flexform.url>
+				</el>
+			</ROOT>
+	    </sDEF>
+	</sheets>
+</T3DataStructure>
+
+

@@ -1,0 +1,89 @@
+{namespace k=Tx_Hevents_ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+<div class="colmask rightmenu">
+    <div class="colleft">
+        <div class="col1wrap">
+            <div class="col1">
+				<!-- Column 1 start -->
+				<h2>{event.title}</h2>
+				<div id="eventMeta"><span class="eventCat"><img src="{f:uri.image(src:event.category.icon)}" alt="{event.category.title} Icon" />{event.category.title}</span><span class="city">{event.city.title},</span> <span class="country">{event.city.country}</span><span class="duration">{event.duration}</span> <f:translate key="single.hours" /></div>
+				<f:if condition="{f:count(subject:event.images)}">
+					<ul id="eventImages">
+						<f:for each="{event.images}" as="image">
+							<li><img src="{f:uri.image(src:image,width:'640c',height:'477c-65')}" alt="Image" /></li>
+						</f:for>
+					</ul>
+					<f:if condition="{f:count(subject:event.images)}>1">
+						<ul id="eventImagesThumbs" class="clearfix clear">
+							<f:for each="{event.images}" as="image">
+								<a href="#"><img src="{f:uri.image(src:image,width:'90c',height:'67c')}" alt="Image" /></a>
+							</f:for>
+						</ul>
+						<script type="text/javascript">
+							hevents.slider.initThums('eventImages','eventImagesThumbs');
+						</script>
+					</f:if>
+				</f:if>
+				<div id="eventDesc">
+					<f:format.html>{event.description}</f:format.html>
+				</div>
+				<f:if condition="{event.provider}">
+					<div id="providerDetails">
+						<!-- <h3><f:translate key="tx_hevents_domain_model_event.provider">Provider</f:translate></h3> -->
+						<f:format.html>{event.provider}</f:format.html>
+					</div>
+				</f:if>
+				<f:if condition="{event.locationaddress}">
+					<div id="locationAddress">
+						<!-- <h3><f:translate key="tx_hevents_domain_model_event.locationAddress">Location Address</f:translate></h3> -->
+						<f:format.html>{event.locationaddress}</f:format.html>
+					</div>
+				</f:if>
+				<!-- Column 1 end -->
+			</div>
+        </div>
+        <div class="col2">
+            <!-- Column 2 start -->
+			<div id="eventPrice">
+				From<br/><span class="currency">CHF</span> <span class="eventPriceSingle">{event.price}</span><span class="perPerson">Per Person</span>
+			</div>
+			
+			<div class="upcoming"><f:translate key="single.upcoming" /></div>
+			<ul class="eventDates">
+			<f:for each="{event.dates}" as="date">
+				<f:if condition="{date.isBookable}">
+					<li>
+						<span><f:translate key="tx_hevents_domain_model_event.startendDate">Date</f:translate>:&nbsp{date.start -> f:format.date(format:'d.m.Y')} - {date.end -> f:format.date(format:'d.m.Y')}</span>
+						<span><f:translate key="tx_hevents_domain_model_event.startendTime">Time</f:translate>:&nbsp{date.eventstarttime -> f:format.date(format:'H:i')} - {date.eventendtime -> f:format.date(format:'H:i')}</span>
+						<span><f:translate key="tx_hevents_domain_model_booking.availseats">Available Seats</f:translate>: {date.remainseats}</span>
+						<f:if condition="{date.remainseats}">
+						<f:then>
+							<f:link.action action="choose" controller="Booking" arguments="{event:event, date:date}" noCacheHash="1"><f:translate key="tx_hevents_domain_model_booking.reguser">Continue booking</f:translate></f:link.action>
+						</f:then>
+						<f:else>
+							<a class="buttonLook" href="javascript:void(0);"><f:translate key="tx_hevents_domain_model_booking.fullbooked">Fully Booked</f:translate></a>
+						</f:else>
+						</f:if>						
+					</li>
+				</f:if>
+			</f:for>
+			</ul>
+			<div class="col2EventBorder"></div>
+			<div class="eventSimilar"><img src="{f:uri.image(src:event.category.icon)}" alt="{event.category.title} Icon" /> <f:translate key="single.similar" /></div>
+			<ul id="eventSimilarList">
+			<f:for each="{similarEvents}" as="sevent">
+				<li class="clear clearfix">
+					<f:link.action action="single" arguments="{event : sevent}" noCacheHash="1">
+					<f:render partial="FirstImage" arguments="{event:sevent, width:'131c', height:'98c', sliderDummyImage:sliderDummyImage}"/>
+					{sevent.title}
+					</f:link.action>
+				</li>
+			</f:for>
+			</ul>
+			<!-- Column 2 end -->
+        </div>
+    </div>
+</div>
+</f:section>

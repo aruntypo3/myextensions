@@ -1,0 +1,135 @@
+{namespace k=Tx_Hevents_ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+<div class="colmask rightmenu">
+    <div class="colleft">
+        <div class="col1wrap">
+            <div class="col1">
+				<!-- Column 1 start -->
+					<h2>Book</h2>
+					<h3>{event.title}</h3>
+					<div class="eventDates">{date.start -> f:format.date(format:'d.m.Y H:i')} - {date.end -> f:format.date(format:'d.m.Y H:i')}</div>
+
+					<div class="errordiv" id="amount_div"><span id="amount_span"><f:translate key="tx_hevents_domain_model_booking.error.amount">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="email_div"><span id="email_span"><f:translate key="tx_hevents_domain_model_booking.error.email">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="name_div"><span id="name_span"><f:translate key="tx_hevents_domain_model_booking.error.name">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="forename_div"><span id="forename_span"><f:translate key="tx_hevents_domain_model_booking.error.forename">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="address_div"><span id="address_span"><f:translate key="tx_hevents_domain_model_booking.error.address">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="zip_div"><span id="zip_span"><f:translate key="tx_hevents_domain_model_booking.error.zip">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="city_div"><span id="city_span"><f:translate key="tx_hevents_domain_model_booking.error.city">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="country_div"><span id="country_span"><f:translate key="tx_hevents_domain_model_booking.error.country">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="amountexceed_div"><span id="amountexceed_span"><f:translate key="tx_hevents_domain_model_booking.error_avail.amount">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="amountempty_div"><span id="amountempty_span"><f:translate key="tx_hevents_domain_model_booking.error_avail.amountempty">Mandatory</f:translate></span><br/></div>
+					
+					<div id="deliverErrorBlock">
+					<div class="errordiv" id="dname_div"><span id="dname_span"><f:translate key="tx_hevents_domain_model_booking.error.dname">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="dforename_div"><span id="dforename_span"><f:translate key="tx_hevents_domain_model_booking.error.dforename">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="daddress_div"><span id="daddress_span"><f:translate key="tx_hevents_domain_model_booking.error.daddress">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="dzip_div"><span id="dzip_span"><f:translate key="tx_hevents_domain_model_booking.error.dzip">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="dcity_div"><span id="dcity_span"><f:translate key="tx_hevents_domain_model_booking.error.dcity">Mandatory</f:translate></span><br/></div>
+					<div class="errordiv" id="dcountry_div"><span id="dcountry_span"><f:translate key="tx_hevents_domain_model_booking.error.dcountry">Mandatory</f:translate></span><br/></div>
+					</div>
+					<div id="eventBook">
+					<f:form method="post" action="submit" name="booking" arguments="{event: event.uid, date: date.uid}" object="{booking}" noCacheHash="1" onsubmit="return validateForm()">
+
+						<label for="amount"><f:translate key="tx_hevents_domain_model_booking.amount" /></label>
+						<f:form.textfield id="amount" property="amount" />&nbsp;<span>( <f:translate key="tx_hevents_domain_model_booking.availseats">Available Seats</f:translate>: {date.remainseats} )</span><br /><br />
+						<p class="NovecentoRegular">Your Information</p>
+						<table width="70%" cellspacing="0" cellpadding="0">
+							<tr>
+								<td colspan="2">
+									<label for="amount"><f:translate key="tx_hevents_domain_model_booking.email" /></label>
+									<f:form.textfield property="email" id="email" /><br />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="name"><f:translate key="tx_hevents_domain_model_booking.name" /></label>
+									<f:form.textfield property="name" id="name" /><br />
+								</td>
+								<td>
+									<label for="forename"><f:translate key="tx_hevents_domain_model_booking.forename" /></label>
+									<f:form.textfield property="forename" id="forename" /><br />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="address"><f:translate key="tx_hevents_domain_model_booking.address" /></label>
+									<f:form.textfield property="address" id="adress" /><br />
+								</td>
+								<td>
+									<label for="zip"><f:translate key="tx_hevents_domain_model_booking.zip" /></label>
+									<f:form.textfield property="zip" id="zip" /><br />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="city"><f:translate key="tx_hevents_domain_model_booking.city" /></label>
+									<f:form.textfield property="city" id="city" /><br />
+								</td>
+								<td>
+									<label for="country"><f:translate key="tx_hevents_domain_model_booking.country" /></label>
+									<f:form.select name="country" options="{countrylist}" property="country" id="country"/><br />
+									<f:comment><f:form.textfield id="country" property="country" /><br /></f:comment>
+								</td>
+							</tr>
+						</table>
+
+
+						<label for="delevieraddress"><f:translate key="tx_hevents_domain_model_booking.delevieraddress" /></label>
+						<f:form.checkbox id="delevieraddress" property="delevieraddress" value="1" checked="{booking.delevieraddress}" id="delevieraddress"/><br /><br />
+
+						<div id="delevieraddress-container" style="display:block;">
+						<table width="70%" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>
+									<label for="dname"><f:translate key="tx_hevents_domain_model_booking.dname" /></label>
+									<f:form.textfield property="dname" id="dname" /><br />
+								</td>
+								<td>
+									<label for="dforename"><f:translate key="tx_hevents_domain_model_booking.dforename" /></label>
+									<f:form.textfield property="dforename" id="dforename" /><br />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="daddress"><f:translate key="tx_hevents_domain_model_booking.daddress" /></label>
+									<f:form.textfield property="daddress" id="daddress" /><br />
+								</td>
+								<td>
+									<label for="dzip"><f:translate key="tx_hevents_domain_model_booking.dzip" /></label>
+									<f:form.textfield property="dzip" id="dzip" /><br />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="dcity"><f:translate key="tx_hevents_domain_model_booking.dcity" /></label>
+									<f:form.textfield property="dcity" id="dcity" /><br />
+								</td>
+								<td>
+									<label for="dcountry"><f:translate key="tx_hevents_domain_model_booking.dcountry" /></label>
+									<f:form.select name="dcountry" options="{countrylist}" property="dcountry" id="dcountry" /><br />
+								</td>
+							</tr>
+						</table>	
+						</div>
+						<div class="bookingButton"><f:form.submit value="{f:translate(key:'basic.book')}" /></div>
+					</f:form>
+					<input type="hidden" id="remainSeats" value="{date.remainseats}" />
+					<input type="hidden" id="deliverAddressSection" value="0" />
+					</div>
+				<!-- Column 1 end -->
+			</div>
+        </div>
+        <div class="col2">
+            <!-- Column 2 start -->
+			<a href="https://www.paypal.com/webapps/mpp/how-paypal-works" target="_new"><img src="/fileadmin/templates/img/paypal_logo.gif" /></a>
+			<br/><br/><a href="http://saferpay.com" target="_blank"><img width="114px" src="/fileadmin/templates/img/saferpay_logo.png" /></a>
+			<!-- Column 2 end -->
+        </div>
+    </div>
+</div>
+
+
+</f:section>

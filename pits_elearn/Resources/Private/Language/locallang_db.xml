@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>database</type>
+        <description>Language labels for database tables/fields belonging to
+			extension 'pits_elearn'
+        </description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="tx_pitselearn_domain_model_thema_name">Thema Name</label>
+            <label index="tx_pitselearn_domain_model_chapter_name">Chapter Name</label>
+            <label index="tx_pitselearn.flexform_title">TNT-E-learning Configuration</label>
+            <label index="tx_pitselearn.flexform_redirect_page">Target Page</label>
+            <label index="tx_pitselearn.flexform_thema_select">Select Thema</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion">Free Text Question</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice">Multiple Choice Question</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.question_text">Question Text</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.question_title">Question Title</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.question_image">Question Image</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.answer_text">Answer Text</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.answer_img">Answer Image</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.sponser_link">Sponser link</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.points">Points</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_answers_title">Answer Text</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_answers_is_true">Is True</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_sponser">Sponser link</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_multiplechoice_question_points">Points</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.multiplechoice_question_img text">Mutiple Choice Question Image</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_text">Mutiple Choice Text</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_title">Mutiple Choice Question</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_multiplechoice_question_answers">Mutiple Choice Answers</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_thema">Select Thema</label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.multiplechoice_question_chapter">Select Chapter</label>
+            <label index="tx_pitselearn_domain_model_dragdrop">Drag Drop</label>
+            <label index="tx_pitselearn_domain_model_dragdrop.dragdrop_title">Title</label>
+            <label index="tx_pitselearn_domain_model_dragdrop.dragdrop_question">Question</label>
+            <label index="tx_pitselearn_domain_model_dragdrop.dragdrop_sponser_link">Sponser Link</label>
+            <label index="tx_pitselearn_domain_model_dragdrop.dragdrop_points">Points</label>
+            <label index="tx_pitselearn_domain_model_dragdrop.dragdrop_answer">Drag Drop Answers</label>
+            <label index="tx_pitselearn_domain_model_dragdrop.answer_title">Drag Drop Answer Title</label>
+            <label index="tx_pitselearn_domain_model_dragdrop.answer_image">Drag Drop Answers Image</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.thema_name">Thema Name</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.chapter_name">Chapter Name</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.select_thema">Select Thema</label>
+            <label index="tx_pitselearn_domain_model_freetextquestion.select_chapter">Select Chapter</label>
+            <label index="tx_pitselearn_domain_model_matrix">Matrix type question</label>
+			
+            <label index="tx_pitselearn_domain_model_multiplechoice.matrix_question_title">Matrix type Title </label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.matrix_question_text">Matrix type Desc </label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.matrix_question_img">Matrix type Image </label>
+            <label index="tx_pitselearn_domain_model_matrix.matrix_question">Matrix Question </label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.matrix_question_sponser_link">Matrix Sponser Link </label>
+            <label index="tx_pitselearn_domain_model_multiplechoice.matrix_question_point">Matrix Sponser Points </label>
+			
+            <label index="tx_pitselearn_domain_model_matrix.main">Matrix Type Questions</label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_title">Question Title </label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_colname1">Coloumn One Title </label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_colname2">Coloumn Two Title</label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_colname3">Coloumn Three Title</label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_text">Question Description </label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_img">Question Image </label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_thema">Question Thema</label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_chapter">Question Chapter</label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_sponser">Sponser Link</label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_point">Question Points</label>
+            <label index="tx_pitselearn_domain_model_matrix.main.matrix_question_answer">Question Answers</label>
+
+            <label index="tx_pitselearn_domain_model_matrix.question">Question</label>
+            <label index="tx_pitselearn_domain_model_matrix.question.matrix_question_title">Question Title</label>
+            <label index="tx_pitselearn_domain_model_matrix.answer">Answers</label>
+            <label index="tx_pitselearn_domain_model_matrix.answer.matrix_answer_title">Answer Title</label>
+            <label index="tx_pitselearn_domain_model_matrix.answer.matrix_answer_is_true">Answer Is Correct</label>
+            <label index="tx_pitselearn.flexform_questionsCount">Questions Count</label>
+		
+        </languageKey>
+    </data>
+</T3locallang>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'pits_supplier'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+            
+			<label index="tx_pitssupplier_domain_model_pitssupplier">Pitssupplier</label>
+      		<label index="tx_pitssuppliersearch_domain_model_suppliersearch.flexform_title">TNT-Supplier Configuration</label>
+      		<label index="ff.brandList_Page">Brand List Page</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.supplier_name">Supplier Name</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.company_name">Company Name</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.first_name">First Name</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.last_name">Last Name</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.address">Address</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.country">Country</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.zip">Postal Code</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.location">Location</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.telephone">Telephone</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.fax">Fax</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.email">Email</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.web1">Website</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.web2">Website 2</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.b2b_webshop">B2B-Webshop</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.marken">Marken</label>
+			
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.brand_name">Brand Name</label>
+			<label index="tx_pitssuppliersearch_domain_model_suppliersearch.brand_link">Brand Link</label>
+
+		</languageKey>
+	</data>
+</T3locallang>

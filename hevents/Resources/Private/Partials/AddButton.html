@@ -1,0 +1,19 @@
+{namespace k=Tx_Hevents_ViewHelpers}
+<f:if condition="{k:isfavuser(event:event)}">
+	<f:then>
+		<div class="favIcon">
+			<f:link.action action="removefav" controller="User" arguments="{event:event, favs:favs, archive:archive}" noCacheHash="1">
+				<img src="{f:uri.resource(path:'Icons/fav.png')}" width="19" height="16" alt="fav {event.title}" />
+			</f:link.action>
+			<div class="addToFav"><f:translate key="basic.remfav" /></div>
+		</div>
+	</f:then>
+	<f:else>
+		<div class="favIcon">
+			<f:link.action action="addfav" controller="User" arguments="{event : event, archive:archive}" noCacheHash="1">
+				<img src="{f:uri.resource(path:'Icons/fav.png')}" width="19" height="16" alt="fav {event.title}" />
+			</f:link.action>
+			<div class="addToFav"><f:translate key="basic.addfav" /></div>
+		</div>
+	</f:else>
+</f:if>

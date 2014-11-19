@@ -1,0 +1,29 @@
+<f:layout name="Default" />
+<f:section name="main">
+     <script src="{extensionPathJs}actions.js"></script>
+    <form class="online-form" action="" method="POST">
+        <fieldset>
+            <h2>
+                <strong><f:translate key='pits_elearn.main_head'></f:translate></strong>
+                <f:translate key='pits_elearn.sub_head'></f:translate>
+            </h2>
+            <div id="id-thema_div">
+                    <select name="tx_pitselearn_pitselearn[tnt_thema]" onChange="doGetValue(this.value,'{pageId}')" class="select-thema">
+                        <option value="0"><f:translate key='pits_elearn.select_thema'></f:translate></option>
+                        <f:for each="{elearnings}" as="themaName" key="uid">
+                           <option value="{uid}">{themaName}</option>
+                        </f:for>
+                    </select>
+            </div>
+                    
+                    <div id="id-chapters_div">
+                        <select name="tx_pitselearn_pitselearn[tnt_thema_chapter]" class="selects-holder">
+                           <option value="0"><f:translate key='pits_elearn.select_chapter'></f:translate></option>
+                        </select>
+                       
+                    </div>
+                    <input type="hidden" class="thema_page_id" value="{pageId}"/>
+                    <input type="submit" class="submit" value="go"/>
+        </fieldset>
+    </form>
+</f:section>

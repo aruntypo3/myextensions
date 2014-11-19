@@ -1,0 +1,9 @@
+<f:layout name="AjaxSubcat" />
+<f:section name="main">
+    <select id = "thema_subcat">
+        <option value="0"><f:translate key="empty_thema">Bitte wählen Sie ein Thema</f:translate></option>
+        <f:for each="{subCategories}" as="category" iteration="itemIteration">
+            <option value="{category.parentId}">{category.category_title}</option>
+        </f:for>
+    </select>
+</f:section>

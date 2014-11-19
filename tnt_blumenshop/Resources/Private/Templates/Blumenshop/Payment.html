@@ -1,0 +1,42 @@
+<f:layout name="Default" />
+<f:section name="main">
+	<article>
+		<h1>{flexformArray.title}</h1>
+	</article>
+	<section class="mod schritt">
+		<div class="mod-highlight infos cta">
+			<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step1">Schritt 1</f:translate></i></span></a>
+			<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step2">Schritt 2</f:translate></i></span></a>
+			<a href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step3">Schritt 3</f:translate></i></span></a>
+			<a class="active" href="javascript:void(0);"><span><i><f:translate key="tx_tntblumenshop.step4">Schritt 4</f:translate></i></span></a>
+		</div>
+		<div id="redirect_msg" class="redirectmsg">
+		<span>
+			<f:translate key="please_wait">please wait...</f:translate>
+		</span>
+		<br>
+		<img alt="loader" src="/typo3conf/ext/tnt_blumenshop/Resources/Public/images/loader.gif" width="{flexformArray.loaderW}" height="{flexformArray.loaderH}">
+		</div>
+		<form action="{flexformArray.paymenturl}" name="payment" method="post" id="paymentForm">
+			<input type="hidden" value="{flexformArray.merchantid}" id="merchantId" name="merchantId" />
+			<input type="hidden" value="{totalprice}" id="amount" name="amount" />
+			<input type="hidden" value="{refno}" id="refno" name="refno" />
+			<input type="hidden" value="{currency}" id="currency" name="currency" />
+			<input type="hidden" value="{paymenyOption}" id="paymentmethod" name="paymentmethod" />
+			<input type="hidden" value="{flexformArray.successurl}" id="successUrl" name="successUrl" />
+			<input type="hidden" value="{flexformArray.errorurl}" id="errorUrl" name="errorUrl" />
+			<input type="hidden" value="{flexformArray.cancelurl}" id="cancelUrl" name="cancelUrl" />
+			<input type="hidden" value="de" id="language" name="language" />
+			<f:if condition="{useragentMobileCheck}">
+				<input type="hidden" value="on" id="uppMobileMode" name="uppMobileMode" />
+			</f:if>	
+		</form>
+		<script type="text/javascript">
+			function submitPayment() {
+	    		var formData = document.getElementById("paymentForm");
+	    		formData.submit();
+			}
+			window.onload = submitPayment;
+		</script>
+	</section>	
+</f:section>

@@ -1,0 +1,14 @@
+plugin.tx_hevents {
+	view {
+		# cat=plugin.tx_hevents/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:hevents/Resources/Private/Templates/
+		# cat=plugin.tx_hevents/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:hevents/Resources/Private/Partials/
+		# cat=plugin.tx_hevents/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:hevents/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_hevents//a; type=int+; label=Default storage PID
+		storagePid = 
+	}
+}

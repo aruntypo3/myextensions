@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for backend module TNT Banner Statistics belonging to extension 'pits_bannerimages'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+		<label index="mlang_tabs_tab">TNT Banner Statistics</label>
+			<label index="mlang_labels_tabdescr">Banner image click statistics</label>
+			<label index="mlang_labels_tablabel">Banner Image Statistics</label>
+		</languageKey>
+	</data>
+</T3locallang>

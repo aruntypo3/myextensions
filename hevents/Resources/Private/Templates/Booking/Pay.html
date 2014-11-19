@@ -1,0 +1,30 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<h2><f:translate key="user.pay" /></h2>
+<h3><f:translate key="user.thx" /></h3>
+<div class="paypal_block">
+	<p><f:translate key="user.forward" /></p>
+	<form action="{f:cObject(typoscriptObjectPath:'plugin.tx_hevents.settings.paypal.url')}" method="post">
+		<input type="hidden" name="cmd" value="_xclick">
+		
+		<input TYPE="hidden" NAME="business" VALUE="{f:cObject(typoscriptObjectPath:'plugin.tx_hevents.settings.paypal.email')}">
+		<input TYPE="hidden" NAME="quantity" VALUE="{booking.amount}">
+		<input TYPE="hidden" NAME="item_name" VALUE="{event.title}">
+		<input TYPE="hidden" NAME="item_number" VALUE="{booking.ppref}">
+		<input TYPE="hidden" NAME="amount" VALUE="{event.price}">
+		<input TYPE="hidden" NAME="currency_code" VALUE="CHF">
+		<input TYPE="hidden" NAME="return" value="{f:cObject(typoscriptObjectPath:'plugin.tx_hevents.settings.paypal.returnUrl')}">
+		
+		<input type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+	</form>
+</div>
+<div class="saferpay_block">
+	<p><f:translate key="tx_hevents_domain_model_booking.user.payment_saferpay">Payment Using Saferpay !!</f:translate></p>
+	<a href="{saferpayUrl}" "onclick="OpenSaferpayTerminal('{saferpayUrl}', this, 'LINK' )">
+    <img src="/typo3conf/ext/hevents/Resources/Public/Img/Saferpay.png" alt="Saferpay" style="border-radius:5px;">
+  </a>  
+</div>
+<div class="backtoform"><br/><br/><a href="javascript: window.history.go(-2);"><f:translate key="tx_hevents_domain_model_booking.user.backtoform">Back to Form</f:translate></a></div>
+</f:section>

@@ -1,0 +1,63 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script src="typo3conf/ext/pits_elearn/Resources/Public/Js/actions.js"></script>
+<article class="post-block">
+	<article class="partner-block">
+	<ul class="list">
+		<f:for each="{resultRecord.partnerImages}" as="counter">
+			<li>
+				<f:link.page pageUid="{resultRecord.detailPage}" additionalParams="{tx_pitspartner_pitspartner: {uid: counter.uid}}">
+					<f:image src="fileadmin/Dateien/Bildungspartner/Logos_sw/{counter.user_image}" width="102c" height="73c" alt="{counter.title}" />
+				</f:link.page>
+			</li>
+		</f:for>
+	</ul>
+   </article>
+	<div class="question-controllbar">
+		<div class="previous">
+		</div>
+        <div class="question-counter answerPage"><f:translate key='pits_elearn.resultDisplayHead'>Auswertung</f:translate></div>
+        <div class="next">
+        </div>
+    </div>
+</article>       
+  
+<p class="score_board"><f:format.htmlentitiesDecode>{resultRecord.score}</f:format.htmlentitiesDecode></p>
+
+<form class="online-form-last" action="" method="POST" id="questionsFormlast">
+            <h2>
+                <span class="subheadResult"><f:translate key='pits_elearn.sub_head'></f:translate></span>
+            </h2>
+            <div id="id-thema_div">
+                    <select name="tx_pitselearn_pitselearn[tnt_thema]" onChange="doGetValue(this.value,'{resultRecord.pageId}')">
+                        <option value="0"><f:translate key='pits_elearn.select_thema'></f:translate></option>
+                        <f:for each="{resultRecord.elearnings}" as="themaName" key="uid">
+                            <f:if condition="{uid}=={resultRecord.preFillData.selectedThema}">
+                                <f:then>
+                                     <option value="{uid}" selected >{themaName}</option>
+                                </f:then>
+                                <f:else>
+                                     <option value="{uid}">{themaName}</option>
+                                </f:else>
+                            </f:if>
+                        </f:for>
+            </div>
+                    </select>
+                    <div id="id-chapters_div">
+                        <f:if condition="{resultRecord.preFillData.selectedThema}">
+                                <f:then>
+
+                                    <f:format.htmlentitiesDecode>{resultRecord.preFillData.selectedChapter}</f:format.htmlentitiesDecode>
+                                </f:then>
+                                <f:else>
+                                    <select name="tx_pitselearn_pitselearn[tnt_thema_chapter]" class="selects-holder">
+                                               <option value="0"><f:translate key='pits_elearn.select_chapter'></f:translate></option>
+                                    </select>
+                                </f:else>
+                            </f:if>
+                        
+                       
+                    </div>
+                    <input type="button" class="bs-btn active" value="go" id="repeat_questionaire" onclick="return repeatQuestionaire( '{resultRecord.pageId}','{sysLangId}' )" />
+</form>
+</f:section>

@@ -1,0 +1,17 @@
+plugin.tx_pitsbrandsearch {
+	view {
+		# cat=plugin.tx_pitsbrandsearch/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:pits_brandsearch/Resources/Private/Templates/
+		# cat=plugin.tx_pitsbrandsearch/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:pits_brandsearch/Resources/Private/Partials/
+		# cat=plugin.tx_pitsbrandsearch/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:pits_brandsearch/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_pitsbrandsearch//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		scrollToJs = typo3conf/ext/pits_brandsearch/Resources/Public/Js/scrollTo.js
+	}
+}

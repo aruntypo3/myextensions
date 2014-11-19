@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'mric_news'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_pits_emailsender.name">TNT Email Sender Scheduler</label>
+			<label index="tx_pits_emailsender.description">TNT Email Sender Scheduler</label>
+			
+			<label index="tx_pits_emailsender.emailsubject">Ihr www.cyclinfo.ch Abonnement läuft ab</label>
+			<label index="tx_pits_emailsender.emailmessgae">
+			Hallo %s &lt;br&gt;&lt;br&gt;
+Ihr Abonnement für www.cyclinfo.ch läuft morgen ab. Damit Sie keine News verpassen, können Sie es unter nachfolgendem Link verlängern:&lt;br&gt;&lt;br&gt;
+&lt;a href="http://www.cyclinfo.ch/myaccount/abonnement-verlaengern.html"&gt;Abonnement verlängern&lt;/a&gt;&lt;br&gt; &lt;br&gt;
+Wir freuen uns, Sie weiterhin als Leser auf unserem Infoportal für die Schweizer Velobranche begrüssen zu dürfen!&lt;br&gt;
+Ihr Cyclinfo-Team&lt;br&gt;&lt;br&gt;
+&lt;hr&gt;&lt;br&gt;
+Cyclinfo – Fachwissen für die Velobranche&lt;br&gt;
+Reitweg 2&lt;br&gt;
+CH-8400 Winterthur&lt;br&gt;
+&lt;a href="mailto:mail@cyclinfo.ch"&gt;mail@cyclinfo.ch&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://www.cyclinfo.ch"&gt;www.cyclinfo.ch&lt;/a&gt;&lt;br&gt;
+</label>
+			
+		</languageKey>
+	</data>
+</T3locallang>

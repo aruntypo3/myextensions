@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'tnt_blumenshop'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_tntblumenshop.storage_folder_id">Storage Folder Id</label>
+			<label index="tx_tntblumenshop_products">Products</label>
+			<label index="tx_tntblumenshop_cat">Category</label>
+			<label index="tx_tntblumenshop_cat.title">Title</label>
+			<label index="tx_tntblumenshop_products.title">Title</label>
+			<label index="tx_tntblumenshop_products.image">Product Image</label>
+			<label index="tx_tntblumenshop_products.price_1">Betrag Option1</label>
+			<label index="tx_tntblumenshop_products.price_2">Betrag Option2</label>
+			<label index="tx_tntblumenshop_products.price_3">Betrag Option3</label>
+			<label index="tx_tntblumenshop_products.category">Kategorie</label>
+			<label index="ff.sheetTitle1">General Settings</label>
+			<label index="ff.sheetTitle2">Payment Options</label>
+			<label index="ff.choose_category">Select Categories</label>
+			<label index="ff.price_extra">Begleitkarte</label>
+			<label index="ff.price_extra1">Price Extra 1</label>
+			<label index="ff.price_extra2">Price Extra 2</label>
+			<label index="ff.merchantid">Merchant ID</label>
+			<label index="ff.paymenturl">Payment URL</label>
+			<label index="ff.successurl">Success URL</label>
+			<label index="ff.errorurl">Error URL</label>
+			<label index="ff.cancelurl">Cancel URL</label>
+			<label index="ff.payment_message">Post Payment Message</label>
+			<label index="tx_tntblumenshop_productlog.name">Name</label>
+			<label index="tx_tntblumenshop_productlog.vorname">Vorname</label>
+			<label index="tx_tntblumenshop_productlog.wohnort">Wohnort</label>
+			<label index="tx_tntblumenshop_productlog.totalprice">Gesamtbetrag</label>
+			<label index="tx_tntblumenshop_productlog.price_extra">Begleitkarte</label>
+			<label index="tx_tntblumenshop_productlog.product">Product Id</label>
+			<label index="tx_tntblumenshop_productlog.special_requests">Bemerkungen</label>
+			<label index="tx_tntblumenshop_productlog.special_comments">Spezielle Kommentare</label>
+			<label index="tx_tntblumenshop_productlog.transaction_id">Transaktions-ID</label>
+			<label index="tx_tntblumenshop_productlog.reference_number">Referenznummer</label>
+			<label index="tx_tntblumenshop_productlog.contactname">Name</label>
+			<label index="tx_tntblumenshop_productlog.contactvorname">Vorname</label>
+			<label index="tx_tntblumenshop_productlog.company">Firma</label>
+			<label index="tx_tntblumenshop_productlog.street">Strasse/Nr.</label>
+			<label index="tx_tntblumenshop_productlog.zip">PLZ</label>
+			<label index="tx_tntblumenshop_productlog.land">Ort</label>
+			<label index="tx_tntblumenshop_productlog.phone">Telephone</label>
+			<label index="tx_tntblumenshop_productlog.mobile">Mobile</label>
+			<label index="tx_tntblumenshop_productlog.email">E-mail</label>
+			<label index="tx_tntblumenshop_productlog.ip_address">IP Address</label>
+			<label index="tx_tntblumenshop_productlog.trans_status">Transaktion Status</label>
+			<label index="tx_tntblumenshop_productlog">Order Log</label>
+			<label index="contact_info_tab">Contact Info</label>
+			<label index="product_info_tab">Product Info</label>
+			<label index="ff.title">Title</label>
+			<label index="ff.intro_text">Introduction Text</label>
+			<label index="ff.admin_email">Admin Email Id</label>
+			<label index="ff.from_email">Client confirmation "From" email address</label>
+			<label index="ff.listView">List View</label>
+			<label index="ff.teaserView">Teaser View</label>
+			<label index="ff.teaser_header">Teaser Header</label>
+			<label index="ff.teaser_image">Teaser Image</label>
+			<label index="ff.teaser_text">Teaser Content</label>
+			<label index="ff.teaser_link">Teaser Link</label>
+			<label index="ff.select_view">Select View</label>
+			<label index="ff.statusView">Status View</label>
+			<label index="ff.status_header">Title</label>
+			<label index="ff.status_text">Status Content</label>
+		</languageKey>
+	</data>
+</T3locallang>

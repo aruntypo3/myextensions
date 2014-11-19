@@ -1,0 +1,67 @@
+		
+/* ******************CUSTOM FOR PITS Bluemenshop Extension********************* */
+
+.bs-gallery-content{ float:left; margin:0; padding:0; width:100%; overflow:hidden }
+.bs-gallery{ float:left; margin: 0 7px 14px;}
+.bs-gallery-mask{ float: left; height: auto; margin: 0 0 0 -7px; padding: 0; width: 510px;}
+.bs-gallery .img-holder{ margin:0 0 3px 0; padding:0; float:left}
+.bs-gallery .img-holder{ border:0; outline:none}
+.bs-gallery p{ margin:0 0 5px 0; padding:0}
+.bs-gallery:last-child{ margin-right:0px}
+.bs-gallery .bs-link, .txt-link{ text-decoration:none; margin:0; padding:0 0 0 10px; color:#91857b; text-transform:uppercase; background:url(../images/bs_link-img.png) no-repeat 1px 7px}
+.bs-gallery strong, .bs-gallery b{ font-weight:bold; color:#000; clear:both; width:100%; display:block;}
+.bs-gallery-content .bs-gallery.mr0{ margin-right:0px; padding-right:0px}
+
+.column-2.column-2-p-2 ,.column-2-p-2{ width:515px; float:left;	_overflow: hidden;}
+/* .column-2.column-1-p-1 .inner {margin:0 0 0 10px;padding-right: 10px;float:left;width:495px;}*/
+.column-2.column-2-p-2 .inner {margin:0 0 0 10px;padding-right: 10px;float:left;width:495px;}
+
+.full-width{ float:left; width:100%; margin:15px 0; padding:0; }
+.col-240{ width:240px; margin:0; padding:0;}
+.fleft{ float:left}
+.fright{ float:right}
+.column-2.column-1-p-1 .col-240 p{ margin-top:0; padding-top:0; margin-bottom:7px; padding-bottom:0}
+.col-240 label{ float:left; width:100%; margin:0 0 5px 0; padding:0}
+.col-240 input[type="text"]{ font-family: Arial,​Helvetica,​sans-serif !important; color: #000000; width:238px; border:1px solid #493d34; height:20px; margin:0; padding:0px; *line-height: 18px !important;}
+.tb-text { float:left; width:100%; margin:0; padding:10px 0 5px 0}
+.ml-18, p.ml-18, .column-2.column-1-p-1 .tb-text .ml-18{ margin-left:18px;}
+.border-light{ border-bottom:1px solid #e7e7e7; height:1px; width:100%; clear:left; float:left; margin:10px 0}
+.w493{ width:493px !important; float:left; height:76px; border:1px solid #493d34 !important; margin:0 !important; padding:0 !important; }
+.fw-column { float:left; width:100%; margin:5px 0 0 0; padding:0}
+/* .column-2.column-1-p-1 .fw-column p{ margin:0 0 8px 0; padding:0} */
+.fw-column p{ margin:0 0 8px 0; padding:0; clear:left;}
+
+/* .column-2.column-1-p-1 .bs-btn{ background:#493d34; text-align: center; color:#fff; text-transform:uppercase; font-size:12px; border:1px solid #493d34; height:22px; padding:0px 5px; line-height:22px; margin:30px 0;float:left} */
+/*.bs-btn{ background:#493d34; text-align: center; color:#fff; text-transform:uppercase; font-size:12px; border:1px solid #493d34; height:22px; padding:0 5px 2px; line-height:22px; margin:30px 0;float:left;cursor:pointer;}*/
+/* .column-2.column-1-p-1 .b-text{ color:#59adcb} */
+.bs-btn {background: none repeat scroll 0 0 #493D34 !important; border: 1px solid #493D34 !important; color: #FFFFFF; cursor: pointer; float: left; font-size: 12px !important; height: 22px; line-height: 22px; margin: 30px 0 !important; padding: 0 5px 2px !important; text-align: center; text-transform: uppercase; width: auto !important;}
+.b-text{ color:#59adcb} 
+.col-240.fleft p:last-child{ padding-bottom:0; margin-bottom:0}
+.border-light.top{ margin-bottom:0}
+
+.h-form{ float:left; width:100%; margin:0; padding:0;}
+.h-form label{  width:88px; margin:0 10px 5px 0; padding:0; display:inline-block; text-align:right;}
+.h-form input[type="text"]{ font-family: Arial,​Helvetica,​sans-serif !important; color: #000000; width:278px; border:1px solid #493d34; height:20px; margin:0; display:inline-block; padding: 0px; *line-height: 18px !important;}
+.h-form input[type="text"].w72{ width:72px; margin-right:8px}
+.h-form input[type="text"].w196{ width:196px;}
+.ml-18 {margin-left: 0 !important;}
+.fw-column select {
+    border: 1px solid #493D34;
+    display: inline-block;
+    height: 20px;
+    margin: 0;
+    width: 278px;
+    padding:0px;
+}
+span.error_class{color: red;}
+.tx-pits-bluemenshop p {padding: 0 0 7px;}
+.tx-pits-bluemenshop input[type="radio"]{width: auto;border:0px !important;top:2px; position:relative;}
+.listintro_text {padding: 0px 0px 10px !important;}
+.list_form {padding: 10px 0px !important;}
+.redirectmsg {padding: 30px; text-align: center;}
+.border-light{*clear:none;}
+.tx-pits-bluemenshop input[type="radio"]{*top:5px;}
+.bs-btn {*height: 30px;*padding:0px;}
+.tx-pits-bluemenshop textarea{ font-family: Arial,​Helvetica,​sans-serif !important; font-size:12px !important; color:#000000 !important;}
+.h-form input[type="checkbox"] {width: auto !important; border: none !important;}
+.bs-gallery .img-holder a { outline: 0; }

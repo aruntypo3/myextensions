@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the TNT Jobs extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+		
+			<label index="tx_pitsjob_domain_model_pitsjob">Pitsjob</label>
+			<label index="job_category">Rubrik</label>
+			<label index="select_category">---Wählen---</label>
+			<label index="job_title">Titel</label>
+			<label index="short_text">Kurzbeschrieb</label>
+			<label index="detail_text">Detailbeschrieb</label>
+			<label index="contact_info">Kontaktinformationen</label>
+			<label index="chiffre">Chiffre</label>
+			<label index="billing_address_text">RECHNUNGSADRESSE</label>
+			<label index="billing_address_subtext">(wird nicht angezeigt)</label>
+			<label index="contact_name">Name</label>
+			<label index="firma_name">Firmenname</label>
+			<label index="address">Adresse</label>
+			<label index="zipcode">Postleitzahl</label>
+			<label index="ort">Ort</label>
+      		<label index="country">Land</label>
+			<label index="telephone">Telefon</label>
+			<label index="email">E-Mail</label>
+			<label index="web">Website</label>
+			<label index="submit_button">BESTELLEN</label>
+			<label index="resetbutton">ZURÜCKSETZEN</label>
+			<label index="mandatory">Bitte das Feld ausfüllen</label>
+			<label index="mail_subject">Anzeige / %s / %s</label>
+			<label index="usermsg_text">&#60;b&#62;Vielen Dank für Ihre Bestellung!&#60;&#47;b&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;Ihre Kleinanzeige wird in den nächsten Stunden geprüft und freigeschaltet.&#60;br&#47;&#62;&#60;br&#47;&#62;Sie erscheint online auf &#60;a href="http://www.cyclinfo.ch/" target="_blank"&#62;www.cyclinfo.ch&#60;&#47;a&#62; und &#60;a href="http://www.cycljobs.ch/" target="_blank"&#62;www.cycljobs.ch&#60;&#47;a&#62; während zwei Monaten sowie einmalig im nächsten gedruckten Cyclinfo Magazin.&#60;br&#47;&#62;&#60;br&#47;&#62;
+						Die Rechnung erhalten Sie in den kommenden Tagen per Post&#60;br&#47;&#62;&#60;br&#47;&#62;Ihr Cyclinfo Team</label>
+			<label index="salutation_text">Hi Admin,</label>
+			<label index="mail_text1">Bitte überprüfen und freischalten:</label>
+			<label index="mail_jobtitle">Job Title</label>
+			<label index="mail_jobcategory">Job Category</label>
+			<label index="mail_contact">Contact</label>
+			<label index="category_mandatory">Bitte wählen Sie eine Kategorie</label>
+			<label index="invalid_mail">Geben Sie eine gültige E-Mail</label>
+			<label index="invalid_phone">Bitte geben Sie eine gültige Telefon</label>
+			<label index="invalid_agreeTerms">Haben Sie unsere AGBs gelesen?</label>
+			<label index="max_characters">Maximal 600 Zeichen</label>
+			<label index="shorttextval">Die Kurzversion erscheint als erster Abschnitt der Online-Anzeige sowie als Anzeigenteaser mit Direktlink zur gesamten Online-Anzeige im gedruckten Cyclinfo Magazin.</label>
+			<label index="detailtextval">Die Detailbeschreibung erscheint nur im Online Auftritt</label>
+			<label index="current_jobs">Aktuelle</label>
+			<label index="backto_jobs">ZURÜCK ZUM</label>
+			<label index="backto_jobs_search">ZURÜCK</label>
+			<label index="latest_jobs">CYCLJOBS</label>
+			<label index="all_jobs">ALLE JOBS</label>
+			<label index="adfrom_link">INSERAT AUFGEBEN</label>
+			<label index="no_items">Kein Artikel in der Liste!</label>
+			<label index="kontact_detailhead">Kontakt</label>
+			<label index="mailjobinfo">Anzeige Details</label>
+			<label index="mailcontactinfo">Rechnungsadresse</label>
+			<label index="chiffre_yes">ja</label>
+			<label index="chiffre_no">nicht</label>
+			<label index="madatory_text">Pflichtfelder</label>
+      		<label index="agree_terms">Ich habe die &#60;a href="http://www.cyclinfo.ch/fileadmin/Dateien/PDF/AGB_Kleinanzeigen.pdf" target="_blank"&#62;AGB Kleinanzeigen&#60;&#47;a&#62; gelesen und stimme diesen zu</label>
+            
+		</languageKey>
+	</data>
+</T3locallang>

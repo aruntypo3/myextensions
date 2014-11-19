@@ -1,0 +1,34 @@
+plugin.tx_pitselearn {
+	view {
+		templateRootPath = {$plugin.tx_pitselearn.view.templateRootPath}
+		partialRootPath = {$plugin.tx_pitselearn.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_pitselearn.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_pitselearn.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_pitselearn._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-pits-elearn table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-pits-elearn table th {
+		font-weight:bold;
+	}
+
+	.tx-pits-elearn table td {
+		vertical-align:top;
+	}
+)

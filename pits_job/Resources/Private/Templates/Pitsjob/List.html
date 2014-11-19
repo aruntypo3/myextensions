@@ -1,0 +1,20 @@
+<f:layout name="Default" />
+<f:section name="main">
+<div class="joblistHeader"><f:translate key='current_jobs'>AKTUELLE</f:translate>&nbsp;{listData.categoryName}</div>
+<f:flashMessages class="noItemClass" />
+<table cellspacing="0" cellpadding="0" border="0">
+	<f:for each="{jobListArray}" as="jobItems">
+		<tr>
+			<td colspan="1">
+				<f:format.date format="d.m.Y">@{jobItems.job_date}</f:format.date>
+			</td>
+			<td colspan="3">
+				<a href="{listData.currentUrl}?tx_pitsjob_pitsjob[jobId]={jobItems.uid}&tx_pitsjob_pitsjob[catId]={jobItems.category_id}&no_cache=1" class="detail_link">
+					{jobItems.job_title}
+				</a>
+			</td>
+			<td colspan="1">{jobItems.place}</td>
+		</tr>
+	</f:for>
+</table>
+</f:section>

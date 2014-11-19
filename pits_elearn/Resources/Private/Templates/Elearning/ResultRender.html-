@@ -1,0 +1,6 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script src="typo3conf/ext/pits_elearn/Resources/Public/Js/actions.js"></script>
+
+
+</f:section>

@@ -1,0 +1,42 @@
+plugin.tx_pitsjob {
+	view {
+		templateRootPath = {$plugin.tx_pitsjob.view.templateRootPath}
+		partialRootPath = {$plugin.tx_pitsjob.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_pitsjob.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_pitsjob.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	mvc {
+		callDefaultActionIfActionCantBeResolved = {$plugin.tx_pitsjob.mvc.callDefaultActionIfActionCantBeResolved}
+	}
+}
+
+plugin.tx_pitsjob._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-pits-job table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-pits-job table th {
+		font-weight:bold;
+	}
+
+	.tx-pits-job table td {
+		vertical-align:top;
+	}
+)

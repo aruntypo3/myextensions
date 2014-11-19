@@ -1,0 +1,39 @@
+.slider-container { margin:0 auto; padding:0; width:980px; }
+.slider-item { width:256px; height:400px; background-color:#e1e1e1; border:1px solid #000000; }
+.slider-inner-center { text-align:center; }
+.slider-inner-center .slider-item { display:inline-block; text-align:left; }
+
+#sr-minprice-maxprice { display:inline-block; width:180px; margin:0 10px 0 10px; }
+
+#map { width:980px; height:400px; }
+
+#catList .icon-inactive { display:inline-block; }
+#catList .icon-active { display:none; }
+#catList .active .icon-inactive,
+#catList li:hover .icon-inactive { display:none; }
+#catList .active .icon-active,
+#catList li:hover .icon-active { display:inline-block; }
+
+.slider-item .icon-inactive { display:inline-block; }
+.slider-item .icon-active { display:none; }
+.slider-item:hover .icon-inactive { display:none; }
+.slider-item:hover .icon-active { display:inline-block; }
+.errordiv { display: none; }
+.paypal_block { float: left; width: 50%; }
+#country, #dcountry {
+    background-color: #ccb488;
+    color: #121e30;
+    font-family: "NovecentoRegular",Arial,sans-serif;
+    font-size: 12px;
+    height: 30px;
+    letter-spacing: 1px;
+    padding: 5px;
+    text-transform: uppercase;
+    width: 100%;
+}
+.tx-felogin-pi1 .resetpw_submit, .tx-felogin-pi1 form.resetpw_form {
+    margin-top: 10px;
+}
+.tx-hevents .eventDates span {
+    display: block;
+}

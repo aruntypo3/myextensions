@@ -1,0 +1,33 @@
+<!-- ###PITSNEWSLETTER### -->
+<script type= "text/javascript">
+function validFunction(){
+		if(document.getElementById('lab1a').value != ''){
+			var emailid = document.getElementById('lab1a').value;
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+			if(!emailid.match(mailformat)){
+				alert("Please enter a valid email address");
+				return false; 
+				} 
+			}else{
+				return true;
+			}
+	}
+</script>
+<div class="pitsnewsletter">
+	<form method="post" class="mail-form" name="pits_subscription" action="" onsubmit = "return validFunction();">
+		<fieldset>
+			<label class="letter" for="lab1">Newsletter-Abo</label>
+			<div class="mail-box">
+				<input type="text" value="E-Mail-Adresse" onblur="if (this.value.length==0) {this.value='E-Mail-Adresse';}" onfocus="if(this.value=='E-Mail-Adresse'){this.value='';}" name="sub_email" id="lab1a" />
+			</div>
+			<input type="submit" value = "Anmelden" id="goclww" name="submit" />
+			<span class = "pits_validmsg_###MSG###" id="newsletter_msg">###VALIDMSG###</span>
+		</fieldset>
+	</form>
+</div>
+<!-- ###PITSNEWSLETTER### -->
+
+
+<!-- ###PITSNEWSLETTER_SUCCESS### -->
+	###SUCCESS_MESSAGE###
+<!-- ###PITSNEWSLETTER_SUCCESS### -->

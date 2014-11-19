@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'pits_bannerimages'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_pitsbannerimages_domain_model_bannermanagement">Banner Images</label>
+			<label index="tx_pitsbannerimages_domain_model_bannerbackend">Bannerbackend</label>
+                        <label index="tx_pitsbannerimage.title">Title</label>
+                        <label index="tx_pitsbannerimage.image">Banner Image</label>
+                        <label index="tx_pitsbannerimage.image_link">Image Link</label>
+                        <label index="tx_pitsbannerimage.flexform_title">TNT Banner Settings</label>
+                        <label index="tx_pitsbannerimage.select_image">Choose the banner images</label>
+                        <label index="tx_pitsbannerimage.show_random_image">Show Random Image</label>
+                        <label index="tx_pitsbannerimage.image_width">Image Width</label>
+                        <label index="tx_pitsbannerimage.image_height">Image Height</label>
+                        <label index="tx_pitsbannerimage.select_position">Select Image Position</label>
+                        <label index="tx_pitsbannerimage.middle_column">First Column</label>
+                        <label index="tx_pitsbannerimage.right_column">Second Column</label>
+                        <label index="tx_pitsbannerimage.third_column">Third Column</label>
+                        <label index="tx_pitsbannerimage.top_banner">Top Banner</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,91 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:tnt_blumenshop/Resources/Private/Language/locallang_db.xml:ff.sheetTitle1</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.flexform_teaser.teaserHeader>
+						<TCEforms>
+							<label>LLL:EXT:tnt_blumenshop/Resources/Private/Language/locallang_db.xml:ff.teaser_header</label>
+							<config>
+								<type>input</type>
+								<size>20</size>
+							</config>
+						</TCEforms>
+					</settings.flexform_teaser.teaserHeader>
+					<settings.flexform_teaser.teaserImage>
+						<TCEforms>
+							<label>LLL:EXT:tnt_blumenshop/Resources/Private/Language/locallang_db.xml:ff.teaser_image</label>
+							<config>
+								<type>inline</type>
+								<maxitems>99</maxitems>
+								<foreign_table>sys_file_reference</foreign_table>
+								<foreign_table_field>tablenames</foreign_table_field>
+								<foreign_label>uid_local</foreign_label>
+								<foreign_sortby>sorting_foreign</foreign_sortby>
+								<foreign_selector>uid_local</foreign_selector>
+								<foreign_selector_fieldTcaOverride type="array">
+									<config>
+										<appearance>
+											<elementBrowserType>file</elementBrowserType>
+											<elementBrowserAllowed>gif,jpg,jpeg,png,ai,psd</elementBrowserAllowed>
+										</appearance>
+									</config>
+								</foreign_selector_fieldTcaOverride>
+								<foreign_match_fields type="array">
+									<fieldname>flex_head_image</fieldname>
+								</foreign_match_fields>
+									<appearance type="array">
+										<newRecordLinkAddTitle>1</newRecordLinkAddTitle>
+										<headerThumbnail>
+											<field>uid_local</field>
+											<height>64</height>
+											<width>64</width>
+										</headerThumbnail>
+									</appearance>
+							</config>
+						</TCEforms>
+					</settings.flexform_teaser.teaserImage>
+					<settings.flexform_teaser.teaserText>
+						<TCEforms>
+							<label>LLL:EXT:tnt_blumenshop/Resources/Private/Language/locallang_db.xml:ff.teaser_text</label>
+							 <config>
+                                <type>text</type>,
+								<cols>40</cols>
+								<rows>10</rows>
+                             </config>
+                             <defaultExtras>richtext[bold|italic|subscript|superscript|removeformat|chMode]:rte_transform[flag=rte_enabled|mode=ts_css]</defaultExtras>
+						</TCEforms>
+					</settings.flexform_teaser.teaserText>
+					<settings.flexform_teaser.teaserLink>
+						<TCEforms>
+							<label>LLL:EXT:tnt_blumenshop/Resources/Private/Language/locallang_db.xml:ff.teaser_link</label>
+							<config>
+						      <type>input</type>
+						      <eval>trim</eval>
+						      <size>30</size>
+						      <wizards type="array">
+						        	<_PADDING type="integer">2</_PADDING>
+						        	<link type="array">
+						          		<type>popup</type>
+						          		<title>Link</title>
+						          		<icon>link_popup.gif</icon>
+						          		<script>browse_links.php?mode=wizard</script>
+						          		<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+						        	</link>
+						      </wizards>								
+						    </config>
+						</TCEforms>
+					</settings.flexform_teaser.teaserLink>
+				</el>
+			</ROOT>
+	    </sDEF>
+	</sheets>
+</T3DataStructure>
+

@@ -1,0 +1,51 @@
+plugin.tx_pitsbannerimages {
+	view {
+		templateRootPath = {$plugin.tx_pitsbannerimages.view.templateRootPath}
+		partialRootPath = {$plugin.tx_pitsbannerimages.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_pitsbannerimages.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_pitsbannerimages.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_pitsbannerimages._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-pits-bannerimages table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-pits-bannerimages table th {
+		font-weight:bold;
+	}
+
+	.tx-pits-bannerimages table td {
+		vertical-align:top;
+	}
+)
+
+ # Module configuration
+module.tx_pitsbannerimages {
+	persistence {
+		storagePid = {$module.tx_pitsbannerimages.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_pitsbannerimages.view.templateRootPath}
+		partialRootPath = {$module.tx_pitsbannerimages.view.partialRootPath}
+		layoutRootPath = {$module.tx_pitsbannerimages.view.layoutRootPath}
+	}
+}

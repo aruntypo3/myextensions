@@ -1,0 +1,23 @@
+<f:layout name="Default" />
+
+
+
+<f:section name="main">
+<h1>Listing for Elearning</h1>
+
+<table  class="tx_pitselearn" >
+	<tr>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{elearnings}" as="elearning">
+		<tr>
+			<td><f:link.action action="edit" arguments="{elearning : elearning}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{elearning : elearning}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+<f:link.action action="new">New Elearning</f:link.action>
+</f:section>

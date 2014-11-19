@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Henry Events extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_hevents_domain_model_event">Event</label>
+			<label index="tx_hevents_domain_model_event.title">title</label>
+			<label index="tx_hevents_domain_model_event.description">description</label>
+			<label index="tx_hevents_domain_model_event.provider">Provider</label>
+			<label index="tx_hevents_domain_model_event.locationAddress">Location Address</label>
+			<label index="tx_hevents_domain_model_event.latitude">latitude</label>
+			<label index="tx_hevents_domain_model_event.longitude">longitude</label>
+			<label index="tx_hevents_domain_model_event.location">location</label>
+			<label index="tx_hevents_domain_model_event.price">price</label>
+			<label index="tx_hevents_domain_model_event.images">images</label>
+			<label index="tx_hevents_domain_model_event.categories">categories</label>
+			<label index="tx_hevents_domain_model_event.dates">dates</label>
+			<label index="tx_hevents_domain_model_event.city">city</label>
+			<label index="tx_hevents_domain_model_category">Category</label>
+			<label index="tx_hevents_domain_model_category.title">title</label>
+			<label index="tx_hevents_domain_model_category.description">description</label>
+			<label index="tx_hevents_domain_model_date">Date</label>
+			<label index="tx_hevents_domain_model_date.start">start</label>
+			<label index="tx_hevents_domain_model_date.end">end</label>
+			<label index="tx_hevents_domain_model_booking">Booking</label>
+			<label index="tx_hevents_domain_model_booking.correctinfo">Are Your Information correct?</label>
+			<label index="tx_hevents_domain_model_booking.amount">Amount</label>
+			<label index="tx_hevents_domain_model_booking.price">Price</label>
+			<label index="tx_hevents_domain_model_booking.ppstatus">Ppstatus</label>
+			<label index="tx_hevents_domain_model_booking.ppstatus.0">progress</label>
+			<label index="tx_hevents_domain_model_booking.ppstatus.1">dispatch</label>
+			<label index="tx_hevents_domain_model_booking.ppstatus.2">canceled</label>
+			<label index="tx_hevents_domain_model_booking.delevieraddress">deliver address</label>
+			<label index="tx_hevents_domain_model_booking.ppref">Ppref</label>
+			<label index="tx_hevents_domain_model_booking.email">E-Mail</label>
+			<label index="tx_hevents_domain_model_booking.name">Name</label>
+			<label index="tx_hevents_domain_model_booking.forename">Forename</label>
+			<label index="tx_hevents_domain_model_booking.address">Address</label>
+			<label index="tx_hevents_domain_model_booking.zip">Zip</label>
+			<label index="tx_hevents_domain_model_booking.city">City</label>
+			<label index="tx_hevents_domain_model_booking.country">Country</label>
+			<label index="tx_hevents_domain_model_booking.dname">delivery name</label>
+			<label index="tx_hevents_domain_model_booking.dforename">delivery forename</label>
+			<label index="tx_hevents_domain_model_booking.daddress">delivery address</label>
+			<label index="tx_hevents_domain_model_booking.dzip">delivery zip</label>
+			<label index="tx_hevents_domain_model_booking.dcity">delivery city</label>
+			<label index="tx_hevents_domain_model_booking.dcountry">delivery country</label>
+			<label index="tx_hevents_domain_model_booking.event">Event</label>
+			<label index="tx_hevents_domain_model_booking.date">Date</label>
+			<label index="tx_hevents_domain_model_booking.user">User</label>
+			<label index="tx_hevents_domain_model_city">City</label>
+			<label index="tx_hevents_domain_model_city.title">title</label>
+			
+			<label index="basic.all">all</label>
+			<label index="basic.none.city">Choose a City</label>
+			<label index="basic.book">Continue booking</label>
+			<label index="basic.search.submit">filter</label>
+			<label index="basic.register">register</label>
+			<label index="basic.save">save</label>
+			<label index="basic.happyclients">happy clients</label>
+			<label index="basic.pastevents">past events</label>
+			
+			<label index="basic.addfav">Add to Favorites</label>
+			<label index="basic.remfav">Remove from Favorites</label>
+			<label index="basic.fav">Favorites</label>
+			
+			<label index="filter.location">Location</label>
+			<label index="filter.dates">available dates</label>
+			<label index="filter.price">Price Range</label>
+			<label index="filter.keyword">Keywords</label>
+			
+			<label index="single.hours">HOURS</label>
+			<label index="single.upcoming">upcoming</label>
+			<label index="single.similar">Similar Activities</label>
+			
+			<label index="user.thx">Thank you</label>
+			<label index="user.forward">You will be forwarded to the PayPal Website</label>
+			<label index="user.pay">Pay</label>
+			
+			<label index="register.register">Register</label>
+			<label index="register.email">E-Mail</label>
+			<label index="register.passwordconfirm">Confirm Password</label>
+			<label index="register.password">Confirm Password</label>
+			
+			<label index="basic.login">Please Login</label>
+			<label index="basic.more">more »</label>
+			
+			<label index="tx_hevents_domain_model_booking.error.amount">Amount Error</label>
+			<label index="tx_hevents_domain_model_booking.error_avail.amount">Amount Exceeds the available seats</label>
+			<label index="tx_hevents_domain_model_booking.error.name">Name Error</label>
+			<label index="tx_hevents_domain_model_booking.error.forename">Forname Error</label>
+			<label index="tx_hevents_domain_model_booking.error.address">Address Error</label>
+			<label index="tx_hevents_domain_model_booking.error.zip">Zip Error</label>
+			<label index="tx_hevents_domain_model_booking.error.city">City Error</label>
+			<label index="tx_hevents_domain_model_booking.error.country">Country Error</label>
+			<label index="tx_hevents_domain_model_booking.error.dname">dName Error</label>
+			<label index="tx_hevents_domain_model_booking.error.dforename">dForname Error</label>
+			<label index="tx_hevents_domain_model_booking.error.daddress">dAddress Error</label>
+			<label index="tx_hevents_domain_model_booking.error.dzip">dZip Error</label>
+			<label index="tx_hevents_domain_model_booking.error.dcity">dCity Error</label>
+			<label index="tx_hevents_domain_model_booking.error.dcountry">dCountry Error</label>
+			<label index="tx_hevents_domain_model_booking.error.email">email Error</label>
+			
+			<label index="tx_hevents_domain_model_user.error.empty.email">email not empty</label>
+			<label index="tx_hevents_domain_model_user.error.empty.password">password not empty</label>
+			<label index="tx_hevents_domain_model_user.error.empty.password_confirm">password confirm not empty</label>
+			<label index="tx_hevents_domain_model_user.error.empty.lastName">lastName not empty</label>
+			<label index="tx_hevents_domain_model_user.error.empty.firstName">firstName not empty</label>
+			<label index="tx_hevents_domain_model_user.error.empty.address">address not empty</label>
+			<label index="tx_hevents_domain_model_user.error.empty.zip">zip not empty</label>
+			<label index="tx_hevents_domain_model_user.error.empty.city">city not empty</label>
+			<label index="tx_hevents_domain_model_user.error.empty.country">country not empty</label>
+			<label index="tx_hevents_domain_model_user.error.userexists">Already exists</label>
+			
+			<label index="tx_hevents_domain_model_user.error.empty.dname">please fill the delivery name field</label>
+			<label index="tx_hevents_domain_model_user.error.empty.dforename">please fill the delivery forename field</label>
+			<label index="tx_hevents_domain_model_user.error.empty.daddress">please fill the delivery address field</label>
+			<label index="tx_hevents_domain_model_user.error.empty.dzip">please fill the delivery zip field</label>
+			<label index="tx_hevents_domain_model_user.error.empty.dcity">please fill the delivery city field</label>
+			<label index="tx_hevents_domain_model_user.error.empty.dcountry">please fill the delivery country field</label>
+			
+			<label index="register.mail.subject">Opt In</label>
+		
+			<label index="tx_hevents_domain_model_user.error.equal.password">passwords are not equal</label>
+			
+			<label index="tx_hevents_domain_model.successtrans">Your Order has been successfully processed.</label>
+			<label index="tx_hevents_domain_model.failedtrans">Your transaction has been failed. Please try again !!</label>
+			<label index="tx_hevents_domain_model.cancelledtrans">Your transaction has been cancelled. Please try again !!</label>
+			<label index="tx_hevents_domain_model_booking.availseats">Available Seats</label>
+			<label index="tx_hevents_domain_model_booking.guestuser">Continue booking as Guest</label>
+			<label index="tx_hevents_domain_model_booking.reguser">Continue booking</label>
+			<label index="tx_hevents_domain_model_booking.welcomemsg">Hi</label>
+			<label index="tx_hevents_domain_model_booking.fullbooked">Fully Booked</label>
+			<label index="tx_hevents_domain_model_user.error.invalidemail">Invalid Email</label>
+			<label index="tx_hevents_domain_model_booking.error_avail.amountempty">Amount Cannot be Empty</label>
+			<label index="tx_hevents_domain_model_booking.user.backtoform">Back to Form</label>
+			<label index="tx_hevents_domain_model_booking.user.payment_saferpay">Payment Using Saferpay !!</label>
+      
+		    <label index="tx_hevents_domain_model_booking.email.salText">Dear</label>
+		    <label index="tx_hevents_domain_model_booking.email.custThanksMsg">Thank you for your booking.</label>
+		    <label index="tx_hevents_domain_model_booking.email.bookedEvent">Booked Event</label>
+		    <label index="tx_hevents_domain_model_booking.email.bookedDate">Date of the Event</label>
+		    <label index="tx_hevents_domain_model_booking.email.bookedTime">Time of the Event</label>
+		    <label index="tx_hevents_domain_model_booking.email.evenDescription">Event Description</label>
+		    <label index="tx_hevents_domain_model_booking.email.custAdditionalMsg">Your booking has been placed successfully !!</label>
+		    <label index="tx_hevents_domain_model_booking.email.greetingsMsg">Greetings from Henry &amp; Fine</label>
+		    <label index="tx_hevents_domain_model_booking.email.adminThanksMsg">Thank you for your booking</label>
+		    <label index="tx_hevents_domain_model_booking.email.adminCustName">Customer Name</label>
+		    <label index="tx_hevents_domain_model_booking.email.adminAdditionalMsg">Thank you !!</label>
+		    <label index="tx_hevents_domain_model_booking.email.custSubject">Confirmation %s %s</label>
+		    <label index="tx_hevents_domain_model_booking.email.adminSubject">Confirmation %s %s</label>
+		    
+		    <label index="tx_hevents_domain_model_event.selectCountry">--Select Country--</label>
+		    <label index="tx_hevents_domain_model_booking.email.eventLogo">Event Logo</label>
+		    <label index="tx_hevents_domain_model_booking.email.locationAddress">Location Address</label>
+		    <label index="tx_hevents_domain_model_booking.email.providerName">Provider</label>
+		    <label index="tx_hevents_domain_model_event.startendDate">Date</label>
+		    <label index="tx_hevents_domain_model_event.startendTime">Time</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,107 @@
+<f:layout name="Default" />
+<f:section name="main">
+{namespace selectOption = Tx_PitsJob_ViewHelpers}
+<script type="text/javascript">
+	errorText = '<f:translate key="mandatory">Mandatory</f:translate>';
+	selectboxError = '<f:translate key="category_mandatory">Mandatory</f:translate>';
+	invalidEmail = '<f:translate key="invalid_mail">Mandatory</f:translate>';
+	invalidPhone = '<f:translate key="invalid_phone">Mandatory</f:translate>';
+	agree_terms_error = '<f:translate key="invalid_agreeTerms">Mandatory</f:translate>';
+</script>
+<script type="text/javascript" src="typo3conf/ext/pits_job/Resources/Public/Js/validate.js"></script>
+<script src="typo3conf/ext/pits_job/Resources/Public/Js/tinymce/tinymce.min.js"></script>
+<script src="typo3conf/ext/pits_job/Resources/Public/Js/tinymce/custom-tinymce.js"></script>
+<f:form action="adform" name="jobData" method="POST" onsubmit="return validateForm()">
+	<div class="form_data">
+		<p>
+			<label><f:translate key="job_category">Rubrik</f:translate>*</label>
+			<select name="tx_pitsjob_pitsjob[category]" class="select_category" id="select_category">
+				<option value="0"><f:translate key="select_category">---Wählen---</f:translate></option>
+				<f:for each="{categorylist}" as="category" key="uid">
+		              <selectOption:SelectBox length="{category.uid},{ses_Submitval.category},{category.category_name}" />
+		        </f:for>
+			</select>
+			<span id="category_error" class="cat_mandatory">{cat_mandatory}</span>
+		</p>
+		<p>
+		   	<label><f:translate key="job_title">Titel</f:translate>*</label>
+			<input type="text" class="job_title required" value="{ses_Submitval.job_title}" name="tx_pitsjob_pitsjob[job_title]" id="job_title">
+			<span id="job_title_error" class="ad_errorclass">{title_error}</span>
+		</p>
+		<p>
+			<label><f:translate key="short_text">Kurzbeschrieb</f:translate>*</label>
+			<textarea cols="40" rows="3" class="short_text" id="short_text" name="tx_pitsjob_pitsjob[short_text]" onpaste="charLimit(600)" onkeydown="return docharLimit(600,event)"  onkeypress="return docharLimit(600,event)"  onkeyup="return docharLimit(600,event)" >{ses_Submitval.short_text}</textarea>
+			<span class="shortText">
+				<b><f:translate key="max_characters">Maximal 600 Zeichen</f:translate></b>
+				<f:translate key="shorttextval">Die Kurzbeschreibung erschienen im gedruckten Cyclinfo-Magazin mit einem
+				Direktlink zur gesarnten Online-Anzeige</f:translate>
+			</span>
+			<span id="short_text_error" class="ad_errorclass">{short_text_error}</span>
+		</p>
+		<p>
+			<label><f:translate key="detail_text">Detailbeschrieb</f:translate></label>
+			<textarea cols="40" rows="5" class="detail_text mceEditor" id="detail_text" name="tx_pitsjob_pitsjob[detail_text]">{ses_Submitval.detail_text}</textarea>
+			<span class="detailText">
+				<f:translate key="detailtextval">Die Detailbeschreibung erscheint nur im Online Auftritt</f:translate>
+			</span>
+		</p>
+		<p>
+			<label><f:translate key="contact_info">Kontaktinformationen</f:translate></label>
+			<textarea cols="40" rows="5" class="contact_info mceEditor" id="contact_info" name="tx_pitsjob_pitsjob[contact_info]">{ses_Submitval.contact_info}</textarea>
+		</p>
+		<p>
+			<label><f:translate key="chiffre">Chiffre</f:translate></label>
+			<f:form.checkbox name="chiffre" value="1" checked="{ses_Submitval.chiffre} == 1"/>
+		</p>
+		<div class="billing_address_title"><b><f:translate key="billing_address_text">RECHNUNGSADRESSE</f:translate></b>&nbsp;<f:translate key="billing_address_subtext">(wird nicht angezeigt)</f:translate></span></div>
+		<p>
+			<label><f:translate key="contact_name">Name</f:translate>*</label>
+			<input type="text" class="contact_name required" value="{ses_Submitval.contact_name}" name="tx_pitsjob_pitsjob[contact_name]" id="contact_name">
+			<span id="contact_name_error" class="ad_errorclass">{name_title_error}</span>
+		</p>
+		<p>
+			<label><f:translate key="firma_name">Firmenname</f:translate></label>
+			<input type="text" class="firma_name required" value="{ses_Submitval.firma_name}" name="tx_pitsjob_pitsjob[firma_name]" id="firma_name">
+		</p>
+		<p>
+			<label><f:translate key="address">Adresse</f:translate>*</label>
+			<input type="text" class="address required" value="{ses_Submitval.address}" name="tx_pitsjob_pitsjob[address]" id="address">
+			<span id="address_error" class="ad_errorclass">{address_error}</span>
+		</p>
+		<p>
+			<label><f:translate key="zipcode">Postleitzahl</f:translate>*</label>
+			<input type="text" class="zipcode required" value="{ses_Submitval.zipcode}" name="tx_pitsjob_pitsjob[zipcode]" id="zipcode">
+			<span id="zipcode_error" class="ad_errorclass">{zipcode_error}</span>
+		</p>
+		<p>
+			<label><f:translate key="ort">Ort</f:translate>*</label>
+			<input type="text" class="ort required" value="{ses_Submitval.ort}" name="tx_pitsjob_pitsjob[ort]" id="ort">
+			<span id="ort_error" class="ad_errorclass">{ort_error}</span>
+		</p>
+    <p>
+			<label><f:translate key="country">Land</f:translate></label>
+			<input type="text" class="country required" value="{ses_Submitval.country}" name="tx_pitsjob_pitsjob[country]" id="country">
+		</p>
+		<p>
+			<label><f:translate key="telephone">Telefon</f:translate></label>
+			<input type="text" class="telephone required" value="{ses_Submitval.telephone}" name="tx_pitsjob_pitsjob[telephone]" id="telephone">
+			<span id="telephone_error" class="ad_errorclass">{contact_mobile_error}</span>
+		</p>
+		<p>
+			<label><f:translate key="email">E-Mail</f:translate>*</label>
+			<input type="text" class="email required" value="{ses_Submitval.email}" name="tx_pitsjob_pitsjob[email]" id="email">
+			<span id="email_error" class="ad_errorclass">{contact_email_error}</span>
+		</p>
+		<p>
+			<label class="agree_terms"><f:format.htmlentitiesDecode><f:translate key="agree_terms">Ich habe die AGB Kleinanzeigen gelesen und stimme diesen zu</f:translate></f:format.htmlentitiesDecode>*</label>
+			<f:form.checkbox name="agree_terms" id="agree_terms" value="1" checked="{ses_Submitval.agree_terms} == 1"/>
+			<span id="agree_terms_error" class="ad_errorclass">{agree_terms_error}</span>
+		</p>
+		<p>
+		  	<span class="submit_button"><f:form.submit class="ad_button" name="submit" value="<f:translate key='submit_button'>ABSCHICKEN</f:translate>" /></span>
+		  	<span class="back_button"><button type="reset" value="<f:translate key='resetbutton'>ZURÜCKSETZEN</f:translate>" >ZURÜCKSETZEN</button></span>
+		</p>
+		<p><label><b>*<f:translate key="madatory_text">Pflichtfelder</f:translate></b></label> </p>
+	</div>		
+</f:form>
+</f:section>

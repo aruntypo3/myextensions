@@ -1,0 +1,158 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script type="text/javascript" src="typo3conf/ext/pits_elearn/Resources/Public/Js/actions.js"></script>
+<script type="text/javascript" src="typo3conf/ext/pits_elearn/Resources/Public/Js/redips-drag-min.js"></script>
+<script type="text/javascript" src="typo3conf/ext/pits_elearn/Resources/Public/Js/script.js"></script>
+<link rel="stylesheet" href="typo3conf/ext/pits_elearn/Resources/Public/css/style.css" type="text/css" media="screen"/>
+
+<div class="partner-block">
+ 	<ul class="list">
+       	<f:for each="{questionsRecord.partnerImages}" as="counter">
+             <li>
+               	<f:link.page pageUid="{questionsRecord.detailPage}" additionalParams="{tx_pitspartner_pitspartner: {uid: counter.uid}}">
+                	<f:image src="fileadmin/Dateien/Bildungspartner/Logos_sw/{counter.user_image}" width="102c" height="73c" alt="{counter.title}" />
+            	</f:link.page>
+        	</li>
+    	</f:for>
+	</ul>
+</div>
+
+<article class="post-block">
+	<div class="question-controllbar">
+		<div class="previous">
+			<f:if condition="{questionsRecord.firstRecordFlag} == 0">
+				<a href="javascript:void(0)" onclick="return freetextAnswer('{pageId}','previous_quest')">
+					<f:translate key="pits_elearn.previous">Zurück</f:translate>
+				</a>
+			</f:if>		
+		</div>
+        <div class="question-counter"><f:format.htmlentitiesDecode>{questionCount.counter}</f:format.htmlentitiesDecode></div>
+        <div class="next">
+        	<f:if condition="{questionsRecord.lastRecordFlag} == 0">
+        		<f:then>
+        			<a href="javascript:void(0)" onclick="return freetextAnswer('{pageId}','next_quest')">
+        				<f:translate key="pits_elearn.proceed_next">Weiter</f:translate>
+        			</a>
+        		</f:then>
+        		<f:else>
+                	<a href="javascript:void(0)" onclick="return freetextAnswer('{pageId}','next_quest')">
+        				<f:translate key="pits_elearn.show_result">Zur Auswertung</f:translate>
+        			</a>
+        		</f:else>	
+        	</f:if>
+          </div>
+    </div>
+</article>
+ <article class="post-block">
+ <div class="tnt_questions">
+<f:form action="detail" name="questionsForm" id="questionsForm">
+<div class="question-head">
+ 	<p class="quest_title"><strong>{questionsRecord.title}</strong></p>
+ 	<p class="quest_text">{questionsRecord.text}</p>
+ 	<span id="error_text"></span>
+</div>
+<div class="fl-left choices">
+<div id="drag1" class="drag-tbl">
+    <div class="green-box" style="display:none;"><f:translate key="pits_elearn.right_answer">Richtige Antwort</f:translate></div>
+	<table border="0">
+    	<tbody>
+        	<f:for each="{dragdropOptions}" as="dragOptions" key="number">
+            	<tr>
+                  	<td class="only" height="160" >{dragOptions.dragdrop_answers_text}</td>
+                    <td  id="drop_{dragOptions.uid}" style="height:160px ; width: 300px !important" class="white_background" >
+                   		<div class="drop-area">
+                   			<div>
+							<input size="30" type="text" id="drag_{dragOptions.uid}" value="{dragOptions.imageId}" class="dragImg" name= "tx_pitselearn_pitselearn[answerData][{dragOptions.uid}][answerId]"></div>
+                   			<div><input size="30" type="text" id="drag_image_path_{dragOptions.uid}" value="{dragOptions.imagePath}" class="dragImageSrc" name="tx_pitselearn_pitselearn[answerData][{dragOptions.uid}][answerImagePath]"></div>
+                             <div><input size="30" type="text" value="{dragOptions.uid}" class="dragable_image" name="tx_pitselearn_pitselearn[answerData][{dragOptions.uid}][correctId]"></div>
+							 
+							 <f:if condition="{dragOptions.imagePosition}">
+                                <div style=""></div>
+                        		<f:then>
+                                              <div><input type="text" id="postion_{dragOptions.uid}" value="{dragOptions.imagePosition}" class="dragable_image" name="tx_pitselearn_pitselearn[answerData][{dragOptions.uid}][position]"></div>
+                                        </f:then>
+                                            <f:else>
+                                              <div><input type="text" id="postion_{dragOptions.uid}" value="0" class="dragable_image" name="tx_pitselearn_pitselearn[answerData][{dragOptions.uid}][position]"></div>
+
+                                            </f:else>
+                                            </f:if>
+                                        </div>
+                   	<f:if condition="{dragOptions.imagePosition}">  <div style=""></div>
+                        		<f:then>
+                            		<div class="drag" style="cursor: move; border-style: solid;" id="drag_image_container_{dragOptions.uid}">
+                                    	<img width="180" height="160" id="leftdrag__{dragOptions.dragdrop_answer_imgRandomUid}" src="{dragOptions.imagePath}" class="dragable_image"></div>
+                                	</div>
+                        			</td>
+                        			<td width="160" id="dropSecond_{dragOptions.uid}" class="empty_container"></td>
+                        		</f:then>
+                            	<f:else>
+
+                                    <f:if condition="{dragOptions.imagePosition_default}">
+                                        <f:then>
+                                        </td>
+                                	<td style="height:160px ;width: 300px !important" id="dropSecond_{dragOptions.uid}" class="empty_container">
+                                    	<div class="drag" style="cursor: move; border-style: solid;" id="drag_image_container_{dragOptions.uid}">
+                                        	<img width="180" height="160" id="leftdrag__{dragOptions.dragdrop_answer_imgRandomUid}" src="uploads/tx_pitselearn/{dragOptions.dragdrop_answer_imgRandom}" class="dragable_image"></div>
+                                    	</div>
+                                	</td>
+                                       </f:then>
+                                        <f:else> 
+                                            </td>
+                                	<td style="height:160px ;width: 300px !important" id="dropSecond_{dragOptions.uid}" class="empty_container">
+                     
+                                    	<div id ="drag_image_container_{dragOptions.uid}" class="drag" style="cursor: move; border-style: solid;">
+                                        	<img width="180" height="160" id="leftdrag__{dragOptions.dragdrop_answer_imgRandomUid}" src="{dragOptions.imagePath}" class="dragable_image"></div>
+                                    	</div>
+                                	</td>
+                                            
+                                        </f:else>
+                                    </f:if>
+
+                                	
+                            	</f:else>
+                        	</f:if>
+
+
+                      </tr>
+                  </f:for>
+             </tbody>
+        </table>
+ 	
+ 	</div>
+   <div class="qsolution"></div>
+   <div style="height: 1px; width: 1px;" id="redips_clone"></div>     
+</div>        
+ <div class="btn-wrapper">
+            
+     <input type="hidden"  value="{questionsRecord.question_id}" name="tx_pitselearn_pitselearn[quest_uid]">
+     <input type="hidden"  value="{questionsRecord.type}" name="tx_pitselearn_pitselearn[quest_type]">
+     <input type="hidden" id="showSolutionStatus" value="{buttonOpt.showSolutionStatus}" name="tx_pitselearn_pitselearn[quest_status]">
+     
+     <p>
+     	<span class="right_img" style="display:none;">
+     		<f:image src="typo3conf/ext/pits_elearn/Resources/Public/Icons/right_img.png" width="40" height="44" alt="" /><f:translate key="pits_elearn.rightAnswer">Richtig</f:translate>
+     	</span>
+        <span class="wrong_img" style="display:none;">
+        	<f:image src="typo3conf/ext/pits_elearn/Resources/Public/Icons/wrong_img.png" width="40" height="44" alt="" /><f:translate key="pits_elearn.wrongAnswer">Leider falsch</f:translate>
+        </span>
+        <span class="ask_again" style="display: {buttonOpt.showAskAgain};">
+        	<input type="button" class="bs-btn" name="tx_pitselearn_pitselearn[submit]" value="Check Answer" onclick="return freetextAnswer('{pageId}','answer_submit')" />
+        </span>
+        <span class="proceed_next {buttonOpt.buttonChange}">
+        	<input type="button" class="bs-btn" name="tx_pitselearn_pitselearn[nextQuestion]" value="Proceed to Next" onclick="return freetextAnswer('{pageId}','next_quest')" />
+        </span>
+        <span>
+        	<input type="button" class="show_solution bs-btn" id="show_sol" name="tx_pitselearn_pitselearn[submit]" value="Show Solution" onclick="return doShowAnswer('{pageId}','{questionsRecord.question_id}','{questionsRecord.type}')" disabled />
+        </span>
+     </p>
+   </div>      
+
+ </f:form>
+      <div class="edu-partners">
+   		<div class="inner-edu-partners">
+        	<p>{questionsRecord.sponsertext_label}<f:link.external uri="{questionsRecord.sponser_link}" target="_blank">{questionsRecord.sponser_link}</f:link.external></p>
+        </div>
+   </div>
+ </div> 
+</article>
+</f:section>

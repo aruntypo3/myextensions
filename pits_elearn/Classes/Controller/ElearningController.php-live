@@ -1,0 +1,460 @@
+<?php
+
+/***************************************************************
+ *  Copyright notice
+*
+*  (c) 2013 Sivaprasad,Abin <abin.s@pitsolutions.com,sivaprasad.s@pitsolutions.com>, PITS
+*
+*  All rights reserved
+*
+*  This script is part of the TYPO3 project. The TYPO3 project is
+*  free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License as published by
+*  the Free Software Foundation; either version 3 of the License, or
+*  (at your option) any later version.
+*
+*  The GNU General Public License can be found at
+*  http://www.gnu.org/copyleft/gpl.html.
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+
+/**
+ *
+ *
+ * @package pits_elearn
+* @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+*
+*/
+class Tx_PitsElearn_Controller_ElearningController extends Tx_Extbase_MVC_Controller_ActionController {
+
+	protected $eLearningModel;
+
+	public function __construct() {
+		$this->eLearningModel = new Tx_PitsElearn_Domain_Model_Elearning();
+		$this->cObj = t3lib_div::makeInstance('tslib_cObj');
+	}
+
+
+	/**
+	 * action list
+	 *
+	 * @return void
+	 */
+	public function selectAction() {
+		$this->cObj = $this->configurationManager->getContentObject();
+
+		$recordPid = $this->cObj->data['pages'];
+		$elearningsThema = $this->eLearningModel->doGetThema($recordPid);
+		$request = $this->request->getArguments();
+
+		if ( sizeof($request) > 0 ){
+			if( !empty( $request['tnt_thema'] ) ){
+				$currentSesssion['selectedThema'] = $request['tnt_thema'];
+			}
+			if( !empty( $request['tnt_thema_chapter'] ) ){
+				$currentSesssion['selectedChapter'] = $request['tnt_thema_chapter'];
+			}
+			$GLOBALS["TSFE"]->fe_user->setKey( "ses","sessionVal", serialize($currentSesssion) );
+			$GLOBALS["TSFE"]->fe_user->sesData_change = true;
+			$GLOBALS["TSFE"]->fe_user->storeSessionData();
+			$conf = array(
+					'parameter' => $this->settings['targetPage'],
+					'additionalParams' => '&tx_pitselearn_pitselearn[action]=detail',
+					'useCashHash' => true,
+					'returnLast' => 'url',
+			);
+			$location = $GLOBALS['TSFE']->baseUrl.$this->cObj->typoLink( '', $conf );
+			$this->redirectToURI( $location );
+		}else {
+			$GLOBALS["TSFE"]->fe_user->setKey( "ses","sessionVal", "" );
+			$GLOBALS["TSFE"]->fe_user->sesData_change = true;
+			$GLOBALS["TSFE"]->fe_user->storeSessionData();
+		}
+
+		$this->view->assign('action', t3lib_div::getIndpEnv('TYPO3_SITE_URL')."index.php?id=".$this->settings['targetPage'] );
+		$this->view->assign('extensionPathJs', t3lib_extMgm::siteRelPath('pits_elearn').'Resources/Public/Js/');
+		$this->view->assign('pageId', $GLOBALS['TSFE']->id);
+		$this->view->assign('elearnings', $elearningsThema);
+	}
+
+	/**
+	 * action show
+	 *
+	 * @param Tx_PitsElearn_Domain_Model_Elearning $elearning
+	 * @return void
+	 */
+	public function ajaxChaptersAction() {
+		$request = $this->request->getArguments();
+		echo $content = $this->doGetContent($request['themaValue']);
+		exit();
+	}
+
+	public function doGetContent($themaValue){
+		$themaChapters = $this->eLearningModel->doGetChapters($themaValue);
+		$content.="<select name='tx_pitselearn_pitselearn[tnt_thema_chapter]'>";
+		$i=1;
+		if(!empty($themaChapters)){
+			foreach($themaChapters as $key=>$value){
+				$content.="<option value='".$key."'> ".$themaValue.".".$i.".".$value."</option>";
+				$i++;
+			}
+		}else{
+			$content.="<option value='null'><f:translate key='no_selection'>Nothing Selected!</f:translate></option>";
+		}
+		$content.="</select>";
+		return $content;
+	}
+
+	/**
+	 * action list
+	 *
+	 * @return void
+	 */
+	public function detailAction() {
+		$request = $this->request->getArguments();
+		$targetPage = ( !empty($this->settings['targetPage'] ) ) ? $this->settings['targetPage'] : $GLOBALS['TSFE']->id;
+		$successData['lastQuestFlag'] = '';
+		$storeSessionValue = $GLOBALS["TSFE"]->fe_user->getKey( "ses","sessionVal" );
+		if( ( sizeof($storeSessionValue) > 0 ) )
+			$storeSessionValue =  unserialize($storeSessionValue);
+			
+			
+
+		if ( $storeSessionValue['currentRecordCount'] == 0  && $request['submit'] != "submit") {
+			$storeSessionValue['currentRecordCount'] = 0 ;
+			if( is_null( $storeSessionValue['currentRecordCount']) ){
+				$storeSessionValue['currentRecordCount'] = 0 ;
+			}
+		}
+
+		$currentSesssion['selectedThema'] = !empty( $request['tnt_thema'] ) ?  $request['tnt_thema'] : $storeSessionValue['selectedThema'];
+		$currentSesssion['selectedChapter'] = !empty( $request['tnt_thema_chapter'] ) ?  $request['tnt_thema_chapter'] : $storeSessionValue['selectedChapter'];
+		$currentSesssion['currentRecordCount'] = $storeSessionValue['currentRecordCount'];
+		$currentSesssion['currentRandomSeed'] = ( !empty( $storeSessionValue['currentRandomSeed'] ) ) ? $storeSessionValue['currentRandomSeed'] : time() ;
+		$currentSesssion['answerRecord'] = $storeSessionValue['answerRecord'] ;
+
+		//Store current data in seesion
+		$this->storeSession( $currentSesssion );
+		$storeSessionValue = $GLOBALS["TSFE"]->fe_user->getKey( "ses","sessionVal" );
+		if( ( sizeof($storeSessionValue) > 0 ) )
+			$storeSessionValue =  unserialize($storeSessionValue)  ;
+
+		//Reset all the values and start again
+		if( $storeSessionValue['currentRecordCount'] >  9 ){
+			$currentSesssion = $this->doGetRestRecords();
+			$this->storeSession( $currentSesssion );
+			$this->redirect( 'resultRender' );
+		}
+
+		$whereClause = array();
+		$whereClause['dragdrop'] = $this->cObj->enableFields('tx_pitselearn_domain_model_dragdrop');
+		$whereClause['freetext'] = $this->cObj->enableFields('tx_pitselearn_domain_model_freetextquestion');
+		$whereClause['multiple_choice'] = $this->cObj->enableFields('tx_pitselearn_domain_model_multiplechoice');
+		$whereClause['matrix'] = $this->cObj->enableFields('tx_pitselearn_domain_model_matrix');
+		$questionRecord = $this->eLearningModel->doGetQuesions( $whereClause  );
+		$answerRecordKey = $questionRecord['type']."_".$questionRecord['question_id'];
+
+		$storeSessionValue['answerRecord'][$answerRecordKey]['answerText'] = ( !empty( $storeSessionValue['answerRecord'][$answerRecordKey]['answerText'] ) )  ? $storeSessionValue['answerRecord'][$answerRecordKey]['answerText'] : '';
+		$storeSessionValue['answerRecord'][$answerRecordKey]['point'] =  $storeSessionValue['answerRecord'][$answerRecordKey]['point'];
+		$this->storeSession( $storeSessionValue );
+
+		switch ( $questionRecord['type'] ) {
+			case 'freetext' :
+				$this->view->setTemplatePathAndFilename(t3lib_extMgm::siteRelPath('pits_elearn').'Resources/Private/Templates/Elearning/Freetext.html');
+				$freetextPrefillAnswer['prefillRecord'] = ( $storeSessionValue['answerRecord'][$answerRecordKey]['point'] != "" ) ? $storeSessionValue['answerRecord'][$answerRecordKey]['answerText'] : '';
+				$this->view->assign( 'prefillAnswer', $freetextPrefillAnswer  );	
+				break;
+			case 'matrix' :
+				$this->view->setTemplatePathAndFilename(t3lib_extMgm::siteRelPath('pits_elearn').'Resources/Private/Templates/Elearning/Matrix.html');
+				$optionsValues = $this->eLearningModel->doGetOption($questionRecord['question_id']);
+				$this->view->assign('matrixQuestionsOptions', $optionsValues);
+				break;
+			case 'dragdrop' :
+				$this->view->setTemplatePathAndFilename(t3lib_extMgm::siteRelPath('pits_elearn').'Resources/Private/Templates/Elearning/Dragdrop.html');
+				$select_fields = 'uid, dragdrop_answers_text, dragdrop_answer_img';
+				//@to-do Move to model Class
+				$from = 'tx_pitselearn_domain_model_dragdrop_answers';
+				$whereClause = 'parentid = "'.$questionRecord['question_id'].'" AND deleted = 0 AND hidden = 0';
+				$orderByClause = '';
+				$limitClause = '';
+				$dragdropOptions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows( $select_fields, $from, $whereClause, '', $orderByClause, $limitClause );
+
+				foreach ( $dragdropOptions as $key => $value ){
+					$randOptions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows( $select_fields, $from, $whereClause, '', "RAND(". time() .")", '' );
+					$dragdropOptions[$key]['dragdrop_answer_imgRandom'] = $randOptions[$key]['dragdrop_answer_img'];
+					$dragdropOptions[$key]['dragdrop_answer_imgRandomUid'] = $randOptions[$key]['uid'];
+				}
+				$this->view->assign( 'dragdropOptions', $dragdropOptions  );
+				break;
+			case 'mutiple_choice' :
+				$this->view->setTemplatePathAndFilename(t3lib_extMgm::siteRelPath('pits_elearn').'Resources/Private/Templates/Elearning/MultipleChoice.html');
+				//@to-do Move to model Class
+				$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+				$select_fields = 'uid, multiplechoice_answers_title, multiplechoice_answers_is_true';
+				$from = 'tx_pitselearn_domain_model_multiplechoice_answers';
+				$whereClause = 'parentid = "'.$questionRecord['question_id'].'" AND deleted = 0 AND hidden = 0';
+				$orderByClause = '';
+				$limitClause = '';
+				$multipleChoiceOptions = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows( $select_fields, $from, $whereClause, '', $orderByClause, $limitClause );
+				foreach($multipleChoiceOptions as $key=>$value){
+					$multipleChoiceOptions[$key]['class'] = "";
+					if($value['multiplechoice_answers_is_true']==1){
+						$multipleChoiceOptions[$key]['class'] = "solutions_class";
+					}
+					if ( $storeSessionValue['answerRecord'][$answerRecordKey]['point'] != "" ) {
+						$multipleChoiceOptions[$key]['checked'] = ( in_array( $value['uid'], $storeSessionValue['answerRecord'][$answerRecordKey]['answerText'] ) ) ? 'checked' : '';
+					}
+				}
+				$this->view->assign( 'multipleChoiceOptions', $multipleChoiceOptions  );
+				break;
+		}
+
+		if( $request['type'] == "next_quest" ){
+			$storeSessionValue = $GLOBALS["TSFE"]->fe_user->getKey( "ses","sessionVal" );
+			$storeSessionValue =  unserialize($storeSessionValue);
+			$answerRecordKey = $questionRecord['type']."_".$questionRecord['question_id'];
+			$storeSessionValue['answerRecord'][$answerRecordKey]['answerText'] = $request['answerData'];
+			$storeSessionValue['answerRecord'][$answerRecordKey]['point'] =  $storeSessionValue['answerRecord'][$answerRecordKey]['point'];
+			$storeSessionValue['currentRecordCount'] = $storeSessionValue['currentRecordCount'] + 1;
+			$this->storeSession( $storeSessionValue );
+			$successData['proceed_next'] = TRUE;
+			echo json_encode($successData);
+			exit;
+		}
+
+		if( $request['type'] == "previous_quest" ){
+			$storeSessionValue = $GLOBALS["TSFE"]->fe_user->getKey( "ses","sessionVal" );
+			$storeSessionValue =  unserialize($storeSessionValue)  ;
+			$storeSessionValue['currentRecordCount'] = $storeSessionValue['currentRecordCount'] - 1;
+			$this->storeSession( $storeSessionValue );
+			$successData['previousQuest'] = TRUE;
+			echo json_encode($successData);
+			exit;
+		}
+
+		if ( !empty( $request['type'] ) && !empty( $questionRecord['question_id'] ) ) {
+			$ansCheck = $this->answerValidate( $questionRecord['question_id'], $questionRecord['type'], $request['answerData'] );
+		}
+
+		$this->view->assign('action', t3lib_div::getIndpEnv('TYPO3_SITE_URL')."index.php?id=".$flexformValues['targetPage'] );
+		$this->view->assign('pageId', $GLOBALS['TSFE']->id);
+		$questionRecord['nextlink_label'] = Tx_Extbase_Utility_Localization::translate('pits_elearn.proceed_next', 'pitsElearn');
+		$questionRecord['previouslink_label'] = Tx_Extbase_Utility_Localization::translate('pits_elearn.previous', 'pitsElearn');
+		$questionRecord['sponsertext_label'] = ( !empty($questionRecord['sponser_link']) ) ? Tx_Extbase_Utility_Localization::translate('pits_elearn.sponsertext_label', 'pitsElearn') : '';
+		$questionRecord['lastRecordFlag'] = ($storeSessionValue['currentRecordCount'] == 9) ? 1 : 0;
+		$questionRecord['firstRecordFlag'] = ($storeSessionValue['currentRecordCount'] == 0) ? 1 : 0;
+		$this->view->assign( 'questionsRecord', $questionRecord  );
+		$this->view->assign('answerClass', 'solutions_class');
+
+	}
+
+	public function answerValidate( $questionUid, $questionType, $answerData ) {
+
+		$storeSessionValue = $GLOBALS["TSFE"]->fe_user->getKey( "ses","sessionVal" );
+		if( ( sizeof($storeSessionValue) > 0 ) )
+			$storeSessionValue =  unserialize($storeSessionValue)  ;
+
+		$answerRecordKey = $questionType."_".$questionUid ;
+		$storeSessionValue['answerRecord'][$answerRecordKey]['answerText'] = $answerData ;
+		$successData['errortext']  = '';
+		switch ( $questionType ) {
+			case 'freetext' :
+				if( empty( $answerData ) ){
+					$successData['errortext'] = Tx_Extbase_Utility_Localization::translate('pits_elearn.answerEmpty_error', 'pitsElearn');
+				}else{
+					$res = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('answer_text', 'tx_pitselearn_domain_model_freetextquestion', 'uid='.$questionUid.' AND answer_text LIKE "%'.$answerData.'%" AND deleted = 0 AND hidden = 0');
+					$successData['ansStatus'] = ( !empty($res) ) ? 1 : 0;
+				}
+
+				break;
+			case 'mutiple_choice' :
+				if( empty( $answerData ) ){
+					$successData['errortext'] = Tx_Extbase_Utility_Localization::translate('pits_elearn.answerEmpty_error', 'pitsElearn');
+				}else{
+					#@to-do Move to model Class
+					$selectFields = '*';
+					$tableName = 'tx_pitselearn_domain_model_multiplechoice_answers';
+					$whereCondition = 'parentid='.$questionUid.' AND multiplechoice_answers_is_true = 1  AND deleted = 0 AND hidden = 0';
+					$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+					$trueAnswerInDb = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows($selectFields, $tableName, $whereCondition);
+					
+					if(  count($trueAnswerInDb) !=  count($answerData)  ) {
+						$successData['ansStatus'] = 0;
+					} else{
+						$successData['ansStatus'] = 1;
+						foreach ( $answerData as $value ){
+							$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = 1;
+							$res = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('*', 'tx_pitselearn_domain_model_multiplechoice_answers', 'parentid='.$questionUid.' AND multiplechoice_answers_is_true = 1 AND uid = '.$value.' AND deleted = 0 AND hidden = 0');
+							if( sizeof($res)  ==  0) {
+								$successData['ansStatus'] = 0;
+							}
+						}
+					}
+				}
+				break;
+			case 'matrix' :
+				$successData['errortext'] = empty($answerData) ? Tx_Extbase_Utility_Localization::translate('pits_elearn.answerEmpty_error', 'pitsElearn') : "";
+				$successData['ansStatus'] = 1 ;
+				foreach ($answerData as $matrixAnsid => $value) {
+					$matrixTrueAnswers =  $this->eLearningModel->doGetRightAnswerCount ( $matrixAnsid ,'' );
+					foreach (  $matrixTrueAnswers as $key => $matrixTrueAnswer ){
+						if ( !in_array ( $matrixTrueAnswer['uid'] , $answerData[$matrixAnsid] )  || count( $answerData[$matrixAnsid] ) != count($matrixTrueAnswers) ){
+							$successData['ansStatus'] = 0;
+							break;
+						}
+					}
+				}
+				
+				/*if ( empty($answerData) ) {
+					$successData['errortext'] = Tx_Extbase_Utility_Localization::translate('pits_elearn.answerEmpty_error', 'pitsElearn') ;
+				}
+				 else {
+					foreach ($answerData as $matrixAnsid => $value) {
+						$trueAnswerCount =  $this->eLearningModel->doGetRightAnswerCount ( $matrixAnsid ,'' );
+						$successData['ansStatus'] = '';
+						if(!empty($value) ){
+							if( sizeof($trueAnswerCount) != sizeof($value) ){
+								$successData['ansStatus'] = 0;
+								break;
+							}
+							echo $successData['ansStatus'];
+							if ( $successData['ansStatus'] == 0 ) {
+								$successData['ansStatus'] = 0;
+								break;
+							}
+							foreach ($value as $pin => $data) {
+								$trueAnswerInDb = $this->eLearningModel->doGetRightAnswerCount ( $matrixAnsid ,  $data );
+								$successData['ansStatus'] = 1;
+								echo  sizeof($trueAnswerInDb);
+								echo "<br/>";
+								if (sizeof($trueAnswerInDb) == 0 && $successData['ansStatus'] != 0 ) {
+									$successData['ansStatus'] = 0;
+									break;
+								}
+							}
+						}
+						
+						#if( $successData['ansStatus'] != 0){
+						
+					#}
+						
+					}
+				}
+				print_r( $successData ); */
+				break;
+			case 'dragdrop' :
+				if (empty($answerData)) {
+						$successData['errortext'] = Tx_Extbase_Utility_Localization::translate('pits_elearn.answerEmpty_error', 'pitsElearn');
+				}else{
+					foreach ($answerData as $key => $value) {
+						#echo $value['answerId'] ."==". $value['correctId'];
+						$successData['ansStatus'] = ( $answerData[$key]['answerId'] == $answerData[$key]['correctId'] ) ? 1 : 0;
+					}
+				}
+				break;
+		}
+		$storeSessionValue['answerRecord'][$answerRecordKey]['point'] = $successData['ansStatus'];
+		echo json_encode($successData);
+		$this->storeSession( $storeSessionValue );
+		exit;
+	}
+
+	public function showResultAction() {
+		$request = $this->request->getArguments();
+		$answerArr =$this->eLearningModel->doGetResult($request);
+
+	}
+
+	/* public function showmatrixSolution() {
+		$remove_character = array("\n", "\r\n", "\r");
+		$str = str_replace($remove_character , "|", $questionRecord['matrix_question']);
+		$res = explode("|",$str);
+		$html = '<table><tr>';
+		foreach ( $res as $key=>$value){
+			$showSolution = '';
+			if( $value == 1){
+				$showSolution = 'solutions_class';
+			}
+			if( $key % 4 != 0 || $key == 0 ){
+				if(is_numeric($value)){
+					$html .= "<td class='$showSolution'><input type='checkbox' name='matrixoptions[]'/>
+					<input type='hidden' value='$value' name='tx_pitselearn_pitselearn[matrixoptions]'/></td>";
+				}else{
+					$html .= "<td>$value</td>";
+				}
+			}else{
+				$html .= "</tr><tr>";
+				$html .= "<td class='$showSolution'>$value</td>";
+			}
+		}
+		return $html;
+	} */
+
+	public function resultRenderAction() {
+		
+		$recordPid = $this->cObj->data['pages'];
+		$elearningsThema = $this->eLearningModel->doGetThema($recordPid);
+		//print_r($elearningsThema);exit;
+		$request = $this->request->getArguments();
+		$storeSessionValue = $GLOBALS["TSFE"]->fe_user->getKey( "ses","sessionVal" );
+		if( ( sizeof($storeSessionValue) > 0 ) )
+			$storeSessionValue =  unserialize($storeSessionValue);
+
+		if ( !empty( $request['tnt_thema'] ) && !empty( $request['tnt_thema_chapter'] ) )	{
+			$currentSesssion['selectedThema'] = $request['tnt_thema'];
+			$currentSesssion['selectedChapter'] = $request['tnt_thema_chapter'];
+			$currentSesssion['currentRandomSeed'] = $storeSessionValue['currentRandomSeed'];
+			$this->storeSession( $currentSesssion );
+			$conf = array(
+					'parameter' => $this->settings['targetPage'],
+					'additionalParams' => '&tx_pitselearn_pitselearn[action]=detail',
+					'useCashHash' => true,
+					'returnLast' => 'url',
+			);
+			$location = $GLOBALS['TSFE']->baseUrl.$this->cObj->typoLink( '', $conf );
+			$this->redirectToURI( $location );
+		}else {
+			$GLOBALS["TSFE"]->fe_user->setKey( "ses","sessionVal", "" );
+			$GLOBALS["TSFE"]->fe_user->sesData_change = true;
+			$GLOBALS["TSFE"]->fe_user->storeSessionData();
+		}
+			
+		$resultRecords['pageId'] = $GLOBALS['TSFE']->id;
+		$resultRecords['elearnings'] = $elearningsThema;
+		$this->view->assign('resultRecord', $resultRecords);
+	}
+
+	public function storeSession( $sessionArray ) {
+		$GLOBALS["TSFE"]->fe_user->setKey( "ses","sessionVal", serialize($sessionArray) );
+		$GLOBALS["TSFE"]->fe_user->sesData_change = true;
+		$GLOBALS["TSFE"]->fe_user->storeSessionData();
+	}
+	/*
+	 * Reset records
+	*/
+	public function doGetRestRecords(){
+
+		$currentSesssion['selectedThema'] = '';
+		$currentSesssion['selectedChapter'] = '';
+		$currentSesssion['currentRecordCount'] = 0;
+		$currentSesssion['mark'] = 0;
+		$currentSesssion['currentRandomSeed'] = time();
+		return $currentSesssion ;
+			
+			
+	}
+
+	public function doGetSessionRecords(){
+		$storeSessionValue = $GLOBALS["TSFE"]->fe_user->getKey( "ses","sessionVal" );
+		if( ( sizeof($storeSessionValue) > 0 ) )
+			$storeSessionValue =  unserialize($storeSessionValue)  ;
+		return $storeSessionValue;
+	}
+}
+?>

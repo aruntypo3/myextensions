@@ -1,0 +1,188 @@
+{namespace k=Tx_Hevents_ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<ul id="catList" class="clearfix clear">
+<li class="{allCatsState}"><f:link.action arguments="{category : 0}"><f:translate key="basic.all" /></f:link.action></li>
+<f:for each="{categories}" as="category">
+	<li class="{category.state}">
+		<f:link.action arguments="{category : category}" noCacheHash="1">
+			<f:if condition="{category.icon}">
+				<img class="icon-inactive" src="{f:uri.image(src:category.icon)}" alt="{category.title} Icon" />
+			</f:if>
+			<f:if condition="{category.activeicon}">
+				<img class="icon-active" src="{f:uri.image(src:category.activeicon)}" alt="{category.title} Icon" />
+			</f:if>
+			{category.title}
+		</f:link.action>
+	</li>
+</f:for>
+</ul>
+<div class="clear clearfix">
+<f:if condition="{f:count(subject:events)}">
+	<f:if condition="{f:count(subject:events)}>3">
+		<f:then>
+			<ul class="slider-container">
+				<f:for each="{events}" as="event" iteration="itr">
+					<!-- <li class="slider-item"><f:link.action action="single" arguments="{event : event}">{event.title}, {event.category.title}</f:link.action></li> -->
+					<li class="slider-item {f:if(condition:'{itr.isFirst}', then:'first-item')} {f:if(condition:'{itr.isLast}', then:'last-item')}">
+						<f:link.page pageUid="{f:cObject(typoscriptObjectPath:'plugin.tx_hevents.settings.singlePage')}" class="eventLink" additionalParams="{tx_hevents_pi1: {event: event.uid, action:'single'}}" noCacheHash="1">
+							<!-- <f:render partial="FirstImage" arguments="{event:event, width:230c, height:149c, sliderDummyImage:sliderDummyImage}"/> -->
+							<f:render partial="FirstImage" arguments="{event:event, width:'230c', height:'149c', sliderDummyImage:sliderDummyImage}"/>
+							<div class="sliderText">
+								<div class="eventCat">
+									<div class="eventCatIcon">
+										<img class="icon-inactive" src="{f:uri.image(src:event.category.icon)}" alt="{event.category.title} Icon" />
+										<img class="icon-active" src="{f:uri.image(src:event.category.activeicon)}" alt="{event.category.title} Icon" /> 
+									</div>
+									{event.category.title}
+								</div>
+								<div class="borderSmall"></div>
+								<div class="eventTitle">{event.title}</div> 
+								<div class="eventPrice"><span>CHF</span> {event.price}</div>
+							</div>
+						</f:link.page>
+						<f:render partial="AddButton" arguments="{event:event}"/>
+					</li>
+				</f:for>
+			</ul>
+			<script type="text/javascript">
+				hevents.slider.init(4);
+			</script>
+		</f:then>
+		<f:else>
+			<div class="slider-container">
+				<div class="slider-inner-center">
+					<!-- <f:for each="{events}" as="event"><div class="slider-item"><f:link.action action="single" arguments="{event : event}">{event.title}, {event.category.title}</f:link.action></div></f:for> -->
+					<ul class="withoutArrows clearfix clear">
+					<f:for each="{events}" as="event" iteration="itr">
+						<li class="slider-item {f:if(condition:'{itr.isFirst}', then:'first-item')} {f:if(condition:'{itr.isLast}', then:'last-item')}">
+							<f:link.page pageUid="{f:cObject(typoscriptObjectPath:'plugin.tx_hevents.settings.singlePage')}" class="eventLink" additionalParams="{tx_hevents_pi1: {event: event.uid, action:'single'}}" noCacheHash="1">
+								<f:render partial="FirstImage" arguments="{event:event, width:'230c', height:'149c', sliderDummyImage:sliderDummyImage}"/>
+								<div class="sliderText">
+									<div class="eventCat">
+										<div class="eventCatIcon">
+											<img class="icon-inactive" src="{f:uri.image(src:event.category.icon)}" alt="{event.category.title} Icon" />
+											<img class="icon-active" src="{f:uri.image(src:event.category.activeicon)}" alt="{event.category.title} Icon" />
+										</div>
+										{event.category.title}
+									</div>
+									<div class="borderSmall"></div>
+									<div class="eventTitle">{event.title}</div>
+									<div class="eventPrice"><span>CHF</span> {event.price}</div>
+								</div>
+							</f:link.page>
+							<f:render partial="AddButton" arguments="{event:event}"/>
+						</li>
+					</f:for>
+					</ul>
+				</div>
+			</div>
+		</f:else>
+	</f:if>
+</f:if>
+</div>
+
+<div id="eventForm">
+	<f:form method="get" id="filter" noCacheHash="1">
+		<input type="hidden" name="id" value="{pageid}" />
+		<f:form.hidden value="{arguments.action}" name="action" />
+		<f:form.hidden value="{arguments.controller}" name="controller" />
+		<f:form.hidden value="{arguments.category}" name="category" />
+		<div class="formBlock first">
+			<label for="city"><f:translate key="filter.location" /></label>
+			<f:form.select id="city" name="city" options="{cities}" optionLabelField="title" value="{arguments.city}" class="styled" optionValueField="uid"/>
+		</div>
+		
+		<div class="formBlock formEventDates">
+			<label for="startdate"><f:translate key="filter.dates" /></label>
+			<div class="datePickerStart">
+				<k:form.datepicker name="startdate" id="startdate" img="{f:uri.resource(path:'Img/Date.png')}" alt="{f:translate(key:'basic.cal')}" value="{arguments.startdate}" />
+			</div>
+			<div class="datePickTo">-</div>
+			<div class="datePickerEnd">
+				<k:form.datepicker name="enddate" id="enddate" img="{f:uri.resource(path:'Img/Date.png')}" alt="{f:translate(key:'basic.cal')}" value="{arguments.enddate}" />
+			</div>
+		</div>
+		
+		<div class="formBlock">
+			<label for="minprice"><f:translate key="filter.price" /></label>
+			<div id="priceRange">
+				<f:form.hidden id="minprice" name="minprice" value="{arguments.minprice}" />
+				<f:form.hidden id="maxprice" name="maxprice" value="{arguments.maxprice}" />
+				<k:form.rangeslide minFieldId="minprice" maxFieldId="maxprice" minValue="0" maxValue="{maxPrice}" minInfoId="minVal" maxInfoId="maxVal" formSubmitId="filter"/>
+			</div>
+			<div id="minMaxPrice" class="clearfix">
+				<div class="floatLeft">CHF<span id="minVal"></span></div> <div class="floatRight">CHF<span id="maxVal"></span></div>
+			</div>
+		</div>
+		
+		<div class="formBlock last">
+			<label for="keyword"><f:translate key="filter.keyword" /></label>
+			<f:form.textfield id="keyword" name="keyword" value="{arguments.keyword}" /><f:form.submit id="imageSubmit" value=""/>
+		</div>
+		
+	</f:form>
+</div>
+
+<f:if condition="{f:count(subject:events)}">
+	<div id="map"></div>
+	
+	<div style="display:none">
+		<f:for each="{events}" as="event" key="id">
+			<div id="info-window-{id}" class="eventInfoBubble">
+				<h3>{event.title}</h3>
+				<f:link.page pageUid="{f:cObject(typoscriptObjectPath:'plugin.tx_hevents.settings.singlePage')}" class="eventLink" additionalParams="{tx_hevents_pi1: {event: event.uid, action:'single'}}"><f:translate key="basic.more" /></f:link.page>
+			</div>
+		</f:for>
+	</div>
+	
+	<script type="text/javascript">
+		var styles = [ { "featureType": "water", "elementType": "geometry.fill", "stylers": [ { "color": "#ccb488" } ] },{ "featureType": "water", "elementType": "geometry.stroke", "stylers": [ { "visibility": "off" } ] },{ "featureType": "water", "elementType": "labels", "stylers": [ { "visibility": "off" } ] },{ "featureType": "landscape", "elementType": "geometry.fill", "stylers": [ { "color": "#ffffff" }, { "visibility": "on" } ] },{ "featureType": "poi", "elementType": "geometry", "stylers": [ { "visibility": "off" } ] },{ "elementType": "labels.text.stroke", "stylers": [ { "visibility": "off" } ] },{ "elementType": "labels.text.fill", "stylers": [ { "color": "#6c6444" } ] },{ "featureType": "road", "elementType": "geometry.stroke", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road", "elementType": "geometry.fill", "stylers": [ { "color": "#f6f1e8" } ] },{ "featureType": "transit", "elementType": "geometry.stroke", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit", "elementType": "geometry.fill", "stylers": [ { "visibility": "on" }, { "color": "#e0d1b7" } ] },{ "featureType": "transit", "elementType": "labels.icon", "stylers": [ { "color": "#ff8080" }, { "visibility": "off" } ] },{ "featureType": "poi", "elementType": "labels.icon", "stylers": [ { "color": "#6c6444" }, { "visibility": "off" } ] },{ "featureType": "road.highway", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] },{ "featureType": "administrative.country", "elementType": "geometry.stroke", "stylers": [ { "color": "#ccb488" }, { "visibility": "off" } ] },{ "featureType": "administrative.province", "elementType": "geometry.stroke", "stylers": [ { "visibility": "off" } ] },{ "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] },{ "featureType": "administrative", "elementType": "geometry.fill", "stylers": [ { "visibility": "off" } ] },{ "featureType": "administrative.province", "elementType": "labels.text", "stylers": [ { "visibility": "off" } ] } ];
+		var styledMap = new google.maps.StyledMapType(styles, hevents.fluid.getObject(['name'], ['Henry Fine Map']));
+
+		var map = new google.maps.Map(
+			document.getElementById("map"), 
+			{
+				center: new google.maps.LatLng(-34.397, 150.644),
+				zoom: 8,
+				mapTypeId: 'map_style',
+				mapTypeControlOptions: {
+					mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+				},
+				panControl: false,
+				zoomControl: true,
+				mapTypeControl: false,
+				scaleControl: false,
+				streetViewControl: false,
+				overviewMapControl: false
+			}
+		);
+		map.mapTypes.set('map_style', styledMap);
+
+		<f:for each="{events}" as="event" key="id">
+			hevents.map.newItem({id},map,{event.latitude},{event.longitude},'{event.category.markerAbs}','{event.title}',$('#info-window-{id}').get(0),200);
+		</f:for>
+		map.fitBounds(hevents.map.bounds);
+		
+	</script>
+</f:if>
+
+<div id="happyClients" style="float:left; width:100%; text-align:center;"><!-- just for debug pls extract to css file -->
+	<h4><f:translate key="basic.happyclients" /></h4>
+	<ul id="redSlider" style="width:100%;">
+		<f:for each="{redSlider}" as="slideId" key="id">
+			<li style="width:100%; text-align:center;">{f:cObject(typoscriptObjectPath:'plugin.tx_hevents.settings.redSlider.{id}')}</li>
+		</f:for>
+	</ul>
+	<ul id="redSliderThumbs">
+		<f:for each="{redSlider}" as="slideId" key="id">
+			<a href="#"></a>
+		</f:for>
+	</ul>
+	<script type="text/javascript">
+		hevents.slider.initThumsAuto('redSlider','redSliderThumbs');
+	</script>
+</div>
+</f:section>

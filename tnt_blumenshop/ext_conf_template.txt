@@ -1,0 +1,4 @@
+
+# cat=basic/dev/1; type=int; label=LLL:EXT:tnt_blumenshop/Resources/Private/Language/locallang_db.xml:tx_tntblumenshop.storage_folder_id
+storage_id =
+  
