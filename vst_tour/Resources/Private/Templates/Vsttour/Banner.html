@@ -1,0 +1,29 @@
+<f:layout name="Default" />
+<f:section name="main">
+<f:if condition="{bannerflashMessage}">
+	<f:flashMessages class="no_banner" renderMode="div" />
+</f:if>
+<f:if condition="{carouselImages.carousel_images}">
+	<div data-ride="carousel" class="carousel slide no-description" id="carousel-example-generic">
+	  <ol class="carousel-indicators">
+		 <f:for each="{carouselImages.carousel_images}" as="carouselSlider" iteration="itemIteration">
+		   <li data-target="#carousel-example-generic" data-slide-to="{itemIteration.index}" {f:if(condition: itemIteration.isFirst, then: 'class="active"')}></li>
+		 </f:for>
+		</ol>
+		<div class="carousel-inner">
+	    <f:for each="{carouselImages.carousel_images}" as="carouselSlider" iteration="itemIterate">
+			  <div class="item {f:if(condition: itemIterate.isFirst, then: 'active')}"> 
+				   <img src="{f:uri.image(src:'fileadmin{carouselSlider}',width:'917',height:'353c')}" alt="{carouselSlider}"/>
+				   <a href="{f:uri.image(src:'fileadmin{carouselSlider}')}" class="lightbox" data-lightbox="image{itemIterate.index}"></a>
+				</div>
+			</f:for>
+		</div>			
+		<a data-slide="prev" role="button" href="#carousel-example-generic" class="left carousel-control">
+		 <span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a data-slide="next" role="button" href="#carousel-example-generic" class="right carousel-control">
+		 <span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
+</f:if>
+</f:section>

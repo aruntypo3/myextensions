@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the VST Tour Management extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_vsttour_domain_model_vsttour">Vsttour</label>
+			<label index="tx_vsttour.tour_details">details</label>
+			<label index="tx_vsttour.tour_order">jetzt buchen</label>
+			<label index="tx_vsttour.contact">kontakt</label>
+			<label index="tx_vsttour.benefits">Vienna sightseeing vorteile</label>
+			<label index="tx_vsttour.hightlights">Highlights</label>
+			<label index="tx_vsttour.testemonial">kundenstimmen</label>
+			<label index="tx_vsttour.noTours">There is no tour details to be displayed. Please go to list view to select !!</label>
+		</languageKey>
+	</data>
+</T3locallang>

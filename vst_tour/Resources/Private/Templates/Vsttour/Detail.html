@@ -1,0 +1,122 @@
+<f:layout name="Default" />
+<f:section name="main">
+<script type="text/javascript">
+	var longitude = {googleMap.longitude};
+	var latitude = {googleMap.latitude};
+</script>
+<f:if condition="{flashMessage}">
+	<f:flashMessages class="no_tours" renderMode="div" />
+</f:if>
+<f:for each="{tourDetails}" as="tourSingleData" iteration="iteration">
+	<div class="tour-buy pull-right">
+		<form method="post" action="getPost.php" id="buyTour" name="buyTour">
+			<div class="row buy-details" style="display:none;">
+					<input type="hidden" name="date">
+						<div class="calendar" id="datepicker"></div>
+						<span class="custom-dropdown">
+							<select name="time">
+								<option value="1:00">1:00</option>
+								<option value="2:00">2:00</option>
+								<option value="3:00">3:00</option>
+								<option value="4:00">4:00</option>
+							</select>
+						</span>
+						<span class="custom-dropdown">
+							<select name="language">
+								<option value="en">English</option>
+								<option value="de">Deutch</option>
+							</select>
+						</span>
+						<span class="custom-dropdown">
+							<select name="location">
+								<option value="hotel1">Hotel 1</option>
+								<option value="hotel2">Hotel 2</option>
+							</select>
+						</span>
+						<div class="adults NoOfPersons">
+							<label>Erw.</label>
+							<input value="1" class="number" name="adults">
+							<button fieldname="adults" class="increase">+</button>
+							<button fieldname="adults" class="decrease">-</button>
+						</div>
+						<div class="children NoOfPersons">
+							<label>Kind</label>
+							<input value="0" class="number" name="children">
+							<button fieldname="children" class="increase">+</button>
+							<button fieldname="children" class="decrease">-</button>
+						</div>
+						<hr class="darkLine">
+					</div>
+			<div class="row">
+				<div class="price">
+					<p class="price">&#128;{tourSingleData.price_before}</p>
+					<p class="discount-price">&#128;30,00</p>
+				</div>
+				<div class="actions">
+					<button id="buy" type="submit" name="buy"><f:translate key="tx_vsttour.tour_order">jetzt buchen</f:translate></button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="container-fluid tour-detail">
+		<div class="row">
+			<div class="col-xs-8">
+				<div class="article">
+					<div class="text-holder">
+						<h2>{tourSingleData.tourTitle}</h2>
+			            <f:if condition="{tourSingleData.description}">
+							<p><f:format.raw>{tourSingleData.description}</f:format.raw></p>
+			            </f:if>
+			            <f:if condition="{tourSingleData.testemonial}">
+			  				<h2><f:translate key="tx_vsttour.testemonial">kundenstimmen</f:translate></h2>
+			  				<p><f:format.raw>{tourSingleData.testemonial}</f:format.raw></p>
+			            </f:if>
+			            <f:if condition="{tourSingleData.youtube_link}">
+			  				<p class="videoWrapper">
+			                	<iframe class="youtube-player" type="text/html" width="100%" height="auto" src="{tourSingleData.youtube_link}" allowfullscreen frameborder="0"></iframe>
+			             	</p>
+			            </f:if>
+			            <f:if condition="{tourSingleData.gps_latitude}">
+			            	<f:then>
+			            		<f:if condition="{tourSingleData.gps_longitude}">
+			            			<div id="map_canvas"></div>
+			            		</f:if>
+			            	</f:then>
+			            	<f:else></f:else>
+			            </f:if>
+           			 </div>
+				</div>
+			    <f:if condition="{tourSingleData.contact}">
+					<div class="container-fluid contact">
+						<div class="row">
+							<article class="article">
+								<h2><f:translate key="tx_vsttour.contact">kontakt</f:translate></h2>
+								<p class="contactDetails"><f:format.html>{tourSingleData.contact}</f:format.html></p>
+							</article>
+						</div>
+					</div>
+				</f:if>	
+			</div>
+			<div class="col-xs-4 aside">
+				<div class="row">
+					<h3><div class="triangle"></div><f:translate key="tx_vsttour.benefits">Vienna sightseeing vorteile</f:translate></h3>
+					<f:format.html>{tourSingleData.benefits}</f:format.html>
+				</div>		
+				<div class="row">
+					<h3><div class="triangle"></div><f:translate key="tx_vsttour.hightlights">Highlights</f:translate></h3>
+					<f:format.html>{tourSingleData.highlights}</f:format.html>
+				</div>		
+				<div class="row partnerlogo">
+					<f:for each="{tourSingleData.partner_images}" as="tourPartnerImages" iteration="itemImage">
+						<f:if condition="{itemImage.isFirst}">
+							<f:link.external uri="{tourPartnerImages.link}" target="_blank">
+								<f:image src="fileadmin{tourPartnerImages.image}" class="pull-left" alt="partner logo" width="275c" />
+              				</f:link.external>
+						</f:if>	
+					</f:for>
+				</div>
+			</div>
+		</div>
+	</div>
+</f:for>	
+</f:section>

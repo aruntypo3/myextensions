@@ -1,0 +1,55 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:vst_tour/Resources/Private/Language/locallang_db.xml:tx_vsttour_domain_model_ff.sheetTitle</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                <switchableControllerActions>
+ 					<TCEforms>
+ 	       				<label>LLL:EXT:vst_tour/Resources/Private/Language/locallang_db.xml:tx_vsttour_domain_model_ff.selectView</label>
+ 	       				<onChange>reload</onChange>
+               			<config>
+               				<type>select</type>
+                        	<items>
+                        		<numIndex index="0">
+                                	<numIndex index="0">LLL:EXT:vst_tour/Resources/Private/Language/locallang_db.xml:tx_vsttour_domain_model_ff.listView</numIndex>
+                                	<numIndex index="1">Vsttour->list;Vsttour->detail;Vsttour->banner</numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">LLL:EXT:vst_tour/Resources/Private/Language/locallang_db.xml:tx_vsttour_domain_model_ff.detailView</numIndex>
+                                    <numIndex index="1">Vsttour->detail;Vsttour->list;Vsttour->banner</numIndex>
+                                </numIndex>
+                                <numIndex index="2">
+                                    <numIndex index="0">LLL:EXT:vst_tour/Resources/Private/Language/locallang_db.xml:tx_vsttour_domain_model_ff.bannerView</numIndex>
+                                    <numIndex index="1">Vsttour->banner;Vsttour->list;Vsttour->detail</numIndex>
+                                </numIndex>
+                         	</items>
+                		</config>
+         			</TCEforms>
+  				</switchableControllerActions>
+  				<settings.detailPage>
+                        <TCEforms>
+                            <label>LLL:EXT:vst_tour/Resources/Private/Language/locallang_db.xml:tx_vsttour_domain_model_ff.detailPage</label>
+                            <displayCond><![CDATA[FIELD:switchableControllerActions:=:Vsttour->list;Vsttour->detail;Vsttour->banner]]></displayCond>
+                            <config>
+                                <type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+                            </config>
+                        </TCEforms>
+                 </settings.detailPage>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

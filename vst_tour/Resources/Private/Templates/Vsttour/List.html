@@ -1,0 +1,62 @@
+<f:layout name="Default" />
+<f:section name="main">
+<div class="sub-navigation">
+	<div class="row">
+		<div class="col-xs-12">
+			<nav id="sub-nav">
+				<div class="mobileMenu">
+					<a class="activateMenu" href="javascript:void(0);">tages touren</a>
+					<ul class="list-unstyled left-nav">
+						<f:for each="{vsttours}" as="tourCategories" iteration="itemIteration">
+							<li class="{f:if(condition: itemIteration.isFirst, then: 'active')}">
+								<a href="{tourCategories.currentUrl}#{tourCategories.categoryId}">{tourCategories.category}</a>
+							</li>
+						</f:for>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+</div>
+<f:for each="{vsttours}" as="tourDetails" iteration="itemIterate">
+	<div  id="{tourDetails.categoryId}" class="container-fluid tours-list-title">
+		<div class="row">
+			<h2>{tourDetails.category}</h2>
+		</div>
+	</div>
+	<div class="container-fluid tours-list">
+		<div class="row">
+			<f:for each="{tourDetails.tours}" as="toursingleData" iteration="item">
+				<div class="col-xs-6 col">
+					<article class="article">
+						<div class="img-wrapper">
+							<f:if condition="{toursingleData.carousel_images}">
+								<f:for each="{toursingleData.carousel_images}" as="tourCarouselImages" iteration="itemImage">
+									<f:if condition="{itemImage.isFirst}">
+										<img src="{f:uri.image(src:'fileadmin{tourCarouselImages}',width:'202',height:'250c')}" class="pull-left" alt="tour1" />
+									</f:if>	
+								</f:for>
+							</f:if>
+						</div>
+						<div class="pull-right upper">
+							<h3 class="tour-title">{toursingleData.tourTitle}</h3>
+							<p class="tour-description"><f:format.html>{toursingleData.description}</f:format.html></p>
+						</div>
+						<div class="pull-right lower">
+							<div class="tabletLine"></div>
+							<div class="price">
+								<p class="price">&#128;{toursingleData.price_before}</p>
+								<p class="discount-price">&#128;30,00</p>
+							</div>
+							<div class="actions">
+								<f:link.page pageUid="{toursingleData.detailPage}" additionalParams="{tx_vsttour_vsttour: {uid: toursingleData.tourId}}" noCacheHash="1"><f:translate key="tx_vsttour.tour_details">details</f:translate></f:link.page>
+								<button name="buchen"><f:translate key="tx_vsttour.tour_order">jetzt buchen</f:translate></button>
+							</div>
+						</div>
+					</article>
+				</div>
+			</f:for>
+		</div>
+	</div>
+</f:for>
+</f:section>

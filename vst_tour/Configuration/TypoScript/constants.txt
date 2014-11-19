@@ -1,0 +1,14 @@
+plugin.tx_vsttour {
+	view {
+		# cat=plugin.tx_vsttour/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:vst_tour/Resources/Private/Templates/
+		# cat=plugin.tx_vsttour/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:vst_tour/Resources/Private/Partials/
+		# cat=plugin.tx_vsttour/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:vst_tour/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_vsttour//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

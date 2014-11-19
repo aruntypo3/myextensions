@@ -1,0 +1,4 @@
+
+# cat=basic; type=string; label=LLL:EXT:vst_tour/Resources/Private/Language/locallang_db.xml:tx_vsttour.importtableNames
+import_tables =
+  

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'vst_tour'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+            
+            <label index="tx_vsttour_domain_model_ff.sheetTitle">General Settings</label>
+            <label index="tx_vsttour_domain_model_ff.selectView">Choose View</label>
+            <label index="tx_vsttour_domain_model_ff.detailPage">Detail Page</label>
+            <label index="tx_vsttour_domain_model_ff.listView">List View</label>
+            <label index="tx_vsttour_domain_model_ff.detailView">Detail View</label>
+            <label index="tx_vsttour_domain_model_ff.bannerView">Carousel View</label>
+			<label index="tx_vsttour_domain_model_vsttour">Categories</label>
+			<label index="tx_vsttour_domain_model_cat.title">Category Name</label>
+			<label index="tx_tour">Tours</label>
+			<label index="tx_tour.category_id">Category</label>
+			<label index="tx_tour.tour_id">Tour</label>
+			<label index="tx_tour.tour_title">Tour Title</label>
+			<label index="tx_tour.price_before">Price Before</label>
+			<label index="tx_tour.carousel_images">Carousel Images</label>
+			<label index="tx_tour.description">Description</label>
+			<label index="tx_tour.testemonial">Testemonial</label>
+			<label index="tx_tour.youtube_link">Youtube Link</label>
+			<label index="tx_tour.gps_latitude">Latitude</label>
+			<label index="tx_tour.gps_longitude">Longitude</label>
+			<label index="tx_tour.highlights">Highlights</label>
+			<label index="tx_tour.benefits">Benefits</label>
+			<label index="tx_tour.addImage">Add Image</label>
+			<label index="tx_tour.select">--Select--</label>
+			<label index="tx_tour.map">Map</label>
+			<label index="tx_tour_partners.image_link">Partner Image Link</label>
+			<label index="tx_tour_partners.partnerLogo">Partner Logo</label>
+			<label index="tx_tour.contact">Kontakt</label>
+			<label index="tx_tour.partner_images">Partner Images</label>
+			<label index="tx_tour_partners">Partner Data</label>
+			<label index="tx_vsttour.scheduler_name">VST Tour Import</label>
+			<label index="tx_vsttour.scheduler_description">Scheduler to import tour data from external database.</label>
+			<label index="tx_vsttour.importtableNames">Import Tables</label>
+		</languageKey>
+	</data>
+</T3locallang>
